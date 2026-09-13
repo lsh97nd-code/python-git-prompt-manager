@@ -96,7 +96,7 @@ def get_non_empty_input(message):
 
 
 def select_category():
-    """카테고리를 목록에서 선택하거나 직접 입력한다."""
+    """프롬프트 추가 시 카테고리를 선택하거나 직접 입력한다."""
     print("\n카테고리를 선택하세요.")
 
     for index, category in enumerate(CATEGORIES, start=1):
@@ -180,6 +180,73 @@ def show_prompt_list():
         )
 
 
+def get_available_categories():
+    """기본 카테고리와 사용자가 직접 추가한 카테고리를 함께 반환한다."""
+    categories = CATEGORIES.copy()
+
+    for prompt in prompts:
+        category = prompt["category"]
+
+        if category not in categories:
+            categories.append(category)
+
+    return categories
+
+
+def select_category_for_filter():
+    """카테고리별 조회에 사용할 카테고리를 선택한다."""
+    categories = get_available_categories()
+
+    print("\n조회할 카테고리를 선택하세요.")
+
+    for index, category in enumerate(categories, start=1):
+        print(f"{index}. {category}")
+
+    while True:
+        try:
+            choice = input("선택: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            return None
+
+        if choice.isdigit():
+            number = int(choice)
+
+            if 1 <= number <= len(categories):
+                return categories[number - 1]
+
+        print("잘못된 카테고리 번호입니다. 다시 입력해주세요.")
+
+
+def show_prompts_by_category():
+    """선택한 카테고리에 해당하는 프롬프트만 출력한다."""
+    category = select_category_for_filter()
+
+    if category is None:
+        print("\n카테고리별 조회를 취소합니다.")
+        return
+
+    filtered_prompts = [
+        prompt
+        for prompt in prompts
+        if prompt["category"] == category
+    ]
+
+    print(f"\n=== {category} 카테고리 ===")
+
+    if not filtered_prompts:
+        print("해당 카테고리에 등록된 프롬프트가 없습니다.")
+        return
+
+    for index, prompt in enumerate(filtered_prompts, start=1):
+        favorite_mark = "★" if prompt["favorite"] else "☆"
+
+        print(
+            f"{index}. "
+            f"{favorite_mark} "
+            f"{prompt['title']}"
+        )
+
+
 def main():
     """사용자가 종료를 선택할 때까지 메인 메뉴를 반복 실행한다."""
     while True:
@@ -198,7 +265,7 @@ def main():
             show_prompt_list()
 
         elif choice == "3":
-            print("[카테고리별 조회] 기능은 다음 단계에서 구현합니다.")
+            show_prompts_by_category()
 
         elif choice == "4":
             print("[프롬프트 검색] 기능은 다음 단계에서 구현합니다.")
