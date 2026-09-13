@@ -81,6 +81,86 @@ def show_menu():
     print("0. 종료")
 
 
+def get_non_empty_input(message):
+    """빈 값을 허용하지 않고 입력을 반복해서 받는다."""
+    while True:
+        try:
+            value = input(message).strip()
+        except (EOFError, KeyboardInterrupt):
+            return None
+
+        if value:
+            return value
+
+        print("빈 값은 입력할 수 없습니다. 다시 입력해주세요.")
+
+
+def select_category():
+    """카테고리를 목록에서 선택하거나 직접 입력한다."""
+    print("\n카테고리를 선택하세요.")
+
+    for index, category in enumerate(CATEGORIES, start=1):
+        print(f"{index}. {category}")
+
+    print("0. 직접 입력")
+
+    while True:
+        try:
+            choice = input("선택: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            return None
+
+        if choice == "0":
+            category = get_non_empty_input("카테고리 직접 입력: ")
+
+            if category is None:
+                return None
+
+            return category
+
+        if choice.isdigit():
+            number = int(choice)
+
+            if 1 <= number <= len(CATEGORIES):
+                return CATEGORIES[number - 1]
+
+        print("잘못된 카테고리 번호입니다. 다시 입력해주세요.")
+
+
+def add_prompt():
+    """새로운 프롬프트를 추가한다."""
+    print("\n=== 프롬프트 추가 ===")
+
+    title = get_non_empty_input("제목: ")
+    if title is None:
+        print("\n프롬프트 추가를 취소합니다.")
+        return
+
+    content = get_non_empty_input("내용: ")
+    if content is None:
+        print("\n프롬프트 추가를 취소합니다.")
+        return
+
+    category = select_category()
+    if category is None:
+        print("\n프롬프트 추가를 취소합니다.")
+        return
+
+    new_prompt = {
+        "title": title,
+        "content": content,
+        "category": category,
+        "favorite": False,
+    }
+
+    prompts.append(new_prompt)
+
+    print("\n프롬프트가 추가되었습니다.")
+    print(f"제목: {title}")
+    print(f"카테고리: {category}")
+    print("즐겨찾기: ☆")
+
+
 def main():
     """사용자가 종료를 선택할 때까지 메인 메뉴를 반복 실행한다."""
     while True:
@@ -93,7 +173,7 @@ def main():
             break
 
         if choice == "1":
-            print("[프롬프트 추가] 기능은 다음 단계에서 구현합니다.")
+            add_prompt()
 
         elif choice == "2":
             # 과제 요구사항에 따라 목록 기능은
