@@ -382,7 +382,7 @@ Commit 결과에 `root-commit`이 표시되었는데, 이는 현재 Repository�
 순서로 첫 번째 변경 이력이 정상적으로 저장되었는지 검증했습니다.
 
 
-\*\*### 3.5 GitHub CLI 설치 및 로그인
+\\\*\\\*### 3.5 GitHub CLI 설치 및 로그인
 
 GitHub Repository 생성과 원격 저장소 작업을 VS Code Terminal에서도 수행해보기 위해 GitHub CLI를 사용했습니다.
 
@@ -842,39 +842,72 @@ GitHub Repository의 README 영역을 아래로 이동하여 Markdown 문법과 
 ```text
 
 python-git-prompt-manager/
+
 │
+
 ├── main.py
+
 ├── hello.py
+
 ├── README.md
+
 ├── .gitignore
+
 │
+
 └── images/
-    ├── 01-development-environment.png
-    ├── 02-python-installation.jpg
-    ├── 03-vscode-installation.jpg
-    ├── 04-git-installation.jpg
-    ├── 05-git-add-status.png
-    ├── 06-gitignore-desktop-ini.jpg
-    ├── 07-gitignore-verification.jpg
-    ├── 08-git-staging-final.jpg
-    ├── 09-git-staging-complete.jpg
-    ├── 10-before-first-commit.jpg
-    ├── 11-first-commit-and-git-log.jpg
-    ├── 12-github-cli-install-and-verification.jpg
-    ├── 13-github-device-activation.jpg
-    ├── 14-github-cli-authorization.jpg
-    ├── 15-github-cli-confirm-access.jpg
-    ├── 16-github-cli-login-success.jpg
-    ├── 17-github-auth-status.jpg
-    ├── 18-github-repository-and-remote.jpg
-    ├── 19-github-setup-docs-commit.jpg
-    ├── 20-first-github-push-and-status.jpg
-    ├── 21-first-push-evidence-commit.jpg
-    ├── 22-github-push-and-clean-status.jpg
-    ├── 23-github-repository-and-readme-overview.jpg
-    ├── 24-github-readme-image-rendering.jpg
-    ├── git-error-not-repository.jpg
-    └── git-status-after-readme-update.jpg
+
+    ├── 01-development-environment.png
+
+    ├── 02-python-installation.jpg
+
+    ├── 03-vscode-installation.jpg
+
+    ├── 04-git-installation.jpg
+
+    ├── 05-git-add-status.png
+
+    ├── 06-gitignore-desktop-ini.jpg
+
+    ├── 07-gitignore-verification.jpg
+
+    ├── 08-git-staging-final.jpg
+
+    ├── 09-git-staging-complete.jpg
+
+    ├── 10-before-first-commit.jpg
+
+    ├── 11-first-commit-and-git-log.jpg
+
+    ├── 12-github-cli-install-and-verification.jpg
+
+    ├── 13-github-device-activation.jpg
+
+    ├── 14-github-cli-authorization.jpg
+
+    ├── 15-github-cli-confirm-access.jpg
+
+    ├── 16-github-cli-login-success.jpg
+
+    ├── 17-github-auth-status.jpg
+
+    ├── 18-github-repository-and-remote.jpg
+
+    ├── 19-github-setup-docs-commit.jpg
+
+    ├── 20-first-github-push-and-status.jpg
+
+    ├── 21-first-push-evidence-commit.jpg
+
+    ├── 22-github-push-and-clean-status.jpg
+
+    ├── 23-github-repository-and-readme-overview.jpg
+
+    ├── 24-github-readme-image-rendering.jpg
+
+    ├── git-error-not-repository.jpg
+
+    └── git-status-after-readme-update.jpg
 
 ```
 
@@ -1037,7 +1070,7 @@ prompts = [
 
       ↓
 
-0\\. 종료 선택
+0\\\\. 종료 선택
 
       ↓
 
@@ -1249,21 +1282,21 @@ Boolean은 True 또는 False처럼 두 가지 상태를 표현하는 자료형�
 
 예:
 
-show\\\_menu()        → 메뉴 출력
+show\\\\\\\_menu()        → 메뉴 출력
 
-add\\\_prompt()       → 프롬프트 추가
+add\\\\\\\_prompt()       → 프롬프트 추가
 
-show\\\_list()        → 전체 목록
+show\\\\\\\_list()        → 전체 목록
 
-show\\\_by\\\_category() → 카테고리별 조회
+show\\\\\\\_by\\\\\\\_category() → 카테고리별 조회
 
-search\\\_prompt()    → 검색
+search\\\\\\\_prompt()    → 검색
 
-show\\\_detail()      → 상세 보기
+show\\\\\\\_detail()      → 상세 보기
 
-manage\\\_favorite()  → 즐겨찾기 추가/해제
+manage\\\\\\\_favorite()  → 즐겨찾기 추가/해제
 
-show\\\_favorites()   → 즐겨찾기 목록
+show\\\\\\\_favorites()   → 즐겨찾기 목록
 
 왜 함수를 나누었는가?
 
@@ -1511,15 +1544,15 @@ git log --oneline
 
 예:
 
-**\\\_\\\_pycache\\\_\\\_**/
+**\\\\\\\_\\\\\\\_pycache\\\\\\\_\\\\\\\_**/
 
-\*.pyc
+\\\*.pyc
 
 .venv/
 
 .vscode/
 
-.DS\\\_Store
+.DS\\\\\\\_Store
 
 Thumbs.db
 
@@ -1553,7 +1586,7 @@ JSON 파일 불러오기
 
 Top 목록은 전체를 무한히 출력하기보다 조회수 상위 최대 5개로 제한하는 방식을 고려합니다.
 
-top\\\_prompts = sorted\\\_prompts[:5]
+top\\\\\\\_prompts = sorted\\\\\\\_prompts[:5]
 
 ### CRUD란?
 
