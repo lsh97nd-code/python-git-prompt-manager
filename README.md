@@ -12,7 +12,7 @@
 
 ---
 
-## 2. 처음 보는 사람을 위한 핵심 용어
+## 2. 프로그래밍 언어에 친숙하지 않은 사람을 위한 핵심 용어 설명
 
 이번 보고서는 Python이나 Git을 처음 접하는 사람도 이해할 수 있도록 주요 용어를 먼저 설명합니다.
 
@@ -20,25 +20,25 @@
 
 |---|---|---|
 
-| **Python** | 사람이 작성한 명령을 컴퓨터가 실행할 수 있도록 프로그램을 만드는 프로그래밍 언어 | 프롬프트 관리 프로그램 제작 |
+| ****Python**** | 사람이 작성한 명령을 컴퓨터가 실행할 수 있도록 프로그램을 만드는 프로그래밍 언어 | 프롬프트 관리 프로그램 제작 |
 
-| **VS Code** | 프로그램 코드를 작성하고 수정·실행할 수 있는 코드 편집 프로그램 | Python 코드 작성 및 실행 |
+| ****VS Code**** | 프로그램 코드를 작성하고 수정·실행할 수 있는 코드 편집 프로그램 | Python 코드 작성 및 실행 |
 
-| **콘솔(Console)** | 버튼 대신 글자나 번호를 입력하여 프로그램을 사용하는 방식 | 메뉴 번호를 입력하여 기능 선택 |
+| ****콘솔(Console)**** | 버튼 대신 글자나 번호를 입력하여 프로그램을 사용하는 방식 | 메뉴 번호를 입력하여 기능 선택 |
 
-| **터미널(Terminal)** | 명령어를 글자로 입력하여 컴퓨터에 작업을 지시하는 창 | Python 실행 및 Git 명령어 입력 |
+| ****터미널(Terminal)**** | 명령어를 글자로 입력하여 컴퓨터에 작업을 지시하는 창 | Python 실행 및 Git 명령어 입력 |
 
-| **Git** | 코드가 언제 어떻게 변경되었는지 기록하는 버전 관리 도구 | 기능별 개발 과정 기록 |
+| ****Git**** | 코드가 언제 어떻게 변경되었는지 기록하는 버전 관리 도구 | 기능별 개발 과정 기록 |
 
-| **GitHub** | Git으로 관리한 프로젝트를 온라인에 저장·공유할 수 있는 서비스 | 과제 코드 업로드 및 제출 |
+| ****GitHub**** | Git으로 관리한 프로젝트를 온라인에 저장·공유할 수 있는 서비스 | 과제 코드 업로드 및 제출 |
 
-| **Repository** | Git이 프로젝트 파일과 변경 기록을 관리하는 저장소 | 프로젝트 관리 |
+| ****Repository**** | Git이 프로젝트 파일과 변경 기록을 관리하는 저장소 | 프로젝트 관리 |
 
-| **Commit** | 특정 시점의 변경사항을 하나의 기록으로 저장하는 것 | 기능별 작업 기록 |
+| ****Commit**** | 특정 시점의 변경사항을 하나의 기록으로 저장하는 것 | 기능별 작업 기록 |
 
-| **Branch** | 기존 코드를 유지하면서 별도의 작업 공간에서 기능을 개발하는 방법 | 프롬프트 목록 기능 별도 개발 |
+| ****Branch**** | 기존 코드를 유지하면서 별도의 작업 공간에서 기능을 개발하는 방법 | 프롬프트 목록 기능 별도 개발 |
 
-| **Merge** | 다른 Branch에서 작업한 내용을 현재 Branch에 합치는 것 | 목록 기능을 `main`에 병합 |
+| ****Merge**** | 다른 Branch에서 작업한 내용을 현재 Branch에 합치는 것 | 목록 기능을 `main`에 병합 |
 
 과제에서는 Git이 무엇이고 왜 필요한지 설명할 수 있어야 하며, `init`, `add`, `commit`, `push`, `pull`, `checkout`, `clone`, `merge`가 각각 어떤 역할을 하는지도 설명할 수 있어야 합니다.
 
@@ -99,6 +99,7 @@ Git 설치가 정상적으로 완료된 화면입니다. 설치 후 `git --versi
 ---
 
 ### 3.2 개발 환경 설정 및 Python 실행 확인
+
 
 
 개발 도구를 설치한 뒤 Git을 사용하기 위한 사용자 정보와 기본 Branch를 설정했습니다.
@@ -209,7 +210,8 @@ Hello
 
 - `hello.py` 실행 후 `Hello`가 정상적으로 출력되는지 확인
 
-Git을 처음 사용하는 경우 단순히 확인 명령어부터 실행하기보다 **사용자 이름·이메일 및 기본 Branch 설정 → 설정값 확인 → `git init` → 현재 Branch 확인** 순서로 진행하는 것이 좋습니다. 특히 Git 저장소가 아닌 폴더에서 Branch 관련 명령어를 먼저 실행하면 오류가 발생할 수 있으므로, 프로젝트 폴더를 Git 저장소로 초기화한 뒤 확인했습니다.
+Git을 처음 사용하는 경우 단순히 확인 명령어부터 실행하기보다 ****사용자 이름·이메일 및 기본 Branch 설정 → 설정값 확인 → `git init` → 현재 Branch 확인**** 순서로 진행하는 것이 좋습니다. 특히 Git 저장소가 아닌 폴더에서 Branch 관련 명령어를 먼저 실행하면 오류가 발생할 수 있으므로, 프로젝트 폴더를 Git 저장소로 초기화한 뒤 확인했습니다.
+
 
 
 ---
@@ -260,9 +262,9 @@ desktop.ini
 
 `.gitignore`는 Git으로 관리할 필요가 없는 파일이나 폴더를 추적 대상에서 제외하기 위한 설정 파일입니다.
 
-여기서 **제외한다는 것은 컴퓨터에서 해당 파일을 삭제한다는 뜻이 아닙니다.**
+여기서 ****제외한다는 것은 컴퓨터에서 해당 파일을 삭제한다는 뜻이 아닙니다.****
 
-`.gitignore`의 목적은 파일을 컴퓨터에서 없애는 것이 아니라 **Git이 해당 파일을 추적하거나 Commit 대상으로 등록하지 않도록 하는 것**입니다.
+`.gitignore`의 목적은 파일을 컴퓨터에서 없애는 것이 아니라 ****Git이 해당 파일을 추적하거나 Commit 대상으로 등록하지 않도록 하는 것****입니다.
 
 따라서 `desktop.ini` 파일은 실제 `images/` 폴더에 남아 있어도 문제가 없습니다.
 
@@ -312,15 +314,16 @@ README와 새로운 증빙 자료를 추가한 뒤 `git add .`을 다시 실행�
 
 확인 결과 프로젝트의 초기 파일과 증빙 자료가 모두 `Changes to be committed`에 표시되었습니다.
 
-이는 해당 파일들이 다음 Commit에 포함될 수 있도록 **Staging Area(스테이징 영역)**에 등록되었다는 의미입니다.
+이는 해당 파일들이 다음 Commit에 포함될 수 있도록 ****Staging Area(스테이징 영역)****에 등록되었다는 의미입니다.
 
-여기서 **Staging**은 변경된 파일 중 다음 Commit에 포함할 파일을 미리 선택하여 준비하는 과정입니다.
+여기서 ****Staging****은 변경된 파일 중 다음 Commit에 포함할 파일을 미리 선택하여 준비하는 과정입니다.
 
 `git add .`은 현재 프로젝트의 변경사항을 Staging Area에 등록하고, `git status`는 등록 상태를 확인하는 데 사용합니다.
 
 또한 `desktop.ini`는 실제 `images/` 폴더에는 남아 있지만 `.gitignore` 설정에 따라 Git의 추적 대상에서는 제외되어 `git status`에 나타나지 않는 것을 다시 확인했습니다.
 
 따라서 불필요한 Windows 시스템 파일은 제외하면서 과제 수행에 필요한 파일과 증빙 자료만 첫 Commit에 포함할 준비가 완료되었습니다.
+
 
 
 ### 3.4 첫 Commit 및 Git 기록 확인
@@ -361,7 +364,7 @@ git log --oneline
 
 `git log`는 지금까지 생성된 Commit 기록을 확인하는 명령어입니다.
 
-여기에 `--oneline` 옵션을 사용하면 각 Commit을 한 줄로 간단하게 표시하여 **Commit 식별값과 Commit 메시지**를 빠르게 확인할 수 있습니다.
+여기에 `--oneline` 옵션을 사용하면 각 Commit을 한 줄로 간단하게 표시하여 ****Commit 식별값과 Commit 메시지****를 빠르게 확인할 수 있습니다.
 
 #### 📷 첫 Commit 및 Git Log 확인
 
@@ -371,7 +374,7 @@ git log --oneline
 
 `git commit -m "chore: initialize Python project"`를 실행한 결과 첫 Commit이 정상적으로 생성된 것을 확인했습니다.
 
-Commit 결과에 `root-commit`이 표시되었는데, 이는 현재 Repository에서 생성된 **첫 번째 Commit**이라는 의미입니다.
+Commit 결과에 `root-commit`이 표시되었는데, 이는 현재 Repository에서 생성된 ****첫 번째 Commit****이라는 의미입니다.
 
 이어서 `git log --oneline`을 실행하여 방금 생성한 `chore: initialize Python project` Commit이 Git 변경 이력에 정상적으로 저장되어 있는지 확인했습니다.
 
@@ -382,7 +385,8 @@ Commit 결과에 `root-commit`이 표시되었는데, 이는 현재 Repository�
 순서로 첫 번째 변경 이력이 정상적으로 저장되었는지 검증했습니다.
 
 
-\\\*\\\*### 3.5 GitHub CLI 설치 및 로그인
+
+### 3.5 GitHub CLI 설치 및 로그인
 
 GitHub Repository 생성과 원격 저장소 작업을 VS Code Terminal에서도 수행해보기 위해 GitHub CLI를 사용했습니다.
 
@@ -524,7 +528,7 @@ gh auth status
 
 - GitHub CLI 인증 과정에서 계정과 권한 범위를 확인해야 하므로 보안에 대한 주의가 필요합니다.
 
-따라서 이번 과제에서는 **과제 필수 기능을 충족하는 것뿐 아니라 Git/GitHub 작업 흐름을 이해하기 위한 추가 학습 목적으로 GitHub CLI를 사용했습니다.**
+따라서 이번 과제에서는 ****과제 필수 기능을 충족하는 것뿐 아니라 Git/GitHub 작업 흐름을 이해하기 위한 추가 학습 목적으로 GitHub CLI를 사용했습니다.****
 
 ### 3.6 GitHub Repository 생성 및 원격 저장소 연결
 
@@ -556,7 +560,7 @@ gh repo create python-git-prompt-manager --public --source=. --remote=origin
 
 | `--remote=origin` | 생성된 GitHub Repository를 `origin`이라는 이름의 원격 저장소로 연결 |
 
-여기서 **Remote(원격 저장소)** 는 현재 컴퓨터에 있는 로컬 Git Repository와 연결되는 GitHub의 온라인 Repository를 의미합니다.
+여기서 ****Remote(원격 저장소)**** 는 현재 컴퓨터에 있는 로컬 Git Repository와 연결되는 GitHub의 온라인 Repository를 의미합니다.
 
 `origin`은 원격 저장소에 일반적으로 사용하는 기본 이름입니다. 즉, 이후 `git push`나 `git pull`을 사용할 때 `origin`을 통해 현재 로컬 프로젝트와 GitHub Repository 사이에 데이터를 주고받을 수 있습니다.
 
@@ -702,7 +706,7 @@ Your branch is up to date with 'origin/main'.
 
 다만 첫 Push 직후 새로 만든 증빙 이미지가 `Untracked files`에 표시되었습니다.
 
-여기서 **Untracked file**은 오류가 발생했다는 뜻이 아니라, 파일이 새로 생성되었지만 아직 `git add`와 Commit을 거치지 않았다는 의미입니다.
+여기서 ****Untracked file****은 오류가 발생했다는 뜻이 아니라, 파일이 새로 생성되었지만 아직 `git add`와 Commit을 거치지 않았다는 의미입니다.
 
 즉 첫 Push 자체는 정상적으로 성공했지만, 그 과정을 증빙하기 위해 새로 생성한 이미지도 다시 Git으로 관리할 필요가 있음을 확인했습니다.
 
@@ -780,7 +784,7 @@ nothing to commit, working tree clean
 
 특히 첫 Push 직후 증빙 이미지가 새로 생성되면서 다시 `Untracked file`이 발생했지만, 해당 파일을 다시 Staging하고 Commit한 뒤 Push하여 최종적으로 `working tree clean` 상태까지 만들었습니다.
 
-이 과정은 Git에서 **새 파일 생성 → Staging → Commit → Push → 상태 확인**이 반복적으로 이루어진다는 점을 실제 작업을 통해 확인한 사례입니다.
+이 과정은 Git에서 ****새 파일 생성 → Staging → Commit → Push → 상태 확인****이 반복적으로 이루어진다는 점을 실제 작업을 통해 확인한 사례입니다.
 
 `21-first-push-evidence-commit.jpg`는 첫 Push 증빙 자료를 다시 Commit하는 중간 과정을 확인할 수 있는 참고 자료로 보관했으며, 최종 README에서는 중복을 줄이기 위해 별도의 본문 그림으로 사용하지 않았습니다.
 
@@ -835,6 +839,7 @@ GitHub Repository의 README 영역을 아래로 이동하여 Markdown 문법과 
 ---
 
 ## 4. 프로젝트 파일 구조
+
 
 
 현재 프로젝트는 다음과 같이 구성했습니다.
@@ -944,6 +949,7 @@ python main.py
 `python`은 Python 프로그램을 실행한다는 뜻이고, `main.py`는 이번 과제에서 작성하는 프롬프트 관리 프로그램의 실행 파일입니다.
 
 프로그램이 시작되면 메뉴 번호를 입력하여 원하는 기능을 선택합니다.
+
 
 
 ## 6. 프로그램 주요 기능
@@ -1070,7 +1076,7 @@ prompts = [
 
       ↓
 
-0\\\\. 종료 선택
+0. 종료 선택
 
       ↓
 
@@ -1128,7 +1134,7 @@ prompts = [
 
 ## 11. 프롬프트 목록 — Branch 활용 ★중요
 
-프롬프트 목록 기능은 과제에서 단순히 기능만 구현하는 것이 아니라, **`main`이 아닌 별도의 Branch에서 개발한 뒤 다시 `main` Branch에 Merge하는 과정까지 수행하도록 요구된 기능**입니다.
+프롬프트 목록 기능은 과제에서 단순히 기능만 구현하는 것이 아니라, ****`main`이 아닌 별도의 Branch에서 개발한 뒤 다시 `main` Branch에 Merge하는 과정까지 수행하도록 요구된 기능****입니다.
 
 따라서 목록 기능을 `main` Branch에서 바로 작성하지 않고, 먼저 전용 Branch를 생성한 뒤 해당 Branch에서 개발을 진행했습니다.
 
@@ -1139,7 +1145,9 @@ Branch를 만들기 전에 프롬프트 추가 기능까지 `main` Branch에서 
 그 다음 프롬프트 목록 기능만 별도의 작업 공간에서 개발하기 위해 다음 명령어를 실행했습니다.
 
 ```bash
+
 git checkout -b feature/prompt-list
+
 ```
 
 `git checkout -b`는 새로운 Branch를 생성하는 동시에 해당 Branch로 이동하는 명령어입니다.
@@ -1147,24 +1155,31 @@ git checkout -b feature/prompt-list
 여기서:
 
 - `feature`는 새로운 기능을 개발하기 위한 Branch라는 의미입니다.
+
 - `prompt-list`는 이번 Branch에서 개발할 기능이 프롬프트 목록 기능이라는 의미입니다.
 
 명령 실행 결과 다음 메시지가 표시되었습니다.
 
 ```text
+
 Switched to a new branch 'feature/prompt-list'
+
 ```
 
 Branch 생성 후 실제 현재 작업 Branch가 변경되었는지 다시 확인했습니다.
 
 ```bash
+
 git branch --show-current
+
 ```
 
 확인 결과:
 
 ```text
+
 feature/prompt-list
+
 ```
 
 가 출력되었습니다.
@@ -1194,48 +1209,69 @@ VS Code 화면 왼쪽 아래의 Branch 표시 역시 `feature/prompt-list`로 �
 목록 기능은 등록된 각 프롬프트의 다음 정보를 한 줄에 표시하도록 구성했습니다.
 
 - 번호
+
 - 제목
+
 - 카테고리
+
 - 즐겨찾기 여부 `★ / ☆`
 
 목록 출력을 위해 `show_prompt_list()` 함수를 작성했습니다.
 
 ```python
+
 def show_prompt_list():
-    """등록된 프롬프트 목록을 번호, 제목, 카테고리, 즐겨찾기와 함께 출력한다."""
-    print("\n=== 프롬프트 목록 ===")
 
-    if not prompts:
-        print("등록된 프롬프트가 없습니다.")
-        return
+    """등록된 프롬프트 목록을 번호, 제목, 카테고리, 즐겨찾기와 함께 출력한다."""
 
-    for index, prompt in enumerate(prompts, start=1):
-        favorite_mark = "★" if prompt["favorite"] else "☆"
+    print("\n=== 프롬프트 목록 ===")
 
-        print(
-            f"{index}. "
-            f"{favorite_mark} "
-            f"{prompt['title']} "
-            f"[{prompt['category']}]"
-        )
+    if not prompts:
+
+        print("등록된 프롬프트가 없습니다.")
+
+        return
+
+    for index, prompt in enumerate(prompts, start=1):
+
+        favorite_mark = "★" if prompt["favorite"] else "☆"
+
+        print(
+
+            f"{index}. "
+
+            f"{favorite_mark} "
+
+            f"{prompt['title']} "
+
+            f"[{prompt['category']}]"
+
+        )
+
 ```
 
 여기서 다음 부분은 프롬프트가 하나도 없을 때를 처리합니다.
 
 ```python
+
 if not prompts:
-    print("등록된 프롬프트가 없습니다.")
-    return
+
+    print("등록된 프롬프트가 없습니다.")
+
+    return
+
 ```
 
-이 코드는 **반드시 `show_prompt_list()` 함수 내부에 있어야 합니다.**
+이 코드는 ****반드시 `show_prompt_list()` 함수 내부에 있어야 합니다.****
 
 현재 실제 `main.py`에서는 이 코드가 함수 내부에 있으며, 프로그램도 정상 실행되었습니다. 만약 이 코드가 파일 맨 아래 함수 밖에 별도로 존재한다면 삭제해야 합니다.
 
 목록 번호는 다음 코드로 `1`부터 표시합니다.
 
 ```python
+
 enumerate(prompts, start=1)
+
 ```
 
 `enumerate()`는 List의 각 항목을 순서대로 처리하면서 번호도 함께 사용할 수 있도록 해주는 Python 기능입니다.
@@ -1243,8 +1279,11 @@ enumerate(prompts, start=1)
 또한 각 프롬프트의 `favorite` 값에 따라 즐겨찾기를 다음처럼 표시합니다.
 
 ```text
-True  → ★
+
+True  → ★
+
 False → ☆
+
 ```
 
 현재 기본 프롬프트의 `favorite` 값은 모두 `False`이므로 최초 목록에서는 `☆`가 표시됩니다.
@@ -1252,13 +1291,17 @@ False → ☆
 기능 구현 후 현재 Branch가 여전히 `feature/prompt-list`인지 확인했습니다.
 
 ```bash
+
 git branch --show-current
+
 ```
 
 확인 결과:
 
 ```text
+
 feature/prompt-list
+
 ```
 
 가 출력되었습니다.
@@ -1266,17 +1309,25 @@ feature/prompt-list
 그 다음 프로그램을 실행했습니다.
 
 ```bash
+
 python .\main.py
+
 ```
 
 메인 메뉴에서 `2. 프롬프트 목록`을 선택한 결과 다음과 같이 기본 프롬프트 4개가 정상적으로 출력되었습니다.
 
 ```text
-=== 프롬프트 목록 ===
+
+\=== 프롬프트 목록 ===
+
 1. ☆ 몸 이상 신호 기반 컬러푸드 서비스 기획 [텍스트 생성]
+
 2. ☆ 주식투자 위험 영상 이미지 수정 [이미지 생성]
+
 3. ☆ 결과 캐싱 개념 설명 [텍스트 생성]
+
 4. ☆ 복수 여행지 증빙 확인 [기타]
+
 ```
 
 목록 출력이 끝난 뒤 프로그램이 종료되지 않고 다시 메인 메뉴로 돌아오는 것도 확인했습니다.
@@ -1293,7 +1344,7 @@ python .\main.py
 
 또한 목록 출력 후 메인 메뉴가 다시 표시되어, 기능 실행 후 프로그램이 정상적으로 메인 메뉴로 복귀하는 것도 확인했습니다.
 
-이를 통해 단순히 목록 기능이 동작한다는 것뿐 아니라, **해당 기능을 실제로 `feature/prompt-list` Branch에서 개발하고 테스트했다는 사실까지 함께 검증했습니다.**
+이를 통해 단순히 목록 기능이 동작한다는 것뿐 아니라, ****해당 기능을 실제로 `feature/prompt-list` Branch에서 개발하고 테스트했다는 사실까지 함께 검증했습니다.****
 
 확인한 흐름은 다음과 같습니다.
 
@@ -1308,8 +1359,11 @@ python .\main.py
 먼저 변경된 파일을 Staging Area에 등록하고 상태를 확인했습니다.
 
 ```bash
+
 git add .
+
 git status
+
 ```
 
 `git status`를 통해 현재 Branch가 `feature/prompt-list`인지 확인하고, `main.py`, `README.md`와 이번 작업에서 생성한 증빙 이미지가 Commit 대상으로 등록된 것도 확인했습니다.
@@ -1317,13 +1371,17 @@ git status
 이후 다음 명령어로 프롬프트 목록 기능을 Commit했습니다.
 
 ```bash
+
 git commit -m "feat: add prompt list"
+
 ```
 
 Commit 결과 다음과 같이 `feature/prompt-list` Branch에 새로운 변경 이력이 생성되었습니다.
 
 ```text
+
 [feature/prompt-list cb56cde] feat: add prompt list
+
 ```
 
 #### 📷 `feature/prompt-list` Branch에서 목록 기능 Commit
@@ -1341,14 +1399,19 @@ Commit 결과 다음과 같이 `feature/prompt-list` Branch에 새로운 변경 
 Branch Commit을 완료한 뒤 작업 폴더에 남아 있는 변경사항이 없는지 확인했습니다.
 
 ```bash
+
 git status
+
 ```
 
 확인 결과:
 
 ```text
+
 On branch feature/prompt-list
+
 nothing to commit, working tree clean
+
 ```
 
 이 표시되어 목록 기능 관련 변경사항이 모두 Commit된 상태임을 확인했습니다.
@@ -1356,13 +1419,17 @@ nothing to commit, working tree clean
 그 다음 `main` Branch로 이동했습니다.
 
 ```bash
+
 git checkout main
+
 ```
 
 실행 결과:
 
 ```text
+
 Switched to branch 'main'
+
 ```
 
 이 표시되어 현재 작업 Branch가 `feature/prompt-list`에서 `main`으로 변경되었습니다.
@@ -1370,13 +1437,17 @@ Switched to branch 'main'
 이후 다음 명령어를 사용하여 `feature/prompt-list`에서 개발한 목록 기능을 `main` Branch에 병합했습니다.
 
 ```bash
+
 git merge feature/prompt-list
+
 ```
 
 Merge 결과 다음과 같이 `Fast-forward`가 표시되었습니다.
 
 ```text
+
 Fast-forward
+
 ```
 
 `Fast-forward`는 Merge 실패나 오류가 아니라, `main` Branch 이후에 별도의 충돌되는 Commit이 없었기 때문에 `main`이 `feature/prompt-list`의 최신 Commit 위치까지 그대로 이동하여 병합된 것을 의미합니다.
@@ -1390,9 +1461,13 @@ Fast-forward
 화면에서 다음 과정을 연속으로 확인할 수 있습니다.
 
 - `feature/prompt-list` Branch의 작업 상태가 Clean인지 확인
+
 - `git checkout main`으로 `main` Branch 이동
+
 - `git merge feature/prompt-list` 실행
+
 - `Fast-forward` 방식으로 Merge 완료
+
 - `main.py`, `README.md` 및 증빙 이미지가 `main`에 반영됨
 
 이를 통해 과제에서 요구한 다음 개발 흐름을 실제로 수행했습니다.
@@ -1402,6 +1477,7 @@ Fast-forward
 즉, 프롬프트 목록 기능을 `main`에서 직접 개발한 것이 아니라 별도의 Branch에서 독립적으로 개발한 뒤 다시 `main`에 합치는 Git Branch 작업 과정을 완료했습니다.
 
 
+
 ### 11.4 Git Log를 통한 Branch 및 Merge 기록 확인
 
 `feature/prompt-list` Branch의 프롬프트 목록 기능을 `main` Branch에 Merge한 뒤, Git 변경 이력에서도 정상적으로 반영되었는지 확인했습니다.
@@ -1409,16 +1485,23 @@ Fast-forward
 다음 명령어를 실행했습니다.
 
 ```bash
+
 git log --oneline --graph --all --decorate
+
 ```
 
 각 옵션의 의미는 다음과 같습니다.
 
 | 옵션 | 의미 |
+
 |---|---|
+
 | `--oneline` | 각 Commit을 한 줄로 간단하게 표시 |
+
 | `--graph` | Commit과 Branch 관계를 그래프 형태로 표시 |
+
 | `--all` | 현재 Branch뿐 아니라 다른 Branch의 기록도 함께 표시 |
+
 | `--decorate` | `HEAD`, `main`, `feature/prompt-list`, `origin/main`과 같은 Branch 위치를 함께 표시 |
 
 #### 📷 Git Log를 통한 Branch 및 Merge 기록 확인
@@ -1430,7 +1513,9 @@ git log --oneline --graph --all --decorate
 Git Log의 최신 Commit에서 다음과 같은 내용을 확인했습니다.
 
 ```text
+
 cb56cde (HEAD -> main, feature/prompt-list) feat: add prompt list
+
 ```
 
 `HEAD -> main`은 현재 작업 위치가 `main` Branch라는 의미입니다.
@@ -1440,7 +1525,9 @@ cb56cde (HEAD -> main, feature/prompt-list) feat: add prompt list
 또한 당시 `origin/main`은 다음 이전 Commit을 가리키고 있었습니다.
 
 ```text
+
 45c6f11 (origin/main) feat: add prompt creation
+
 ```
 
 이는 로컬 `main`에는 프롬프트 목록 기능 Merge가 완료되었지만, 아직 해당 최신 Commit을 GitHub 원격 Repository에는 Push하지 않은 상태라는 의미입니다.
@@ -1452,6 +1539,70 @@ cb56cde (HEAD -> main, feature/prompt-list) feat: add prompt list
 이를 통해 다음 과정을 Git 명령 실행 결과뿐 아니라 실제 Commit 기록에서도 다시 검증했습니다.
 
 **Branch 생성 → 목록 기능 개발 → Branch Commit → `main` Checkout → Fast-forward Merge → Git Log를 통한 Branch 위치 및 Commit 기록 확인**
+
+---
+
+
+### 11.5 Merge 결과 GitHub Push 및 최종 동기화 확인
+
+프롬프트 목록 기능의 Branch 개발, Commit, `main` Merge, Git Log 검증까지 완료한 뒤 관련 README와 증빙 자료를 Git 변경 이력에 추가했습니다.
+
+먼저 변경된 파일을 Staging Area에 등록하고 상태를 확인했습니다.
+
+```bash
+git add .
+git status
+```
+
+이후 다음 Commit을 생성했습니다.
+
+```bash
+git commit -m "docs: add prompt list merge evidence"
+```
+
+#### 📷 프롬프트 목록 Merge 증빙 문서화 Commit
+
+![프롬프트 목록 Merge 증빙 Commit](images/34-prompt-list-merge-evidence-commit.jpg)
+
+**그림 25. 프롬프트 목록 Branch·Merge 증빙 자료 문서화 Commit**
+
+`README.md`와 `31-feature-prompt-list-commit.jpg`, `32-feature-prompt-list-merge-to-main.jpg`, `33-feature-prompt-list-git-log.jpg`를 Staging한 뒤 `docs: add prompt list merge evidence`라는 메시지로 Commit했습니다.
+
+이를 통해 Branch 생성·기능 개발·Merge·Git Log 확인 과정에서 생성된 증빙 자료도 Git 변경 이력으로 관리했습니다.
+
+Commit 후 다음 명령어를 실행하여 GitHub 원격 Repository에 최신 변경사항을 전송했습니다.
+
+```bash
+git push
+```
+
+Push가 완료된 뒤 최종 동기화 상태를 확인했습니다.
+
+```bash
+git status
+```
+
+확인 결과 다음 메시지가 표시되었습니다.
+
+```text
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+```
+
+#### 📷 프롬프트 목록 Merge 결과 Push 및 최종 Clean 상태 확인
+
+![프롬프트 목록 Merge Push 및 Clean 상태](images/35-prompt-list-merge-push-and-clean-status.jpg)
+
+**그림 26. 프롬프트 목록 Branch 작업의 GitHub Push 및 최종 동기화 확인**
+
+`git push` 실행 결과 최신 Commit이 GitHub의 `main` Branch로 정상적으로 전송되었습니다.
+
+이후 `git status`에서 로컬 `main` Branch와 GitHub의 `origin/main` Branch가 같은 상태임을 확인했으며, `nothing to commit, working tree clean` 메시지를 통해 처리되지 않은 변경사항이나 새 파일이 남아 있지 않은 것도 확인했습니다.
+
+이를 통해 프롬프트 목록 기능에 대한 전체 Git 작업 흐름을 완료했습니다.
+
+**Branch 생성 → 기능 개발 → Branch Commit → `main` Merge → Git Log 검증 → 증빙 문서화 Commit → GitHub Push → 최종 Clean 상태 확인**
 
 ---
 
@@ -1563,21 +1714,21 @@ Boolean은 True 또는 False처럼 두 가지 상태를 표현하는 자료형�
 
 예:
 
-show\\\\\\\_menu()        → 메뉴 출력
+show_menu()        → 메뉴 출력
 
-add\\\\\\\_prompt()       → 프롬프트 추가
+add_prompt()       → 프롬프트 추가
 
-show\\\\\\\_list()        → 전체 목록
+show_list()        → 전체 목록
 
-show\\\\\\\_by\\\\\\\_category() → 카테고리별 조회
+show_by_category() → 카테고리별 조회
 
-search\\\\\\\_prompt()    → 검색
+search_prompt()    → 검색
 
-show\\\\\\\_detail()      → 상세 보기
+show_detail()      → 상세 보기
 
-manage\\\\\\\_favorite()  → 즐겨찾기 추가/해제
+manage_favorite()  → 즐겨찾기 추가/해제
 
-show\\\\\\\_favorites()   → 즐겨찾기 목록
+show_favorites()   → 즐겨찾기 목록
 
 왜 함수를 나누었는가?
 
@@ -1825,15 +1976,15 @@ git log --oneline
 
 예:
 
-**\\\\\\\_\\\\\\\_pycache\\\\\\\_\\\\\\\_**/
+****__pycache__****/
 
-\\\*.pyc
+*.pyc
 
 .venv/
 
 .vscode/
 
-.DS\\\\\\\_Store
+.DS_Store
 
 Thumbs.db
 
@@ -1867,7 +2018,7 @@ JSON 파일 불러오기
 
 Top 목록은 전체를 무한히 출력하기보다 조회수 상위 최대 5개로 제한하는 방식을 고려합니다.
 
-top\\\\\\\_prompts = sorted\\\\\\\_prompts[:5]
+top_prompts = sorted_prompts[:5]
 
 ### CRUD란?
 
@@ -2165,7 +2316,7 @@ prompt-manager-cli
 
 A1-1-python-git-prompt-manager
 
-이번 과제 제출용이라면 저는 **python-git-prompt-manager**로 만들겠습니다.
+이번 과제 제출용이라면 저는 ****python-git-prompt-manager****로 만들겠습니다.
 
 VS Code에서 새 폴더를 만들 때도 그대로:
 
