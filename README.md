@@ -1128,51 +1128,221 @@ prompts = [
 
 ## 11. 프롬프트 목록 — Branch 활용 ★중요
 
-이 기능은 과제에서 Git Branch 사용 방법까지 지정한 특별 요구사항입니다.
+프롬프트 목록 기능은 과제에서 단순히 기능만 구현하는 것이 아니라, **`main`이 아닌 별도의 Branch에서 개발한 뒤 다시 `main` Branch에 Merge하는 과정까지 수행하도록 요구된 기능**입니다.
 
-main이 아닌 별도의 Branch를 생성하여 프롬프트 목록 기능 자체를 개발합니다.
+따라서 목록 기능을 `main` Branch에서 바로 작성하지 않고, 먼저 전용 Branch를 생성한 뒤 해당 Branch에서 개발을 진행했습니다.
 
-권장 Branch 이름:
+### 11.1 프롬프트 목록 기능 개발용 Branch 생성
 
+Branch를 만들기 전에 프롬프트 추가 기능까지 `main` Branch에서 Commit하고 GitHub에 Push했습니다.
+
+그 다음 프롬프트 목록 기능만 별도의 작업 공간에서 개발하기 위해 다음 명령어를 실행했습니다.
+
+```bash
 git checkout -b feature/prompt-list
+```
 
-목록 기능을 완성한 후 의미 있는 Commit을 남깁니다.
+`git checkout -b`는 새로운 Branch를 생성하는 동시에 해당 Branch로 이동하는 명령어입니다.
 
+여기서:
+
+- `feature`는 새로운 기능을 개발하기 위한 Branch라는 의미입니다.
+- `prompt-list`는 이번 Branch에서 개발할 기능이 프롬프트 목록 기능이라는 의미입니다.
+
+명령 실행 결과 다음 메시지가 표시되었습니다.
+
+```text
+Switched to a new branch 'feature/prompt-list'
+```
+
+Branch 생성 후 실제 현재 작업 Branch가 변경되었는지 다시 확인했습니다.
+
+```bash
+git branch --show-current
+```
+
+확인 결과:
+
+```text
+feature/prompt-list
+```
+
+가 출력되었습니다.
+
+#### 📷 프롬프트 목록 기능 개발용 Branch 생성 및 확인
+
+![feature/prompt-list Branch 생성 및 확인](images/20-feature-prompt-list-branch-created.jpg)
+
+**그림 20. 프롬프트 목록 기능 개발용 `feature/prompt-list` Branch 생성 및 현재 Branch 확인**
+
+`git checkout -b feature/prompt-list`를 실행하여 새로운 Branch를 생성하면서 해당 Branch로 이동했습니다.
+
+이후 `git branch --show-current`를 실행한 결과 현재 Branch가 `feature/prompt-list`로 표시되는 것을 확인했습니다.
+
+VS Code 화면 왼쪽 아래의 Branch 표시 역시 `feature/prompt-list`로 변경되어 있어, 프롬프트 목록 기능을 `main`이 아닌 별도의 Branch에서 개발할 준비가 완료되었음을 확인했습니다.
+
+이를 통해 다음 흐름을 실제로 검증했습니다.
+
+**`main`에서 이전 기능 완료 → `feature/prompt-list` Branch 생성 → 새 Branch로 이동 → 현재 Branch 재확인**
+
+---
+
+### 11.2 프롬프트 목록 기능 구현 및 실행 확인
+
+`feature/prompt-list` Branch에서 프롬프트 목록 기능을 구현했습니다.
+
+목록 기능은 등록된 각 프롬프트의 다음 정보를 한 줄에 표시하도록 구성했습니다.
+
+- 번호
+- 제목
+- 카테고리
+- 즐겨찾기 여부 `★ / ☆`
+
+목록 출력을 위해 `show_prompt_list()` 함수를 작성했습니다.
+
+```python
+def show_prompt_list():
+    """등록된 프롬프트 목록을 번호, 제목, 카테고리, 즐겨찾기와 함께 출력한다."""
+    print("\n=== 프롬프트 목록 ===")
+
+    if not prompts:
+        print("등록된 프롬프트가 없습니다.")
+        return
+
+    for index, prompt in enumerate(prompts, start=1):
+        favorite_mark = "★" if prompt["favorite"] else "☆"
+
+        print(
+            f"{index}. "
+            f"{favorite_mark} "
+            f"{prompt['title']} "
+            f"[{prompt['category']}]"
+        )
+```
+
+여기서 다음 부분은 프롬프트가 하나도 없을 때를 처리합니다.
+
+```python
+if not prompts:
+    print("등록된 프롬프트가 없습니다.")
+    return
+```
+
+이 코드는 **반드시 `show_prompt_list()` 함수 내부에 있어야 합니다.**
+
+현재 실제 `main.py`에서는 이 코드가 함수 내부에 있으며, 프로그램도 정상 실행되었습니다. 만약 이 코드가 파일 맨 아래 함수 밖에 별도로 존재한다면 삭제해야 합니다.
+
+목록 번호는 다음 코드로 `1`부터 표시합니다.
+
+```python
+enumerate(prompts, start=1)
+```
+
+`enumerate()`는 List의 각 항목을 순서대로 처리하면서 번호도 함께 사용할 수 있도록 해주는 Python 기능입니다.
+
+또한 각 프롬프트의 `favorite` 값에 따라 즐겨찾기를 다음처럼 표시합니다.
+
+```text
+True  → ★
+False → ☆
+```
+
+현재 기본 프롬프트의 `favorite` 값은 모두 `False`이므로 최초 목록에서는 `☆`가 표시됩니다.
+
+기능 구현 후 현재 Branch가 여전히 `feature/prompt-list`인지 확인했습니다.
+
+```bash
+git branch --show-current
+```
+
+확인 결과:
+
+```text
+feature/prompt-list
+```
+
+가 출력되었습니다.
+
+그 다음 프로그램을 실행했습니다.
+
+```bash
+python .\main.py
+```
+
+메인 메뉴에서 `2. 프롬프트 목록`을 선택한 결과 다음과 같이 기본 프롬프트 4개가 정상적으로 출력되었습니다.
+
+```text
+=== 프롬프트 목록 ===
+1. ☆ 몸 이상 신호 기반 컬러푸드 서비스 기획 [텍스트 생성]
+2. ☆ 주식투자 위험 영상 이미지 수정 [이미지 생성]
+3. ☆ 결과 캐싱 개념 설명 [텍스트 생성]
+4. ☆ 복수 여행지 증빙 확인 [기타]
+```
+
+목록 출력이 끝난 뒤 프로그램이 종료되지 않고 다시 메인 메뉴로 돌아오는 것도 확인했습니다.
+
+#### 📷 `feature/prompt-list` Branch에서 프롬프트 목록 실행 확인
+
+![feature/prompt-list Branch 프롬프트 목록 실행](images/21-feature-prompt-list-display.jpg)
+
+**그림 21. `feature/prompt-list` Branch에서 프롬프트 목록 기능 실행 확인**
+
+화면 상단에서 `git branch --show-current` 명령 결과가 `feature/prompt-list`로 표시되는 것을 확인했습니다.
+
+같은 화면에서 Python 프로그램을 실행한 뒤 `2`번 메뉴를 선택하여 번호, 제목, 카테고리, 즐겨찾기 표시가 포함된 프롬프트 목록이 정상적으로 출력되는 것도 확인했습니다.
+
+또한 목록 출력 후 메인 메뉴가 다시 표시되어, 기능 실행 후 프로그램이 정상적으로 메인 메뉴로 복귀하는 것도 확인했습니다.
+
+이를 통해 단순히 목록 기능이 동작한다는 것뿐 아니라, **해당 기능을 실제로 `feature/prompt-list` Branch에서 개발하고 테스트했다는 사실까지 함께 검증했습니다.**
+
+확인한 흐름은 다음과 같습니다.
+
+**`feature/prompt-list` Branch 확인 → 프로그램 실행 → 2번 목록 선택 → 기본 프롬프트 4개 출력 → 메인 메뉴 복귀**
+
+---
+
+### 11.3 Branch에서 기능 Commit 후 `main`에 Merge
+
+> 이 부분은 다음 단계에서 실제 Commit과 Merge를 수행한 뒤 결과에 맞게 수정합니다.
+
+프롬프트 목록 기능 구현과 실행 테스트까지 완료했으므로, 다음 단계에서는 현재 `feature/prompt-list` Branch에서 변경사항을 Commit합니다.
+
+먼저 변경된 파일을 Staging Area에 등록하고 상태를 확인합니다.
+
+```bash
 git add .
+git status
+```
 
-git commit -m "feat: add prompt list feature"
+확인 후 다음 Commit을 생성합니다.
 
-그 후 main으로 이동하여 병합합니다.
+```bash
+git commit -m "feat: add prompt list"
+```
 
+이 Commit은 프롬프트 목록 기능을 `feature/prompt-list` Branch에서 개발했다는 변경 이력을 남기는 역할을 합니다.
+
+Commit을 완료한 뒤에는 `main` Branch로 이동합니다.
+
+```bash
 git checkout main
+```
 
+그 다음 `feature/prompt-list` Branch에서 개발한 목록 기능을 `main` Branch에 병합합니다.
+
+```bash
 git merge feature/prompt-list
+```
 
-과제는 이 기능을 추가 Branch에서 작업하고 완성 후 main에 병합하도록 명시하고 있습니다.
+Merge 후에는 Git 기록을 확인하여 목록 기능이 별도의 Branch에서 개발된 뒤 `main`에 정상적으로 합쳐졌는지 검증할 예정입니다.
 
-목록에서 표시할 내용
+전체 흐름은 다음과 같습니다.
 
-번호
+**`feature/prompt-list` 생성 → 목록 기능 개발 및 테스트 → Branch에서 Commit → `main`으로 Checkout → `feature/prompt-list` Merge → Git 기록 확인**
 
-카테고리
+이 기능은 과제에서 Branch 사용 방법을 직접 지정한 항목이므로, 단순히 아무 기능에서 Branch를 사용한 것이 아니라 **프롬프트 목록 기능 자체를 `feature/prompt-list`에서 개발했다는 기록을 남기는 것이 중요합니다.**
 
-제목
-
-즐겨찾기 여부(⭐)
-
-프롬프트가 하나도 없다면 안내 메시지를 출력합니다.
-
-📷 증빙
-
-03-branch-merge.png
-
-【이미지 삽입】
-
-그림 3. 프롬프트 목록 기능 Branch 개발 및 병합
-
-feature/prompt-list Branch에서 목록 기능을 개발·Commit한 뒤 main Branch로 이동하여 merge한 과정을 확인할 수 있습니다.
-
-힌트: 단순히 Branch를 아무 기능에 사용하는 것이 아니라 과제에서 지정한 프롬프트 목록 기능을 Branch에서 개발했다는 기록이 보여야 합니다.
+---
 
 ## 12. 카테고리별 조회
 

@@ -161,6 +161,25 @@ def add_prompt():
     print("즐겨찾기: ☆")
 
 
+def show_prompt_list():
+    """등록된 프롬프트 목록을 번호, 제목, 카테고리, 즐겨찾기와 함께 출력한다."""
+    print("\n=== 프롬프트 목록 ===")
+
+    if not prompts:
+        print("등록된 프롬프트가 없습니다.")
+        return
+
+    for index, prompt in enumerate(prompts, start=1):
+        favorite_mark = "★" if prompt["favorite"] else "☆"
+
+        print(
+            f"{index}. "
+            f"{favorite_mark} "
+            f"{prompt['title']} "
+            f"[{prompt['category']}]"
+        )
+
+
 def main():
     """사용자가 종료를 선택할 때까지 메인 메뉴를 반복 실행한다."""
     while True:
@@ -176,9 +195,7 @@ def main():
             add_prompt()
 
         elif choice == "2":
-            # 과제 요구사항에 따라 목록 기능은
-            # feature/prompt-list Branch에서 별도로 구현한다.
-            print("[프롬프트 목록] 기능은 다음 단계에서 구현합니다.")
+            show_prompt_list()
 
         elif choice == "3":
             print("[카테고리별 조회] 기능은 다음 단계에서 구현합니다.")
