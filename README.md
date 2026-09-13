@@ -1303,44 +1303,155 @@ python .\main.py
 
 ### 11.3 Branch에서 기능 Commit 후 `main`에 Merge
 
-> 이 부분은 다음 단계에서 실제 Commit과 Merge를 수행한 뒤 결과에 맞게 수정합니다.
+프롬프트 목록 기능 구현과 실행 테스트를 완료한 뒤, 현재 작업 중인 `feature/prompt-list` Branch에서 변경사항을 Commit했습니다.
 
-프롬프트 목록 기능 구현과 실행 테스트까지 완료했으므로, 다음 단계에서는 현재 `feature/prompt-list` Branch에서 변경사항을 Commit합니다.
-
-먼저 변경된 파일을 Staging Area에 등록하고 상태를 확인합니다.
+먼저 변경된 파일을 Staging Area에 등록하고 상태를 확인했습니다.
 
 ```bash
 git add .
 git status
 ```
 
-확인 후 다음 Commit을 생성합니다.
+`git status`를 통해 현재 Branch가 `feature/prompt-list`인지 확인하고, `main.py`, `README.md`와 이번 작업에서 생성한 증빙 이미지가 Commit 대상으로 등록된 것도 확인했습니다.
+
+이후 다음 명령어로 프롬프트 목록 기능을 Commit했습니다.
 
 ```bash
 git commit -m "feat: add prompt list"
 ```
 
-이 Commit은 프롬프트 목록 기능을 `feature/prompt-list` Branch에서 개발했다는 변경 이력을 남기는 역할을 합니다.
+Commit 결과 다음과 같이 `feature/prompt-list` Branch에 새로운 변경 이력이 생성되었습니다.
 
-Commit을 완료한 뒤에는 `main` Branch로 이동합니다.
+```text
+[feature/prompt-list cb56cde] feat: add prompt list
+```
+
+#### 📷 `feature/prompt-list` Branch에서 목록 기능 Commit
+
+![프롬프트 목록 기능 Branch Commit](images/31-feature-prompt-list-commit.jpg)
+
+**그림 22. `feature/prompt-list` Branch에서 프롬프트 목록 기능 Commit**
+
+화면에서 현재 Branch가 `feature/prompt-list`인 상태에서 `git add .`, `git status`, `git commit -m "feat: add prompt list"`를 순서대로 실행한 것을 확인할 수 있습니다.
+
+이를 통해 프롬프트 목록 기능이 `main` Branch에서 바로 Commit된 것이 아니라, 과제 요구사항에 따라 별도의 `feature/prompt-list` Branch에서 개발되고 Commit되었다는 변경 이력을 남겼습니다.
+
+---
+
+Branch Commit을 완료한 뒤 작업 폴더에 남아 있는 변경사항이 없는지 확인했습니다.
+
+```bash
+git status
+```
+
+확인 결과:
+
+```text
+On branch feature/prompt-list
+nothing to commit, working tree clean
+```
+
+이 표시되어 목록 기능 관련 변경사항이 모두 Commit된 상태임을 확인했습니다.
+
+그 다음 `main` Branch로 이동했습니다.
 
 ```bash
 git checkout main
 ```
 
-그 다음 `feature/prompt-list` Branch에서 개발한 목록 기능을 `main` Branch에 병합합니다.
+실행 결과:
+
+```text
+Switched to branch 'main'
+```
+
+이 표시되어 현재 작업 Branch가 `feature/prompt-list`에서 `main`으로 변경되었습니다.
+
+이후 다음 명령어를 사용하여 `feature/prompt-list`에서 개발한 목록 기능을 `main` Branch에 병합했습니다.
 
 ```bash
 git merge feature/prompt-list
 ```
 
-Merge 후에는 Git 기록을 확인하여 목록 기능이 별도의 Branch에서 개발된 뒤 `main`에 정상적으로 합쳐졌는지 검증할 예정입니다.
+Merge 결과 다음과 같이 `Fast-forward`가 표시되었습니다.
 
-전체 흐름은 다음과 같습니다.
+```text
+Fast-forward
+```
 
-**`feature/prompt-list` 생성 → 목록 기능 개발 및 테스트 → Branch에서 Commit → `main`으로 Checkout → `feature/prompt-list` Merge → Git 기록 확인**
+`Fast-forward`는 Merge 실패나 오류가 아니라, `main` Branch 이후에 별도의 충돌되는 Commit이 없었기 때문에 `main`이 `feature/prompt-list`의 최신 Commit 위치까지 그대로 이동하여 병합된 것을 의미합니다.
 
-이 기능은 과제에서 Branch 사용 방법을 직접 지정한 항목이므로, 단순히 아무 기능에서 Branch를 사용한 것이 아니라 **프롬프트 목록 기능 자체를 `feature/prompt-list`에서 개발했다는 기록을 남기는 것이 중요합니다.**
+#### 📷 `feature/prompt-list` Branch를 `main`에 Merge
+
+![프롬프트 목록 Branch를 main에 Merge](images/32-feature-prompt-list-merge-to-main.jpg)
+
+**그림 23. `feature/prompt-list` Branch Commit 후 `main` Checkout 및 Merge**
+
+화면에서 다음 과정을 연속으로 확인할 수 있습니다.
+
+- `feature/prompt-list` Branch의 작업 상태가 Clean인지 확인
+- `git checkout main`으로 `main` Branch 이동
+- `git merge feature/prompt-list` 실행
+- `Fast-forward` 방식으로 Merge 완료
+- `main.py`, `README.md` 및 증빙 이미지가 `main`에 반영됨
+
+이를 통해 과제에서 요구한 다음 개발 흐름을 실제로 수행했습니다.
+
+**`feature/prompt-list` 생성 → 목록 기능 개발 및 테스트 → Branch에서 Commit → `main` Checkout → `feature/prompt-list` Merge**
+
+즉, 프롬프트 목록 기능을 `main`에서 직접 개발한 것이 아니라 별도의 Branch에서 독립적으로 개발한 뒤 다시 `main`에 합치는 Git Branch 작업 과정을 완료했습니다.
+
+
+### 11.4 Git Log를 통한 Branch 및 Merge 기록 확인
+
+`feature/prompt-list` Branch의 프롬프트 목록 기능을 `main` Branch에 Merge한 뒤, Git 변경 이력에서도 정상적으로 반영되었는지 확인했습니다.
+
+다음 명령어를 실행했습니다.
+
+```bash
+git log --oneline --graph --all --decorate
+```
+
+각 옵션의 의미는 다음과 같습니다.
+
+| 옵션 | 의미 |
+|---|---|
+| `--oneline` | 각 Commit을 한 줄로 간단하게 표시 |
+| `--graph` | Commit과 Branch 관계를 그래프 형태로 표시 |
+| `--all` | 현재 Branch뿐 아니라 다른 Branch의 기록도 함께 표시 |
+| `--decorate` | `HEAD`, `main`, `feature/prompt-list`, `origin/main`과 같은 Branch 위치를 함께 표시 |
+
+#### 📷 Git Log를 통한 Branch 및 Merge 기록 확인
+
+![프롬프트 목록 Branch Git Log 확인](images/33-feature-prompt-list-git-log.jpg)
+
+**그림 24. `git log --oneline --graph --all --decorate`를 통한 Branch 및 Merge 기록 확인**
+
+Git Log의 최신 Commit에서 다음과 같은 내용을 확인했습니다.
+
+```text
+cb56cde (HEAD -> main, feature/prompt-list) feat: add prompt list
+```
+
+`HEAD -> main`은 현재 작업 위치가 `main` Branch라는 의미입니다.
+
+같은 Commit에 `feature/prompt-list`도 함께 표시되어 있어, 프롬프트 목록 기능을 개발한 Branch와 `main` Branch가 Merge 후 동일한 최신 Commit을 가리키고 있음을 확인했습니다.
+
+또한 당시 `origin/main`은 다음 이전 Commit을 가리키고 있었습니다.
+
+```text
+45c6f11 (origin/main) feat: add prompt creation
+```
+
+이는 로컬 `main`에는 프롬프트 목록 기능 Merge가 완료되었지만, 아직 해당 최신 Commit을 GitHub 원격 Repository에는 Push하지 않은 상태라는 의미입니다.
+
+이번 Merge는 `Fast-forward` 방식으로 이루어졌기 때문에 Git Graph가 별도의 가지가 갈라졌다 다시 합쳐지는 모양으로 표시되지는 않았습니다.
+
+`Fast-forward` Merge에서는 `main` Branch가 `feature/prompt-list`의 최신 Commit 위치까지 앞으로 이동하므로, Merge 후 두 Branch가 같은 Commit을 가리키는 것이 정상입니다.
+
+이를 통해 다음 과정을 Git 명령 실행 결과뿐 아니라 실제 Commit 기록에서도 다시 검증했습니다.
+
+**Branch 생성 → 목록 기능 개발 → Branch Commit → `main` Checkout → Fast-forward Merge → Git Log를 통한 Branch 위치 및 Commit 기록 확인**
 
 ---
 
