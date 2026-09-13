@@ -20,25 +20,25 @@
 
 |---|---|---|
 
-| ****Python**** | 사람이 작성한 명령을 컴퓨터가 실행할 수 있도록 프로그램을 만드는 프로그래밍 언어 | 프롬프트 관리 프로그램 제작 |
+| **Python** | 사람이 작성한 명령을 컴퓨터가 실행할 수 있도록 프로그램을 만드는 프로그래밍 언어 | 프롬프트 관리 프로그램 제작 |
 
-| ****VS Code**** | 프로그램 코드를 작성하고 수정·실행할 수 있는 코드 편집 프로그램 | Python 코드 작성 및 실행 |
+| **VS Code** | 프로그램 코드를 작성하고 수정·실행할 수 있는 코드 편집 프로그램 | Python 코드 작성 및 실행 |
 
-| ****콘솔(Console)**** | 버튼 대신 글자나 번호를 입력하여 프로그램을 사용하는 방식 | 메뉴 번호를 입력하여 기능 선택 |
+| **콘솔(Console)** | 버튼 대신 글자나 번호를 입력하여 프로그램을 사용하는 방식 | 메뉴 번호를 입력하여 기능 선택 |
 
-| ****터미널(Terminal)**** | 명령어를 글자로 입력하여 컴퓨터에 작업을 지시하는 창 | Python 실행 및 Git 명령어 입력 |
+| **터미널(Terminal)** | 명령어를 글자로 입력하여 컴퓨터에 작업을 지시하는 창 | Python 실행 및 Git 명령어 입력 |
 
-| ****Git**** | 코드가 언제 어떻게 변경되었는지 기록하는 버전 관리 도구 | 기능별 개발 과정 기록 |
+| **Git** | 코드가 언제 어떻게 변경되었는지 기록하는 버전 관리 도구 | 기능별 개발 과정 기록 |
 
-| ****GitHub**** | Git으로 관리한 프로젝트를 온라인에 저장·공유할 수 있는 서비스 | 과제 코드 업로드 및 제출 |
+| **GitHub** | Git으로 관리한 프로젝트를 온라인에 저장·공유할 수 있는 서비스 | 과제 코드 업로드 및 제출 |
 
-| ****Repository**** | Git이 프로젝트 파일과 변경 기록을 관리하는 저장소 | 프로젝트 관리 |
+| **Repository** | Git이 프로젝트 파일과 변경 기록을 관리하는 저장소 | 프로젝트 관리 |
 
-| ****Commit**** | 특정 시점의 변경사항을 하나의 기록으로 저장하는 것 | 기능별 작업 기록 |
+| **Commit** | 특정 시점의 변경사항을 하나의 기록으로 저장하는 것 | 기능별 작업 기록 |
 
-| ****Branch**** | 기존 코드를 유지하면서 별도의 작업 공간에서 기능을 개발하는 방법 | 프롬프트 목록 기능 별도 개발 |
+| **Branch** | 기존 코드를 유지하면서 별도의 작업 공간에서 기능을 개발하는 방법 | 프롬프트 목록 기능 별도 개발 |
 
-| ****Merge**** | 다른 Branch에서 작업한 내용을 현재 Branch에 합치는 것 | 목록 기능을 `main`에 병합 |
+| **Merge** | 다른 Branch에서 작업한 내용을 현재 Branch에 합치는 것 | 목록 기능을 `main`에 병합 |
 
 과제에서는 Git이 무엇이고 왜 필요한지 설명할 수 있어야 하며, `init`, `add`, `commit`, `push`, `pull`, `checkout`, `clone`, `merge`가 각각 어떤 역할을 하는지도 설명할 수 있어야 합니다.
 
@@ -62,7 +62,7 @@
 
 | Git | Git 2.55.0.windows.4 |
 
-| GitHub | VS Code 연동 예정 |
+| GitHub | GitHub CLI 인증 및 원격 Repository 연동 완료 |
 
 | 기본 Branch | `main` |
 
@@ -76,7 +76,7 @@ Python은 프로그램을 작성하고 실행하기 위한 프로그래밍 언�
 
 ![Python 3.14.7 설치 완료](images/02-python-installation.jpg)
 
-****그림 1. Python 3.14.7 설치 완료****
+**그림 1. Python 3.14.7 설치 완료**
 
 Python 3.14.7 설치가 정상적으로 완료된 화면입니다. 설치 후 터미널에서 `python --version` 명령어를 실행하여 실제 설치된 버전도 다시 확인했습니다.
 
@@ -84,7 +84,7 @@ Python 3.14.7 설치가 정상적으로 완료된 화면입니다. 설치 후 �
 
 ![Visual Studio Code 설치](images/03-vscode-installation.jpg)
 
-****그림 2. Visual Studio Code 설치****
+**그림 2. Visual Studio Code 설치**
 
 Python 코드를 작성하고 실행하기 위해 Visual Studio Code를 설치하는 과정입니다. 이후 VS Code에서 프로젝트 폴더를 열고 Python 파일 작성과 터미널 명령 실행에 사용했습니다.
 
@@ -92,13 +92,14 @@ Python 코드를 작성하고 실행하기 위해 Visual Studio Code를 설치�
 
 ![Git 2.55.0 설치 완료](images/04-git-installation.jpg)
 
-****그림 3. Git 2.55.0 설치 완료****
+**그림 3. Git 2.55.0 설치 완료**
 
 Git 설치가 정상적으로 완료된 화면입니다. 설치 후 `git --version` 명령어를 실행하여 Git이 정상적으로 사용할 수 있는 상태인지 다시 확인했습니다.
 
 ---
 
 ### 3.2 개발 환경 설정 및 Python 실행 확인
+
 
 개발 도구를 설치한 뒤 Git을 사용하기 위한 사용자 정보와 기본 Branch를 설정했습니다.
 
@@ -188,7 +189,7 @@ Hello
 
 ![개발 환경 설정 및 Python 실행 확인](images/01-development-environment.png)
 
-****그림 4. 개발 환경 설정 및 Python 실행 확인****
+**그림 4. 개발 환경 설정 및 Python 실행 확인**
 
 위 화면에서는 다음 내용을 한 번에 확인할 수 있습니다.
 
@@ -208,8 +209,7 @@ Hello
 
 - `hello.py` 실행 후 `Hello`가 정상적으로 출력되는지 확인
 
-Git을 처음 사용하는 경우 단순히 확인 명령어부터 실행하기보다 ****사용자 이름·이메일 및 기본 Branch 설정 → 설정값 확인 → `git init` → 현재 Branch 확인**** 순서로 진행하는 것이 좋습니다. 특히 Git 저장소가 아닌 폴더에서 Branch 관련 명령어를 먼저 실행하면 오류가 발생할 수 있으므로, 프로젝트 폴더를 Git 저장소로 초기화한 뒤 확인했습니다.
-
+Git을 처음 사용하는 경우 단순히 확인 명령어부터 실행하기보다 **사용자 이름·이메일 및 기본 Branch 설정 → 설정값 확인 → `git init` → 현재 Branch 확인** 순서로 진행하는 것이 좋습니다. 특히 Git 저장소가 아닌 폴더에서 Branch 관련 명령어를 먼저 실행하면 오류가 발생할 수 있으므로, 프로젝트 폴더를 Git 저장소로 초기화한 뒤 확인했습니다.
 
 
 ---
@@ -234,7 +234,7 @@ git status
 
 ![Git Add 및 Status 확인](images/05-git-add-status.png)
 
-****그림 5. `git add .` 및 `git status` 실행 결과****
+**그림 5. `git add .` 및 `git status` 실행 결과**
 
 `git add .` 실행 후 `git status`를 사용하여 `.gitignore`, `README.md`, `hello.py`, `main.py`, `images/` 폴더의 증빙 자료가 Commit 대상으로 등록된 것을 확인했습니다.
 
@@ -246,7 +246,7 @@ git status
 
 ![desktop.ini Git 제외 설정](images/06-gitignore-desktop-ini.jpg)
 
-****그림 6. `.gitignore`에 `desktop.ini` 제외 규칙 추가****
+**그림 6. `.gitignore`에 `desktop.ini` 제외 규칙 추가**
 
 `desktop.ini`는 Windows가 폴더 설정 정보를 저장하기 위해 자동으로 생성하는 시스템 파일로, 이번 Python 프로그램의 실행에 필요한 파일이 아닙니다.
 
@@ -260,9 +260,9 @@ desktop.ini
 
 `.gitignore`는 Git으로 관리할 필요가 없는 파일이나 폴더를 추적 대상에서 제외하기 위한 설정 파일입니다.
 
-여기서 ****제외한다는 것은 컴퓨터에서 해당 파일을 삭제한다는 뜻이 아닙니다.****
+여기서 **제외한다는 것은 컴퓨터에서 해당 파일을 삭제한다는 뜻이 아닙니다.**
 
-`.gitignore`의 목적은 파일을 컴퓨터에서 없애는 것이 아니라 ****Git이 해당 파일을 추적하거나 Commit 대상으로 등록하지 않도록 하는 것****입니다.
+`.gitignore`의 목적은 파일을 컴퓨터에서 없애는 것이 아니라 **Git이 해당 파일을 추적하거나 Commit 대상으로 등록하지 않도록 하는 것**입니다.
 
 따라서 `desktop.ini` 파일은 실제 `images/` 폴더에 남아 있어도 문제가 없습니다.
 
@@ -274,7 +274,7 @@ desktop.ini
 
 ![Gitignore 적용 결과 확인](images/07-gitignore-verification.jpg)
 
-****그림 7. `desktop.ini` 제외 후 Git 상태 확인****
+**그림 7. `desktop.ini` 제외 후 Git 상태 확인**
 
 `.gitignore`를 수정한 뒤 다시 `git status`를 실행했습니다.
 
@@ -282,7 +282,7 @@ desktop.ini
 
 이 과정을 통해 단순히 `.gitignore` 파일을 작성하는 것에서 끝내지 않고,
 
-****불필요한 파일 발견 → `.gitignore` 수정 → `git status`를 통한 적용 결과 확인****
+**불필요한 파일 발견 → `.gitignore` 수정 → `git status`를 통한 적용 결과 확인**
 
 순서로 설정이 실제로 적용되었는지 검증했습니다.
 
@@ -292,7 +292,7 @@ desktop.ini
 
 ![첫 Commit 전 Git Staging 상태](images/08-git-staging-final.jpg)
 
-****그림 8. 첫 Commit 전 Git Staging 상태 최종 확인****
+**그림 8. 첫 Commit 전 Git Staging 상태 최종 확인**
 
 `.gitignore` 설정을 적용한 뒤 다시 `git add .`와 `git status`를 실행하여 첫 Commit에 포함될 파일을 확인했습니다.
 
@@ -306,22 +306,21 @@ desktop.ini
 
 ![Git Staging 완료 확인](images/09-git-staging-complete.jpg)
 
-****그림 9. 첫 Commit 전 Git Staging 완료 확인****
+**그림 9. 첫 Commit 전 Git Staging 완료 확인**
 
 README와 새로운 증빙 자료를 추가한 뒤 `git add .`을 다시 실행하고 `git status`로 최종 상태를 확인했습니다.
 
 확인 결과 프로젝트의 초기 파일과 증빙 자료가 모두 `Changes to be committed`에 표시되었습니다.
 
-이는 해당 파일들이 다음 Commit에 포함될 수 있도록 ****Staging Area(스테이징 영역)****에 등록되었다는 의미입니다.
+이는 해당 파일들이 다음 Commit에 포함될 수 있도록 **Staging Area(스테이징 영역)**에 등록되었다는 의미입니다.
 
-여기서 ****Staging****은 변경된 파일 중 다음 Commit에 포함할 파일을 미리 선택하여 준비하는 과정입니다.
+여기서 **Staging**은 변경된 파일 중 다음 Commit에 포함할 파일을 미리 선택하여 준비하는 과정입니다.
 
 `git add .`은 현재 프로젝트의 변경사항을 Staging Area에 등록하고, `git status`는 등록 상태를 확인하는 데 사용합니다.
 
 또한 `desktop.ini`는 실제 `images/` 폴더에는 남아 있지만 `.gitignore` 설정에 따라 Git의 추적 대상에서는 제외되어 `git status`에 나타나지 않는 것을 다시 확인했습니다.
 
 따라서 불필요한 Windows 시스템 파일은 제외하면서 과제 수행에 필요한 파일과 증빙 자료만 첫 Commit에 포함할 준비가 완료되었습니다.
-
 
 
 ### 3.4 첫 Commit 및 Git 기록 확인
@@ -362,29 +361,28 @@ git log --oneline
 
 `git log`는 지금까지 생성된 Commit 기록을 확인하는 명령어입니다.
 
-여기에 `--oneline` 옵션을 사용하면 각 Commit을 한 줄로 간단하게 표시하여 ****Commit 식별값과 Commit 메시지****를 빠르게 확인할 수 있습니다.
+여기에 `--oneline` 옵션을 사용하면 각 Commit을 한 줄로 간단하게 표시하여 **Commit 식별값과 Commit 메시지**를 빠르게 확인할 수 있습니다.
 
 #### 📷 첫 Commit 및 Git Log 확인
 
 ![첫 Commit 및 Git Log 확인](images/11-first-commit-and-git-log.jpg)
 
-****그림 10. 첫 Commit 생성 및 Git 기록 확인****
+**그림 10. 첫 Commit 생성 및 Git 기록 확인**
 
 `git commit -m "chore: initialize Python project"`를 실행한 결과 첫 Commit이 정상적으로 생성된 것을 확인했습니다.
 
-Commit 결과에 `root-commit`이 표시되었는데, 이는 현재 Repository에서 생성된 ****첫 번째 Commit****이라는 의미입니다.
+Commit 결과에 `root-commit`이 표시되었는데, 이는 현재 Repository에서 생성된 **첫 번째 Commit**이라는 의미입니다.
 
 이어서 `git log --oneline`을 실행하여 방금 생성한 `chore: initialize Python project` Commit이 Git 변경 이력에 정상적으로 저장되어 있는지 확인했습니다.
 
 이를 통해 단순히 Commit 명령을 실행하는 것에서 끝내지 않고,
 
-****Staging 완료 → 첫 Commit 생성 → Git Log를 통한 기록 확인****
+**Staging 완료 → 첫 Commit 생성 → Git Log를 통한 기록 확인**
 
 순서로 첫 번째 변경 이력이 정상적으로 저장되었는지 검증했습니다.
 
 
-
-**### 3.5 GitHub CLI 설치 및 로그인
+\*\*### 3.5 GitHub CLI 설치 및 로그인
 
 GitHub Repository 생성과 원격 저장소 작업을 VS Code Terminal에서도 수행해보기 위해 GitHub CLI를 사용했습니다.
 
@@ -395,7 +393,9 @@ GitHub CLI는 GitHub 웹사이트에서 수행하는 일부 작업을 터미널 
 처음 다음 명령어를 실행했습니다.
 
 ```bash
+
 gh --version
+
 ```
 
 하지만 GitHub CLI가 설치되어 있지 않아 `gh` 명령어를 인식하지 못하는 오류가 발생했습니다.
@@ -403,19 +403,25 @@ gh --version
 이후 Windows의 `winget`을 사용하여 GitHub CLI를 설치했습니다.
 
 ```powershell
+
 winget install --id GitHub.cli
+
 ```
 
 설치가 완료된 뒤 새 터미널에서 다시 다음 명령어를 실행했습니다.
 
 ```bash
+
 gh --version
+
 ```
 
 확인 결과 다음과 같이 GitHub CLI 버전이 정상적으로 표시되었습니다.
 
 ```text
+
 gh version 2.100.0
+
 ```
 
 #### 📷 GitHub CLI 설치 및 정상 동작 확인
@@ -435,13 +441,17 @@ gh version 2.100.0
 설치 후 GitHub 로그인 상태를 확인하기 위해 다음 명령어를 실행했습니다.
 
 ```bash
+
 gh auth status
+
 ```
 
 처음에는 GitHub 계정에 로그인되지 않은 상태였기 때문에 다음 명령어로 인증을 진행했습니다.
 
 ```bash
+
 gh auth login
+
 ```
 
 인증 과정에서는 GitHub.com, HTTPS, 브라우저 로그인 방식을 선택했고, 브라우저에서 Device Activation과 권한 승인 절차를 진행했습니다.
@@ -473,7 +483,9 @@ gh auth login
 GitHub CLI 인증을 완료한 뒤 다음 명령어를 다시 실행했습니다.
 
 ```bash
+
 gh auth status
+
 ```
 
 확인 결과 GitHub.com 계정이 활성 상태로 로그인되어 있었고, Git 작업에 사용할 프로토콜도 `https`로 설정되어 있음을 확인했습니다.
@@ -493,16 +505,23 @@ gh auth status
 장점은 다음과 같습니다.
 
 - Git과 GitHub CLI의 역할 차이를 실제 작업을 통해 이해할 수 있습니다.
+
 - Repository 생성과 원격 연결 과정을 명령어 단위로 확인할 수 있습니다.
+
 - 반복 작업을 웹 화면보다 빠르게 수행할 수 있습니다.
+
 - 사용한 명령어가 터미널 기록에 남아 작업 과정을 다시 확인하기 쉽습니다.
+
 - 다른 사람이 같은 명령어를 따라 하며 실습하기 좋습니다.
 
 다만 단점도 있습니다.
 
 - GitHub CLI를 별도로 설치하고 로그인해야 합니다.
+
 - 처음에는 명령어와 옵션을 익혀야 하므로 웹 화면보다 어렵게 느껴질 수 있습니다.
+
 - 명령어를 잘못 입력하면 원하지 않는 Repository나 원격 설정을 만들 수 있으므로 실행 전 확인이 필요합니다.
+
 - GitHub CLI 인증 과정에서 계정과 권한 범위를 확인해야 하므로 보안에 대한 주의가 필요합니다.
 
 따라서 이번 과제에서는 **과제 필수 기능을 충족하는 것뿐 아니라 Git/GitHub 작업 흐름을 이해하기 위한 추가 학습 목적으로 GitHub CLI를 사용했습니다.**
@@ -516,17 +535,25 @@ GitHub CLI 로그인 상태를 확인한 뒤 VS Code Terminal에서 새로운 Gi
 다음 명령어를 실행했습니다.
 
 ```bash
+
 gh repo create python-git-prompt-manager --public --source=. --remote=origin
+
 ```
 
 각 항목의 의미는 다음과 같습니다.
 
 | 명령 및 옵션 | 의미 |
+
 |---|---|
+
 | `gh repo create` | GitHub에 새로운 Repository를 생성 |
+
 | `python-git-prompt-manager` | 생성할 Repository 이름 |
+
 | `--public` | Repository를 공개(Public) 상태로 생성 |
+
 | `--source=.` | 현재 프로젝트 폴더를 Repository의 기준으로 사용 |
+
 | `--remote=origin` | 생성된 GitHub Repository를 `origin`이라는 이름의 원격 저장소로 연결 |
 
 여기서 **Remote(원격 저장소)** 는 현재 컴퓨터에 있는 로컬 Git Repository와 연결되는 GitHub의 온라인 Repository를 의미합니다.
@@ -536,7 +563,9 @@ gh repo create python-git-prompt-manager --public --source=. --remote=origin
 Repository를 생성한 뒤 원격 저장소가 실제로 연결되었는지 확인하기 위해 다음 명령어를 실행했습니다.
 
 ```bash
+
 git remote -v
+
 ```
 
 `git remote -v`는 현재 로컬 Repository에 연결된 원격 저장소의 이름과 주소를 확인하는 명령어입니다.
@@ -568,8 +597,11 @@ GitHub Repository 생성과 원격 저장소 연결을 완료한 뒤, 지금까�
 먼저 다음 명령어를 사용하여 변경된 파일을 Staging Area에 등록하고 상태를 확인했습니다.
 
 ```bash
+
 git add .
+
 git status
+
 ```
 
 확인 결과 수정된 `README.md`와 GitHub CLI 설치·로그인·Repository 생성 과정의 증빙 이미지가 다음 Commit에 포함될 대상으로 등록되었습니다.
@@ -577,7 +609,9 @@ git status
 이후 다음 명령어로 두 번째 Commit을 생성했습니다.
 
 ```bash
+
 git commit -m "docs: document GitHub setup process"
+
 ```
 
 여기서 `docs`는 프로그램 기능 자체를 추가한 것이 아니라 README, 설명 문서, 증빙 자료와 같은 문서 작업을 기록할 때 사용하는 표현입니다.
@@ -601,30 +635,41 @@ git commit -m "docs: document GitHub setup process"
 다음 명령어를 실행했습니다.
 
 ```bash
+
 git push -u origin main
+
 ```
 
 각 명령과 옵션의 의미는 다음과 같습니다.
 
 | 명령 및 옵션 | 의미 |
+
 |---|---|
+
 | `git push` | 로컬 Repository의 Commit을 GitHub 원격 Repository로 전송 |
+
 | `-u` | 현재 `main` Branch와 `origin/main`의 추적 관계를 설정 |
+
 | `origin` | 앞에서 연결한 GitHub 원격 저장소의 이름 |
+
 | `main` | GitHub로 전송할 현재 로컬 Branch |
 
-여기서 `-u` 옵션을 처음 Push할 때 사용하면 로컬 `main` Branch와 GitHub의 `origin/main` Branch 사이의 추적 관계가 설정됩니다.
+여기서 `-u` 옵션을 처음 Push할 때 사용하면 로컬 `main` Branch와 GitHub의 `origin/main` Branch 사이에 추적 관계가 설정됩니다.
 
 따라서 이후 같은 Branch에서 작업할 때는 원격 저장소와 Branch를 매번 모두 입력하지 않고 다음과 같이 간단하게 사용할 수 있습니다.
 
 ```bash
+
 git push
+
 ```
 
 첫 Push를 완료한 뒤 현재 상태를 확인하기 위해 다음 명령어도 실행했습니다.
 
 ```bash
+
 git status
+
 ```
 
 #### 📷 첫 GitHub Push 및 상태 확인
@@ -636,130 +681,200 @@ git status
 `git push -u origin main`을 실행한 결과 다음 메시지가 표시되었습니다.
 
 ```text
+
 [new branch] main -> main
+
 branch 'main' set up to track 'origin/main'.
+
 ```
 
-이는 로컬 `main` Branch가 GitHub의 `origin/main` Branch로 정상적으로 전송되었으며, 두 Branch의 추적 관계도 설정되었다는 의미입니다.
+이는 로컬 `main` Branch가 GitHub의 `origin/main` Branch로 정상적으로 전송되었으며, 두 Branch 사이의 추적 관계도 설정되었다는 의미입니다.
 
 이후 `git status`를 실행한 결과 다음 메시지가 표시되었습니다.
 
 ```text
+
 Your branch is up to date with 'origin/main'.
+
 ```
 
-따라서 방금 Commit한 Git 변경 이력은 GitHub와 정상적으로 동기화된 것을 확인했습니다.
+따라서 당시 Commit된 Git 변경 이력은 GitHub와 정상적으로 동기화된 것을 확인했습니다.
 
-다만 Push 이후 새로 저장한 `images/19-github-setup-docs-commit.jpg` 파일이 `Untracked files`에 표시되었습니다.
+다만 첫 Push 직후 새로 만든 증빙 이미지가 `Untracked files`에 표시되었습니다.
 
-여기서 **Untracked file**은 파일 자체에 문제가 있다는 뜻이 아니라, 새로 생성되어 아직 `git add`와 Commit을 거치지 않은 파일이라는 의미입니다.
+여기서 **Untracked file**은 오류가 발생했다는 뜻이 아니라, 파일이 새로 생성되었지만 아직 `git add`와 Commit을 거치지 않았다는 의미입니다.
 
-즉 이번 화면에서는
-
-**두 번째 Commit 생성 → 첫 GitHub Push 성공 → `main`과 `origin/main` 연결 → Push 후 새로 생성된 증빙 파일 확인**
-
-과정을 확인할 수 있었습니다.
-
-새로 생성된 증빙 자료는 다음 작업에서 다시 `git add`와 Commit을 거쳐 Git으로 관리합니다.
-
-추가로 첫 Push 증빙 이미지와 README 수정 내용을 다시 Commit한 뒤, 앞에서 설정한 추적 관계를 이용하여 다음과 같이 간단하게 Push했습니다.
-
-```bash
-git push
-
-#### 📷 추적 관계 설정 후 간단한 Push 확인
-
-![GitHub Push 및 상태 확인](images/22-github-push-and-status.jpg)
-
-**그림 17. `git push`를 이용한 추가 Push 및 Git 상태 확인**
-
-첫 Push에서 `git push -u origin main`을 사용하여 로컬 `main` Branch와 GitHub의 `origin/main` Branch 사이의 추적 관계를 설정했습니다.
-
-이후 첫 Push 증빙 자료와 README 수정 내용을 다음 Commit으로 기록했습니다.
-
-```bash
-git add .
-git status
-git commit -m "docs: add first push evidence"
-```
-
-그 다음에는 원격 저장소 이름과 Branch 이름을 다시 입력하지 않고 다음 명령어만 사용했습니다.
-
-```bash
-git push
-```
-
-실행 결과 로컬의 새로운 Commit이 GitHub의 `main` Branch로 정상적으로 전송되었습니다.
-
-이는 처음 `git push -u origin main`을 실행할 때 설정한 추적 관계가 정상적으로 작동하고 있기 때문에 가능한 것입니다.
-
-Push 후 다시 다음 명령어로 상태를 확인했습니다.
-
-```bash
-git status
-```
-
-확인 결과 다음 메시지가 표시되었습니다.
-
-```text
-Your branch is up to date with 'origin/main'.
-```
-
-따라서 당시 Commit된 내용은 로컬 `main`과 GitHub의 `origin/main`에 동일하게 반영된 것을 확인했습니다.
-
-다만 이번 증빙 화면을 새로 저장하면서 생성된 `images/21-first-push-evidence-commit.jpg`는 아직 Git이 추적하지 않는 `Untracked file`로 표시되었습니다.
-
-이는 Push가 실패한 것이 아니라 **Push 이후 새로운 증빙 파일을 생성했기 때문에 발생한 정상적인 상태**입니다.
-
-이를 통해 다음 흐름을 실제로 확인했습니다.
-
-**첫 `-u` Push로 추적 관계 설정 → 새 Commit 생성 → 이후 `git push`만으로 전송 → `git status`로 동기화 상태 확인**
-
+즉 첫 Push 자체는 정상적으로 성공했지만, 그 과정을 증빙하기 위해 새로 생성한 이미지도 다시 Git으로 관리할 필요가 있음을 확인했습니다.
 
 ---
 
+첫 Push 증빙 자료와 README 수정 내용을 다시 Git 변경 이력에 포함하기 위해 다음 명령어를 실행했습니다.
+
+```bash
+
+git add .
+
+git status
+
+git commit -m "docs: add first push evidence"
+
+```
+
+Commit을 완료한 뒤에는 앞에서 `-u` 옵션을 사용하여 추적 관계를 이미 설정했기 때문에 다음과 같이 간단하게 Push할 수 있었습니다.
+
+```bash
+
+git push
+
+```
+
+이처럼 처음에는
+
+```bash
+
+git push -u origin main
+
+```
+
+을 사용하지만, 이후 같은 Branch에서는 추적 관계가 기억되어 있기 때문에 보통 다음 명령어만 사용하면 됩니다.
+
+```bash
+
+git push
+
+```
+
+마지막으로 로컬 Repository와 GitHub가 완전히 같은 상태인지 다시 확인했습니다.
+
+```bash
+
+git status
+
+```
+
+#### 📷 추적 관계 설정 후 Push 및 최종 동기화 확인
+
+![GitHub Push 및 최종 동기화 확인](images/22-github-push-and-clean-status.jpg)
+
+**그림 17. `git push` 실행 및 로컬·GitHub 최종 동기화 확인**
+
+추가 Commit을 생성한 뒤 `git push`를 실행한 결과 새로운 Commit이 GitHub의 `main` Branch로 정상적으로 전송되었습니다.
+
+이후 `git status`를 실행한 결과 다음 메시지가 표시되었습니다.
+
+```text
+
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+```
+
+`Your branch is up to date with 'origin/main'.`은 로컬 `main` Branch와 GitHub의 `origin/main` Branch가 같은 Commit 상태라는 의미입니다.
+
+`nothing to commit, working tree clean`은 현재 수정했지만 Commit하지 않은 파일이나 Git이 추적하지 않는 새 파일이 남아 있지 않다는 의미입니다.
+
+이를 통해 다음 전체 흐름을 실제로 확인했습니다.
+
+**변경사항 Staging → 문서화 Commit → 첫 `git push -u origin main` → 추적 관계 설정 → 새 증빙 파일 발견 → 다시 Commit → 이후 `git push`만으로 전송 → `git status`로 최종 Clean 상태 확인**
+
+특히 첫 Push 직후 증빙 이미지가 새로 생성되면서 다시 `Untracked file`이 발생했지만, 해당 파일을 다시 Staging하고 Commit한 뒤 Push하여 최종적으로 `working tree clean` 상태까지 만들었습니다.
+
+이 과정은 Git에서 **새 파일 생성 → Staging → Commit → Push → 상태 확인**이 반복적으로 이루어진다는 점을 실제 작업을 통해 확인한 사례입니다.
+
+`21-first-push-evidence-commit.jpg`는 첫 Push 증빙 자료를 다시 Commit하는 중간 과정을 확인할 수 있는 참고 자료로 보관했으며, 최종 README에서는 중복을 줄이기 위해 별도의 본문 그림으로 사용하지 않았습니다.
+
+### 3.8 GitHub Repository 및 README 표시 확인
+
+로컬 Repository와 GitHub 원격 Repository의 동기화를 완료한 뒤, 실제 GitHub 웹페이지에서 Repository가 정상적으로 생성되었는지 확인했습니다.
+
+또한 단순히 파일이 Push되었다는 것만 확인하지 않고, `README.md`가 GitHub 웹에서 실제 Markdown 문서로 정상 렌더링되는지와 README에 연결한 이미지가 올바르게 표시되는지도 직접 확인했습니다.
+
+#### 📷 GitHub Repository 및 README 전체 화면 확인
+
+![GitHub Repository 및 README 전체 화면](images/23-github-repository-and-readme-overview.jpg)
+
+**그림 18. GitHub Repository 생성 결과 및 README 표시 확인**
+
+GitHub 웹페이지에서 `python-git-prompt-manager` Repository가 정상적으로 생성되어 있는지 확인했습니다.
+
+화면에서 다음 항목을 확인할 수 있습니다.
+
+- Repository 이름이 `python-git-prompt-manager`로 표시됨
+
+- Repository가 Public 상태로 생성됨
+
+- `images/` 폴더가 정상적으로 존재함
+
+- `.gitignore`, `README.md`, `hello.py`, `main.py` 파일이 표시됨
+
+- Commit 기록이 GitHub에 반영됨
+
+- Repository 첫 화면 아래에 `README.md` 내용이 실제 문서 형태로 표시됨
+
+이를 통해 VS Code Terminal에서 생성하고 Push한 로컬 프로젝트가 GitHub Repository에 정상적으로 반영되었음을 확인했습니다.
+
+---
+
+#### 📷 README Markdown 및 이미지 렌더링 확인
+
+![GitHub README 이미지 렌더링 확인](images/24-github-readme-image-rendering.jpg)
+
+**그림 19. GitHub README Markdown 및 이미지 정상 표시 확인**
+
+GitHub Repository의 README 영역을 아래로 이동하여 Markdown 문법과 이미지가 실제 웹페이지에서 정상적으로 표시되는지 확인했습니다.
+
+확인 결과 `3.1 개발 도구 설치`와 같은 Heading이 문서 제목 형태로 정상 렌더링되었으며, README에 작성한 Python 설치 증빙 이미지도 깨지지 않고 정상적으로 표시되었습니다.
+
+이를 통해 단순히 Markdown 파일이 Repository에 존재하는 것뿐 아니라 다음 사항까지 확인했습니다.
+
+**README 파일 업로드 → Markdown Heading 렌더링 → 이미지 경로 인식 → GitHub 웹에서 실제 이미지 표시**
+
+특히 로컬에서 작성한 이미지 경로가 GitHub에서도 정상적으로 동작한다는 것을 직접 확인함으로써, 제출자가 아닌 다른 사람이 Repository를 열었을 때도 README와 증빙 자료를 확인할 수 있는 상태임을 검증했습니다.
+
+---
 
 ## 4. 프로젝트 파일 구조
+
 
 현재 프로젝트는 다음과 같이 구성했습니다.
 
 ```text
 
 python-git-prompt-manager/
-
 │
-
 ├── main.py
-
 ├── hello.py
-
 ├── README.md
-
 ├── .gitignore
-
 │
-
 └── images/
-
-    ├── 01-development-environment.png
-
-    ├── 02-python-installation.jpg
-
-    ├── 03-vscode-installation.jpg
-
-    ├── 04-git-installation.jpg
-
-    ├── 05-git-add-status.png
-
-    ├── 06-gitignore-desktop-ini.jpg
-
-    ├── 07-gitignore-verification.jpg
-
-    ├── 08-git-staging-final.jpg
-
-    ├── 09-git-staging-complete.jpg
-
-    └── git-error-not-repository.jpg
+    ├── 01-development-environment.png
+    ├── 02-python-installation.jpg
+    ├── 03-vscode-installation.jpg
+    ├── 04-git-installation.jpg
+    ├── 05-git-add-status.png
+    ├── 06-gitignore-desktop-ini.jpg
+    ├── 07-gitignore-verification.jpg
+    ├── 08-git-staging-final.jpg
+    ├── 09-git-staging-complete.jpg
+    ├── 10-before-first-commit.jpg
+    ├── 11-first-commit-and-git-log.jpg
+    ├── 12-github-cli-install-and-verification.jpg
+    ├── 13-github-device-activation.jpg
+    ├── 14-github-cli-authorization.jpg
+    ├── 15-github-cli-confirm-access.jpg
+    ├── 16-github-cli-login-success.jpg
+    ├── 17-github-auth-status.jpg
+    ├── 18-github-repository-and-remote.jpg
+    ├── 19-github-setup-docs-commit.jpg
+    ├── 20-first-github-push-and-status.jpg
+    ├── 21-first-push-evidence-commit.jpg
+    ├── 22-github-push-and-clean-status.jpg
+    ├── 23-github-repository-and-readme-overview.jpg
+    ├── 24-github-readme-image-rendering.jpg
+    ├── git-error-not-repository.jpg
+    └── git-status-after-readme-update.jpg
 
 ```
 
@@ -798,8 +913,7 @@ python main.py
 프로그램이 시작되면 메뉴 번호를 입력하여 원하는 기능을 선택합니다.
 
 
-
-6\. 프로그램 주요 기능
+## 6. 프로그램 주요 기능
 
 프로그램은 다음 필수 기능을 제공합니다.
 
@@ -823,9 +937,9 @@ python main.py
 
 각 기능 수행 후 다시 메인 메뉴로 돌아오며, 잘못된 메뉴 번호를 입력하면 안내 메시지를 표시한 뒤 다시 입력할 수 있도록 구현합니다. 이는 과제의 메뉴 동작 요구사항입니다.
 
-7\. 프로그램의 데이터 구조
+## 7. 프로그램의 데이터 구조
 
-7.1 List와 Dictionary
+### 7.1 List와 Dictionary
 
 List(리스트)는 여러 데이터를 순서대로 저장할 수 있는 Python 자료구조입니다.
 
@@ -871,11 +985,11 @@ prompts = [
 
 ]
 
-왜 List + Dictionary를 선택했는가?
+### 왜 List + Dictionary를 선택했는가?
 
 여러 프롬프트를 순서대로 관리하기에는 List가 적합하고, 하나의 프롬프트에는 제목·내용·카테고리·즐겨찾기처럼 서로 다른 속성이 있으므로 Dictionary를 사용하면 각 정보의 의미를 명확하게 표현할 수 있습니다.
 
-한계
+### 한계
 
 데이터가 매우 많아지거나 프로그램 종료 후에도 계속 보존해야 하는 프로그램이라면 파일이나 데이터베이스와 같은 별도의 저장 방식이 필요합니다.
 
@@ -883,7 +997,7 @@ prompts = [
 
 과제에서도 List와 Dictionary를 사용하고 각 프롬프트에 제목·내용·카테고리·즐겨찾기 여부를 포함하도록 명시합니다.
 
-8\. 기본 프롬프트 데이터
+## 8. 기본 프롬프트 데이터
 
 프로그램 실행 시 이전 미션에서 작성한 프롬프트를 최소 3개 이상 기본 데이터로 제공합니다.
 
@@ -897,7 +1011,7 @@ prompts = [
 
 힌트: 여기에는 아무 예시를 새로 만드는 것이 아니라 사용자님이 실제 이전 미션에서 작성했던 프롬프트 최소 3개를 넣어야 합니다. 이 부분은 제가 임의로 결정하지 않겠습니다.
 
-9\. 메뉴와 프로그램 흐름
+## 9. 메뉴와 프로그램 흐름
 
 프로그램 실행
 
@@ -923,7 +1037,7 @@ prompts = [
 
       ↓
 
-0\. 종료 선택
+0\\. 종료 선택
 
       ↓
 
@@ -943,7 +1057,7 @@ prompts = [
 
 힌트: 메뉴 + 기본 데이터 + 목록 기능을 한 장에서 확인할 수 있도록 캡처하면 효율적입니다.
 
-10\. 프롬프트 추가
+## 10. 프롬프트 추가
 
 사용자는 다음 세 가지 정보를 입력하여 새로운 프롬프트를 등록할 수 있습니다.
 
@@ -957,7 +1071,7 @@ prompts = [
 
 새로 등록된 프롬프트의 즐겨찾기 기본값은 False입니다. 과제에서도 입력값이 비어 있으면 다시 입력을 요구하고, 추가된 데이터는 프로그램 실행 중에만 유지하도록 명시합니다.
 
-입력 검증
+### 입력 검증
 
 문제: 사용자가 제목이나 내용을 입력하지 않고 Enter를 누르면 내용이 없는 프롬프트가 등록될 수 있습니다.
 
@@ -979,7 +1093,7 @@ prompts = [
 
 힌트: “추가되었습니다”만 캡처하지 말고 추가 결과가 실제 목록에 반영된 것까지 보여주세요.
 
-11\. 프롬프트 목록 — Branch 활용 ★중요
+## 11. 프롬프트 목록 — Branch 활용 ★중요
 
 이 기능은 과제에서 Git Branch 사용 방법까지 지정한 특별 요구사항입니다.
 
@@ -1027,7 +1141,7 @@ feature/prompt-list Branch에서 목록 기능을 개발·Commit한 뒤 main Bra
 
 힌트: 단순히 Branch를 아무 기능에 사용하는 것이 아니라 과제에서 지정한 프롬프트 목록 기능을 Branch에서 개발했다는 기록이 보여야 합니다.
 
-12\. 카테고리별 조회
+## 12. 카테고리별 조회
 
 등록된 카테고리 목록을 보여주고 사용자가 하나를 선택하면 해당 카테고리의 프롬프트만 출력합니다.
 
@@ -1045,7 +1159,7 @@ feature/prompt-list Branch에서 목록 기능을 개발·Commit한 뒤 main Bra
 
 힌트: 카테고리 선택 화면과 실제 필터링 결과가 함께 보이면 좋습니다.
 
-13\. 프롬프트 검색
+## 13. 프롬프트 검색
 
 사용자가 입력한 키워드가 제목 또는 내용에 포함되어 있는 프롬프트를 검색합니다. 검색 결과가 없으면 별도의 안내 메시지를 출력합니다. 이는 과제의 필수 검색 요구사항입니다.
 
@@ -1079,7 +1193,7 @@ feature/prompt-list Branch에서 목록 기능을 개발·Commit한 뒤 main Bra
 
 검색어 【실제 검색어】를 입력한 결과 제목 또는 내용에 해당 검색어가 포함된 프롬프트가 출력되는 것을 확인했습니다.
 
-14\. 프롬프트 상세 보기
+## 14. 프롬프트 상세 보기
 
 사용자가 프롬프트 번호를 입력하면 다음 정보를 모두 보여줍니다.
 
@@ -1103,7 +1217,7 @@ feature/prompt-list Branch에서 목록 기능을 개발·Commit한 뒤 main Bra
 
 프롬프트 번호를 선택했을 때 제목·카테고리·즐겨찾기 여부와 전체 내용이 정상적으로 출력되는 것을 확인했습니다.
 
-15\. 즐겨찾기
+## 15. 즐겨찾기
 
 즐겨찾기 여부에는 Python의 Boolean(불리언) 값을 사용합니다.
 
@@ -1127,7 +1241,7 @@ Boolean은 True 또는 False처럼 두 가지 상태를 표현하는 자료형�
 
 힌트: 기능 수행 → 결과 확인이 한 화면 또는 연속 화면에서 드러나도록 합니다.
 
-16\. 함수 분리와 코드 구조
+## 16. 함수 분리와 코드 구조
 
 함수(Function)란 특정 작업을 수행하는 코드를 하나의 이름으로 묶은 것입니다.
 
@@ -1135,21 +1249,21 @@ Boolean은 True 또는 False처럼 두 가지 상태를 표현하는 자료형�
 
 예:
 
-show\_menu()        → 메뉴 출력
+show\\\_menu()        → 메뉴 출력
 
-add\_prompt()       → 프롬프트 추가
+add\\\_prompt()       → 프롬프트 추가
 
-show\_list()        → 전체 목록
+show\\\_list()        → 전체 목록
 
-show\_by\_category() → 카테고리별 조회
+show\\\_by\\\_category() → 카테고리별 조회
 
-search\_prompt()    → 검색
+search\\\_prompt()    → 검색
 
-show\_detail()      → 상세 보기
+show\\\_detail()      → 상세 보기
 
-manage\_favorite()  → 즐겨찾기 추가/해제
+manage\\\_favorite()  → 즐겨찾기 추가/해제
 
-show\_favorites()   → 즐겨찾기 목록
+show\\\_favorites()   → 즐겨찾기 목록
 
 왜 함수를 나누었는가?
 
@@ -1159,9 +1273,9 @@ show\_favorites()   → 즐겨찾기 목록
 
 힌트: 최종 코드에서 실제 사용한 함수 이름으로 바꿉니다.
 
-17\. 조건문과 반복문
+## 17. 조건문과 반복문
 
-조건문
+### 조건문
 
 if / elif / else는 사용자의 선택에 따라 서로 다른 기능을 실행하기 위해 사용합니다.
 
@@ -1177,13 +1291,13 @@ if / elif / else는 사용자의 선택에 따라 서로 다른 기능을 실행
 
 0 입력 → 종료
 
-반복문
+### 반복문
 
 while은 사용자가 종료를 선택할 때까지 메뉴를 계속 표시하기 위해 사용합니다.
 
 힌트: 코드를 줄마다 설명하기보다 “이 문법이 프로그램에서 무슨 일을 하는가?”를 설명하면 초보자가 이해하기 쉽습니다.
 
-18\. 프로그램 실행 중 데이터 유지와 종료 시 초기화 ★중요
+## 18. 프로그램 실행 중 데이터 유지와 종료 시 초기화 ★중요
 
 프로그램 실행 중 새로 추가한 프롬프트와 즐겨찾기 상태는 유지됩니다.
 
@@ -1219,15 +1333,15 @@ while은 사용자가 종료를 선택할 때까지 메뉴를 계속 표시하�
 
 힌트: 보너스 JSON을 구현하더라도 이 필수 동작을 무심코 바꾸지 않도록 주의합니다.
 
-19\. Git과 GitHub
+## 19. Git과 GitHub
 
-Git을 사용하는 이유
+### Git을 사용하는 이유
 
 Git은 코드의 변경 이력을 기록하여 언제 어떤 기능을 추가하거나 수정했는지 확인할 수 있게 해주는 도구입니다.
 
 이번 과제에서는 기능 하나를 완성할 때마다 의미 있는 Commit을 남깁니다.
 
-주요 Git 명령어
+### 주요 Git 명령어
 
 명령어  초보자용 설명
 
@@ -1249,7 +1363,7 @@ git merge       다른 Branch에서 작업한 내용을 현재 Branch에 합�
 
 과제에서는 이 8개 명령을 각각 최소 1회 이상 사용해야 합니다.
 
-20\. Git 작업 과정
+## 20. Git 작업 과정
 
 GitHub Repository 생성
 
@@ -1307,7 +1421,7 @@ push
 
 힌트: 실제 수행한 순서와 명령을 최종적으로 맞춰 수정합니다.
 
-21\. 의미 있는 Commit 기록
+## 21. 의미 있는 Commit 기록
 
 과제에서는 최소 10개 이상의 의미 있는 기능 단위 Commit을 요구합니다.
 
@@ -1359,7 +1473,7 @@ Git Graph를 통해 10개 이상의 기능 단위 Commit과 feature/prompt-list 
 
 ④ Commit 메시지만 보고 변경 내용을 파악할 수 있는지
 
-22\. 공개 샘플 Repository Clone
+## 22. 공개 샘플 Repository Clone
 
 과제에서는 자신의 저장소가 아니라 공개 샘플 Repository 1개를 clone하여 폴더 구조와 Git log를 확인해야 합니다.
 
@@ -1391,21 +1505,21 @@ git log --oneline
 
 힌트: 사용자님 자신의 GitHub Repository를 clone한 화면으로 대체하지 않습니다.
 
-23\. .gitignore
+## 23. .gitignore
 
 .gitignore는 GitHub에 올릴 필요가 없는 임시파일이나 개발환경 파일을 Git 추적 대상에서 제외하기 위한 파일입니다.
 
 예:
 
-**\_\_pycache\_\_**/
+**\\\_\\\_pycache\\\_\\\_**/
 
-*.pyc
+\*.pyc
 
 .venv/
 
 .vscode/
 
-.DS\_Store
+.DS\\\_Store
 
 Thumbs.db
 
@@ -1413,11 +1527,11 @@ Thumbs.db
 
 과제에서도 .gitignore 생성이 필수입니다.
 
-24\. 보너스 기능 — 선택
+## 24. 보너스 기능 — 선택
 
 과제 원문에는 두 종류의 보너스가 있습니다.
 
-Bonus 1 — 저장 및 내보내기
+### Bonus 1 — 저장 및 내보내기
 
 JSON 파일 저장
 
@@ -1425,7 +1539,7 @@ JSON 파일 불러오기
 
 전체 프롬프트를 카테고리별 Markdown 파일로 내보내기
 
-Bonus 2 — CRUD 및 사용 기록
+### Bonus 2 — CRUD 및 사용 기록
 
 프롬프트 수정
 
@@ -1439,9 +1553,9 @@ Bonus 2 — CRUD 및 사용 기록
 
 Top 목록은 전체를 무한히 출력하기보다 조회수 상위 최대 5개로 제한하는 방식을 고려합니다.
 
-top\_prompts = sorted\_prompts[:5]
+top\\\_prompts = sorted\\\_prompts[:5]
 
-CRUD란?
+### CRUD란?
 
 Create → 프롬프트 추가
 
@@ -1453,7 +1567,7 @@ Delete → 프롬프트 삭제
 
 힌트: Bonus를 실제 구현한 경우에만 README에 “구현 완료”라고 작성합니다.
 
-⚠️ JSON 구현 시 중요한 주의사항
+### ⚠️ JSON 구현 시 중요한 주의사항
 
 필수 과제는 실행 중 추가 데이터가 유지되지만 종료하면 초기화되어야 합니다.
 
@@ -1461,7 +1575,7 @@ Delete → 프롬프트 삭제
 
 안전한 방법은 JSON 저장, JSON 불러오기를 사용자가 명시적으로 선택하는 별도 Bonus 기능으로 만드는 것입니다.
 
-25\. 추가 입력 검증 및 실수 방지
+## 25. 추가 입력 검증 및 실수 방지
 
 필수 요구사항을 방해하지 않는 범위에서 다음 처리를 적용하는 것을 권장합니다.
 
@@ -1483,7 +1597,7 @@ Delete → 프롬프트 삭제
 
 힌트: “오류가 발생하지 않았다”보다 어떤 사용자의 실수를 예상하고 어떻게 막았는지 설명합니다.
 
-26\. 테스트 결과 및 증빙
+## 26. 테스트 결과 및 증빙
 
 최종 증빙은 기능을 실행했다는 화면이 아니라 기능이 실제로 정상 동작했다는 결과까지 보여주는 것을 원칙으로 합니다.
 
@@ -1513,7 +1627,7 @@ Delete → 프롬프트 삭제
 
 과제는 개발환경, 프로그램 실행 결과, Git graph 스크린샷을 제출하도록 요구합니다.
 
-27\. 문제 해결 및 시행착오
+## 27. 문제 해결 및 시행착오
 
 문제 1. 【실제 발생한 문제】
 
@@ -1539,9 +1653,9 @@ Delete → 프롬프트 삭제
 
 힌트: 일부러 문제를 만들 필요는 없습니다. 실제 개발 중 발생한 오류만 기록합니다. 이혜경·강하연 제출물에서 좋았던 문제 → 원인 → 해결 → 결과 → 다음 작업 방식으로 작성합니다.
 
-28\. 현재 프로그램의 장점과 한계
+## 28. 현재 프로그램의 장점과 한계
 
-장점
+### 장점
 
 외부 라이브러리 없이 Python 기본 문법으로 구현
 
@@ -1557,7 +1671,7 @@ Delete → 프롬프트 삭제
 
 Git을 이용한 기능별 변경 이력 관리
 
-한계
+### 한계
 
 프로그램 종료 시 추가 데이터가 초기화됨
 
@@ -1575,7 +1689,7 @@ Git을 이용한 기능별 변경 이력 관리
 
 힌트: “부족해서 못 했다”는 식보다 현재 구현 범위와 향후 발전 가능성을 정확하게 구분합니다.
 
-29\. 과제 요구사항 최종 점검표
+## 29. 과제 요구사항 최종 점검표
 
 이 표는 최종 제출 직전에 실제 결과를 보고 체크합니다.
 
@@ -1679,15 +1793,15 @@ GitHub URL 제출 ☐       아래 URL
 
 이 표가 중요한 이유는 과제 원문에서 요구사항이 프로그램 기능뿐 아니라 개발환경·Git 명령·Branch·제출 증빙까지 여러 페이지에 흩어져 있기 때문입니다. 특히 “모든 요구사항을 만족해야 한다”는 전제가 명시되어 있습니다.
 
-30\. GitHub Repository
+## 30. GitHub Repository
 
-GitHub URL
+### GitHub URL
 
 【과제 수행 후 실제 URL 입력】
 
 힌트: 최종 제출 전에 Repository가 정상적으로 열리는지 직접 확인하고 URL을 넣습니다.
 
-31\. 마무리
+## 31. 마무리
 
 이번 과제를 통해 Python의 변수, List, Dictionary, 조건문, 반복문, 함수 등을 단순히 문법으로 학습하는 데 그치지 않고 실제 프롬프트 관리 프로그램의 기능과 연결하여 활용했습니다.
 
@@ -1737,7 +1851,7 @@ prompt-manager-cli
 
 A1-1-python-git-prompt-manager
 
-이번 과제 제출용이라면 저는 ****python-git-prompt-manager****로 만들겠습니다.
+이번 과제 제출용이라면 저는 **python-git-prompt-manager**로 만들겠습니다.
 
 VS Code에서 새 폴더를 만들 때도 그대로:
 
