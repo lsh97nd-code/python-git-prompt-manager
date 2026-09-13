@@ -561,9 +561,110 @@ git remote -v
 
 순서로 GitHub Repository와 로컬 프로젝트가 정상적으로 연결되었는지 검증했습니다.
 
+### 3.7 GitHub 설정 문서화 Commit 및 첫 Push
+
+GitHub Repository 생성과 원격 저장소 연결을 완료한 뒤, 지금까지 작성한 README와 GitHub CLI 관련 증빙 자료를 Git 변경 이력에 추가했습니다.
+
+먼저 다음 명령어를 사용하여 변경된 파일을 Staging Area에 등록하고 상태를 확인했습니다.
+
+```bash
+git add .
+git status
+```
+
+확인 결과 수정된 `README.md`와 GitHub CLI 설치·로그인·Repository 생성 과정의 증빙 이미지가 다음 Commit에 포함될 대상으로 등록되었습니다.
+
+이후 다음 명령어로 두 번째 Commit을 생성했습니다.
+
+```bash
+git commit -m "docs: document GitHub setup process"
+```
+
+여기서 `docs`는 프로그램 기능 자체를 추가한 것이 아니라 README, 설명 문서, 증빙 자료와 같은 문서 작업을 기록할 때 사용하는 표현입니다.
+
+`document GitHub setup process`는 GitHub CLI 설치, 로그인, Repository 생성 및 원격 저장소 연결 과정을 문서화했다는 의미입니다.
+
+#### 📷 GitHub 설정 문서화 Commit
+
+![GitHub 설정 문서화 Commit](images/19-github-setup-docs-commit.jpg)
+
+**그림 15. GitHub 설정 과정 문서화 및 두 번째 Commit**
+
+`git add .`과 `git status`를 통해 변경사항을 확인한 뒤 `docs: document GitHub setup process`라는 메시지로 Commit을 생성했습니다.
+
+이를 통해 GitHub 설정 과정을 README와 증빙 이미지에 기록한 작업도 별도의 변경 이력으로 관리했습니다.
+
 ---
 
-## 4. 프로젝트 파일 구조**
+두 번째 Commit까지 완료한 뒤 로컬 Repository의 Commit을 처음으로 GitHub 원격 Repository에 전송했습니다.
+
+다음 명령어를 실행했습니다.
+
+```bash
+git push -u origin main
+```
+
+각 명령과 옵션의 의미는 다음과 같습니다.
+
+| 명령 및 옵션 | 의미 |
+|---|---|
+| `git push` | 로컬 Repository의 Commit을 GitHub 원격 Repository로 전송 |
+| `-u` | 현재 `main` Branch와 `origin/main`의 추적 관계를 설정 |
+| `origin` | 앞에서 연결한 GitHub 원격 저장소의 이름 |
+| `main` | GitHub로 전송할 현재 로컬 Branch |
+
+여기서 `-u` 옵션을 처음 Push할 때 사용하면 로컬 `main` Branch와 GitHub의 `origin/main` Branch 사이의 추적 관계가 설정됩니다.
+
+따라서 이후 같은 Branch에서 작업할 때는 원격 저장소와 Branch를 매번 모두 입력하지 않고 다음과 같이 간단하게 사용할 수 있습니다.
+
+```bash
+git push
+```
+
+첫 Push를 완료한 뒤 현재 상태를 확인하기 위해 다음 명령어도 실행했습니다.
+
+```bash
+git status
+```
+
+#### 📷 첫 GitHub Push 및 상태 확인
+
+![첫 GitHub Push 및 상태 확인](images/20-first-github-push-and-status.jpg)
+
+**그림 16. 첫 GitHub Push 성공 및 Push 이후 Git 상태 확인**
+
+`git push -u origin main`을 실행한 결과 다음 메시지가 표시되었습니다.
+
+```text
+[new branch] main -> main
+branch 'main' set up to track 'origin/main'.
+```
+
+이는 로컬 `main` Branch가 GitHub의 `origin/main` Branch로 정상적으로 전송되었으며, 두 Branch의 추적 관계도 설정되었다는 의미입니다.
+
+이후 `git status`를 실행한 결과 다음 메시지가 표시되었습니다.
+
+```text
+Your branch is up to date with 'origin/main'.
+```
+
+따라서 방금 Commit한 Git 변경 이력은 GitHub와 정상적으로 동기화된 것을 확인했습니다.
+
+다만 Push 이후 새로 저장한 `images/19-github-setup-docs-commit.jpg` 파일이 `Untracked files`에 표시되었습니다.
+
+여기서 **Untracked file**은 파일 자체에 문제가 있다는 뜻이 아니라, 새로 생성되어 아직 `git add`와 Commit을 거치지 않은 파일이라는 의미입니다.
+
+즉 이번 화면에서는
+
+**두 번째 Commit 생성 → 첫 GitHub Push 성공 → `main`과 `origin/main` 연결 → Push 후 새로 생성된 증빙 파일 확인**
+
+과정을 확인할 수 있었습니다.
+
+새로 생성된 증빙 자료는 다음 작업에서 다시 `git add`와 Commit을 거쳐 Git으로 관리합니다.
+
+---
+
+## 4. 프로젝트 파일 구조
 
 현재 프로젝트는 다음과 같이 구성했습니다.
 
