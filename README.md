@@ -662,7 +662,62 @@ Your branch is up to date with 'origin/main'.
 
 새로 생성된 증빙 자료는 다음 작업에서 다시 `git add`와 Commit을 거쳐 Git으로 관리합니다.
 
+추가로 첫 Push 증빙 이미지와 README 수정 내용을 다시 Commit한 뒤, 앞에서 설정한 추적 관계를 이용하여 다음과 같이 간단하게 Push했습니다.
+
+```bash
+git push
+
+#### 📷 추적 관계 설정 후 간단한 Push 확인
+
+![GitHub Push 및 상태 확인](images/22-github-push-and-status.jpg)
+
+**그림 17. `git push`를 이용한 추가 Push 및 Git 상태 확인**
+
+첫 Push에서 `git push -u origin main`을 사용하여 로컬 `main` Branch와 GitHub의 `origin/main` Branch 사이의 추적 관계를 설정했습니다.
+
+이후 첫 Push 증빙 자료와 README 수정 내용을 다음 Commit으로 기록했습니다.
+
+```bash
+git add .
+git status
+git commit -m "docs: add first push evidence"
+```
+
+그 다음에는 원격 저장소 이름과 Branch 이름을 다시 입력하지 않고 다음 명령어만 사용했습니다.
+
+```bash
+git push
+```
+
+실행 결과 로컬의 새로운 Commit이 GitHub의 `main` Branch로 정상적으로 전송되었습니다.
+
+이는 처음 `git push -u origin main`을 실행할 때 설정한 추적 관계가 정상적으로 작동하고 있기 때문에 가능한 것입니다.
+
+Push 후 다시 다음 명령어로 상태를 확인했습니다.
+
+```bash
+git status
+```
+
+확인 결과 다음 메시지가 표시되었습니다.
+
+```text
+Your branch is up to date with 'origin/main'.
+```
+
+따라서 당시 Commit된 내용은 로컬 `main`과 GitHub의 `origin/main`에 동일하게 반영된 것을 확인했습니다.
+
+다만 이번 증빙 화면을 새로 저장하면서 생성된 `images/21-first-push-evidence-commit.jpg`는 아직 Git이 추적하지 않는 `Untracked file`로 표시되었습니다.
+
+이는 Push가 실패한 것이 아니라 **Push 이후 새로운 증빙 파일을 생성했기 때문에 발생한 정상적인 상태**입니다.
+
+이를 통해 다음 흐름을 실제로 확인했습니다.
+
+**첫 `-u` Push로 추적 관계 설정 → 새 Commit 생성 → 이후 `git push`만으로 전송 → `git status`로 동기화 상태 확인**
+
+
 ---
+
 
 ## 4. 프로젝트 파일 구조
 
