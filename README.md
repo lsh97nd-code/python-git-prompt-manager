@@ -2249,39 +2249,316 @@ Git Graph를 통해 10개 이상의 기능 단위 Commit과 feature/prompt-list 
 
 ④ Commit 메시지만 보고 변경 내용을 파악할 수 있는지
 
-**## 22. 공개 샘플 Repository Clone**
+## 22. 공개 샘플 Repository Clone 및 `git pull` 실습
 
-과제에서는 자신의 저장소가 아니라 공개 샘플 Repository 1개를 clone하여 폴더 구조와 Git log를 확인해야 합니다.
+과제에서는 자신의 GitHub Repository가 아니라 다른 사람이 공개한 Sample Repository를 하나 선택하여 `git clone`으로 내려받고, 해당 Repository의 파일 구조와 Git Commit 기록을 확인하도록 요구합니다.
 
-예를 들어 GitHub의 공개 샘플 저장소인 octocat/Hello-World 같은 저장소를 사용할 수 있습니다.
+이번 과제에서는 GitHub의 공개 Sample Repository인 다음 Repository를 사용했습니다.
 
-실제 사용할 Repository:
+```text
+octocat/Hello-World
+```
 
-【과제 수행 시 결정】
+자신이 만든 `python-git-prompt-manager` Repository를 다시 Clone한 것이 아니라, GitHub에 공개되어 있는 별도의 Sample Repository를 사용했습니다.
 
-수행 후:
+---
 
-cd 【clone한 폴더】
+### 22.1 Clone이란?
 
+Git에서 **Clone(클론)**은 GitHub와 같은 원격 저장소에 있는 Repository를 내 컴퓨터로 복제하여 로컬 Repository를 만드는 작업입니다.
+
+일반적인 파일 다운로드와 달리 `git clone`은 다음 정보를 함께 가져옵니다.
+
+- 프로젝트 파일
+- Commit 기록
+- Branch 정보
+- 원격 Repository 연결 정보
+
+쉽게 표현하면 다음과 같습니다.
+
+```text
+GitHub의 공개 Repository
+        ↓
+git clone
+        ↓
+파일 + Commit 기록 + Branch 정보
+        ↓
+내 컴퓨터의 로컬 Repository
+```
+
+따라서 Clone이 완료된 뒤에는 별도의 Git 초기화 없이 바로 `git log`, `git branch`, `git remote -v` 같은 Git 명령어를 사용할 수 있습니다.
+
+---
+
+### 22.2 공개 Sample Repository Clone
+
+현재 과제 Repository 안에 또 다른 Git Repository를 넣지 않기 위해 한 단계 위 작업 폴더인 `C:\Python-Workspace`에서 Clone을 수행했습니다.
+
+```powershell
+cd C:\Python-Workspace
+git clone https://github.com/octocat/Hello-World.git
+cd .\Hello-World
+```
+
+실행 결과 다음과 같이 정상적으로 Clone되었습니다.
+
+```text
+Cloning into 'Hello-World'...
+Receiving objects: 100% (13/13), done.
+```
+
+---
+
+### 22.3 원격 Repository 확인
+
+Clone한 Repository가 실제로 `octocat/Hello-World`에서 내려받은 것인지 확인하기 위해 다음 명령어를 실행했습니다.
+
+```bash
+git remote -v
+```
+
+실행 결과:
+
+```text
+origin  https://github.com/octocat/Hello-World.git (fetch)
+origin  https://github.com/octocat/Hello-World.git (push)
+```
+
+이를 통해 자신의 Repository가 아니라 공개 Sample Repository가 연결되어 있음을 확인했습니다.
+
+---
+
+### 22.4 Clone한 파일 구조 확인
+
+Clone한 Repository의 실제 파일을 확인하기 위해 다음 명령어를 실행했습니다.
+
+```powershell
 dir
+```
 
-git log --oneline
+실행 결과 `Hello-World` 폴더 안에 `README` 파일이 존재하는 것을 확인했습니다.
 
-등으로 폴더 구조와 Git 기록을 확인합니다.
+---
 
-📷 증빙
+### 22.5 Git Commit과 Branch 기록 확인
 
-11-clone-verification.png
+Clone한 Repository에는 파일뿐 아니라 기존 Git Commit 기록도 함께 포함됩니다.
 
-【이미지 삽입】
+이를 확인하기 위해 다음 명령어를 실행했습니다.
 
-그림 11. 공개 샘플 Repository Clone 및 확인
+```bash
+git log --oneline --graph --all --decorate -10
+```
 
-공개 Repository를 git clone으로 내려받은 뒤 폴더 구조와 Git log를 확인한 화면입니다.
+각 부분의 의미는 다음과 같습니다.
 
-힌트: 사용자님 자신의 GitHub Repository를 clone한 화면으로 대체하지 않습니다.
+| 명령 및 옵션 | 의미 |
+|---|---|
+| `git log` | Commit 기록을 확인 |
+| `--oneline` | Commit 하나를 한 줄로 간단히 표시 |
+| `--graph` | Branch와 Commit 관계를 선 그래프로 표시 |
+| `--all` | 현재 Branch뿐 아니라 다른 Branch 기록도 함께 표시 |
+| `--decorate` | Commit 옆에 Branch와 원격 Branch 이름을 표시 |
+| `-10` | 최근 Commit을 최대 10개까지만 표시 |
 
-**## 23. .gitignore**
+쉽게 풀면 다음과 같습니다.
+
+> **이 Repository의 최근 Commit을 최대 10개까지, Branch 이름과 관계를 포함하여 간단한 그래프 형태로 보여준다.**
+
+실제 화면에서는 다음과 같은 정보를 확인했습니다.
+
+```text
+HEAD -> master
+origin/master
+origin/HEAD
+origin/octocat-patch-1
+origin/test
+```
+
+`HEAD -> master`는 현재 로컬 Repository에서 보고 있는 Branch가 `master`라는 의미입니다.
+
+현재 과제 Repository에서는 기본 Branch로 `main`을 사용하지만 Repository마다 기본 Branch 이름은 다를 수 있으므로, Sample Repository에서 `master`가 표시되는 것은 정상입니다.
+
+---
+
+### 22.6 공개 Sample Repository Clone 실습 증빙
+
+![공개 Sample Repository Clone, Remote, 파일 구조 및 Git Log 확인](images/47-public-sample-repository-clone-files-and-git-log.jpg)
+
+**그림 49. 공개 Sample Repository Clone 후 Remote·파일 구조·Git Log 확인**
+
+위 화면에서 다음 과정을 한 번에 확인할 수 있습니다.
+
+- `git clone https://github.com/octocat/Hello-World.git` 실행
+- `Cloning into 'Hello-World'...` 정상 출력
+- `git remote -v`를 통한 원격 Repository 주소 확인
+- `dir`을 통한 Clone된 파일 구조 확인
+- `git log --oneline --graph --all --decorate -10`을 통한 Commit 및 Branch 기록 확인
+
+이를 통해 `git clone`은 단순히 파일만 다운로드하는 것이 아니라 **파일, Commit 이력, Branch 정보, 원격 Repository 연결 정보까지 함께 가져오는 명령어**라는 점을 실제로 확인했습니다.
+
+---
+
+### 22.7 일반 다운로드와 Clone의 차이
+
+| 구분 | 일반 파일 다운로드 | `git clone` |
+|---|---|---|
+| 프로젝트 파일 | 가져옴 | 가져옴 |
+| Commit 기록 | 보통 가져오지 않음 | 함께 가져옴 |
+| Branch 정보 | 없음 | 함께 가져옴 |
+| 원격 Repository 연결 | 없음 | 자동 설정 |
+| `git log` 사용 | 불가능할 수 있음 | 바로 사용 가능 |
+| 이후 Git 작업 | 별도 설정 필요 | 바로 가능 |
+
+따라서 Git 프로젝트의 변경 이력을 확인하거나 다른 컴퓨터에서 개발을 이어갈 때는 일반 다운로드보다 `git clone`이 적합합니다.
+
+---
+
+### 22.8 `git pull`이란?
+
+공개 Sample Repository 확인을 마친 뒤 다시 현재 과제 Repository로 돌아와 `git pull`도 실제로 사용했습니다.
+
+```powershell
+cd C:\Python-Workspace\python-git-prompt-manager
+git status
+git pull
+git status
+```
+
+`git pull`은 GitHub와 같은 원격 Repository의 최신 Commit을 확인하고, 필요한 변경사항이 있으면 현재 로컬 Branch로 가져와 반영하는 명령어입니다.
+
+쉽게 표현하면 다음과 같습니다.
+
+```text
+GitHub의 origin/main
+        ↓
+git pull
+        ↓
+원격의 최신 Commit 확인
+        ↓
+필요한 변경사항을 로컬 main에 반영
+```
+
+`git push`와 방향을 비교하면 다음과 같습니다.
+
+| 명령어 | 방향 | 역할 |
+|---|---|---|
+| `git push` | 로컬 → GitHub | 로컬에서 만든 Commit을 원격 Repository에 전송 |
+| `git pull` | GitHub → 로컬 | 원격 Repository의 최신 Commit을 로컬로 가져옴 |
+
+---
+
+### 22.9 실제 `git pull` 실행 결과
+
+`git pull`을 실행한 결과 다음 메시지가 표시되었습니다.
+
+```text
+Already up to date.
+```
+
+이 메시지는 오류가 아니라, 현재 GitHub의 `origin/main`에 로컬 Repository가 아직 가지고 있지 않은 새로운 Commit이 없다는 의미입니다.
+
+즉 원격 Repository에서 새로 가져올 변경사항이 없었기 때문에 추가 Merge 없이 정상적으로 종료되었습니다.
+
+한편 `git status`에는 다음과 같이 로컬에서 아직 Commit하지 않은 변경사항이 표시되었습니다.
+
+```text
+modified: README.md
+
+Untracked files:
+    images/47-public-sample-repository-clone-files-and-git-log.jpg
+```
+
+이 상태 역시 오류가 아닙니다.
+
+- `README.md`는 기존에 Git이 관리하던 파일을 수정했기 때문에 `modified`로 표시되었습니다.
+- 47번 이미지는 새로 생성되었지만 아직 Git에 등록하지 않았기 때문에 `Untracked files`로 표시되었습니다.
+
+즉 다음 두 문장은 서로 다른 의미를 가집니다.
+
+```text
+Your branch is up to date with 'origin/main'.
+```
+
+→ 로컬 `main`과 원격 `origin/main`이 같은 Commit을 기준으로 하고 있음
+
+```text
+modified: README.md
+Untracked files: ...
+```
+
+→ 로컬 작업 폴더에는 아직 Commit하지 않은 변경사항이 있음
+
+따라서 원격 Branch와 Commit 기준으로 동기화되어 있어도, 현재 수정 중인 파일이 있으면 `working tree clean` 상태가 아닐 수 있습니다.
+
+---
+
+### 22.10 `git pull` 실행 및 로컬 변경사항 확인 증빙
+
+![git pull 실행 및 로컬 변경사항 확인](images/48-git-pull-already-up-to-date-and-local-changes.jpg)
+
+**그림 50. `git pull`의 `Already up to date.` 결과와 로컬 미Commit 변경사항 확인**
+
+위 화면에서는 다음 내용을 함께 확인할 수 있습니다.
+
+- 공개 Sample Repository 작업 후 현재 과제 Repository로 복귀
+- 현재 Branch가 `main`임을 확인
+- 로컬 `main`과 `origin/main`이 같은 Commit 상태임을 확인
+- `README.md`가 수정된 상태임을 확인
+- 47번 증빙 이미지가 `Untracked files`로 표시된 상태 확인
+- `git pull` 실행
+- `Already up to date.` 결과 확인
+- `git pull` 후에도 로컬의 미Commit 변경사항은 그대로 유지되는 것을 확인
+
+이 화면은 `git pull`이 성공했다고 해서 로컬에서 작성 중인 파일까지 자동으로 Commit되거나 사라지는 것은 아니라는 점도 보여줍니다.
+
+따라서 이번 실습을 통해 **원격 Commit 동기화 상태와 로컬 작업 파일 상태는 서로 구분해서 확인해야 한다**는 점을 실제 작업으로 확인했습니다.
+
+---
+
+### 22.11 Chapter 22 실습 결과 정리
+
+| 확인 항목 | 결과 |
+|---|---|
+| 자신의 Repository가 아닌 공개 Repository 사용 | ✅ |
+| `git clone` 실제 실행 | ✅ |
+| 원격 Repository 주소 확인 | ✅ |
+| Clone된 파일 구조 확인 | ✅ |
+| Commit 기록 확인 | ✅ |
+| Branch 정보 확인 | ✅ |
+| `git log --oneline --graph --all --decorate -10` 사용 | ✅ |
+| 현재 과제 Repository로 복귀 | ✅ |
+| `git pull` 실제 실행 | ✅ |
+| `Already up to date.` 결과 확인 | ✅ |
+| 로컬 변경사항과 원격 동기화 상태의 차이 확인 | ✅ |
+
+이번 Chapter에서는 공개 Repository를 직접 Clone하고 파일·Commit·Branch 정보를 확인한 뒤, 현재 과제 Repository에서 `git pull`까지 실제로 사용했습니다.
+
+이를 통해 다음 전체 흐름을 확인했습니다.
+
+```text
+공개 Sample Repository 선택
+        ↓
+git clone
+        ↓
+Remote·파일 구조·Git Log 확인
+        ↓
+현재 과제 Repository로 복귀
+        ↓
+git status
+        ↓
+git pull
+        ↓
+Already up to date.
+        ↓
+git status
+        ↓
+원격 Commit 동기화 상태와 로컬 미Commit 변경사항 확인
+```
+
+---
+
+## 23. .gitignore
 
 .gitignore는 GitHub에 올릴 필요가 없는 임시파일이나 개발환경 파일을 Git 추적 대상에서 제외하기 위한 파일입니다.
 
@@ -3920,3 +4197,2338 @@ python .\main.py
 ---
 
 ## 16. 함수 분리와 코드 구조
+
+이번 프로그램에서는 모든 기능을 하나의 큰 함수에 작성하지 않고, 역할에 따라 여러 함수로 나누어 구현했습니다.
+
+함수(Function)는 특정 작업을 수행하는 코드를 하나의 이름으로 묶은 것입니다.
+
+예를 들어 프롬프트 목록을 출력하는 코드가 필요할 때마다 같은 코드를 반복해서 작성하는 대신 `show_prompt_list()`라는 함수를 한 번 만들어 두고 필요한 곳에서 호출할 수 있습니다.
+
+이처럼 기능별로 함수를 분리하면 다음과 같은 장점이 있습니다.
+
+- 각 코드가 어떤 역할을 하는지 쉽게 파악할 수 있습니다.
+- 문제가 발생했을 때 수정해야 할 위치를 찾기 쉽습니다.
+- 같은 기능을 여러 곳에서 다시 사용할 수 있습니다.
+- 하나의 함수가 너무 길어지는 것을 방지할 수 있습니다.
+- 새로운 기능을 추가할 때 기존 코드에 미치는 영향을 줄일 수 있습니다.
+
+이번 과제에서도 모든 코드를 하나의 함수에 작성하지 않고 기능별로 분리하도록 요구하고 있으므로, 실제 프로그램도 각 역할에 맞는 함수로 구성했습니다.
+
+---
+
+### 16.1 현재 프로그램의 함수 구성
+
+현재 `main.py`에서 사용하는 주요 함수는 다음과 같습니다.
+
+| 함수 | 역할 |
+|---|---|
+| `show_menu()` | 메인 메뉴 출력 |
+| `get_non_empty_input()` | 빈 값을 허용하지 않고 입력을 반복해서 받음 |
+| `select_category()` | 프롬프트 추가 시 기본 카테고리 선택 또는 직접 입력 |
+| `add_prompt()` | 새로운 프롬프트 추가 |
+| `show_prompt_list()` | 전체 프롬프트 목록 출력 |
+| `get_available_categories()` | 기본 카테고리와 사용자 정의 카테고리를 함께 수집 |
+| `select_category_for_filter()` | 카테고리별 조회에 사용할 카테고리 선택 |
+| `show_prompts_by_category()` | 선택한 카테고리의 프롬프트만 출력 |
+| `search_prompts()` | 제목 또는 내용에 검색어가 포함된 프롬프트 검색 |
+| `show_prompt_detail()` | 선택한 프롬프트의 전체 상세 정보 출력 |
+| `toggle_favorite()` | 선택한 프롬프트의 즐겨찾기 상태 변경 |
+| `show_favorites()` | 즐겨찾기로 등록된 프롬프트만 출력 |
+| `main()` | 메인 메뉴와 각 기능을 연결하고 프로그램 실행 흐름 관리 |
+
+실제 프로그램에는 단순히 메뉴별 기능 함수만 있는 것이 아니라, 여러 기능에서 공통으로 사용할 수 있는 보조 함수도 함께 분리했습니다.
+
+---
+
+### 16.2 메인 메뉴 출력 함수
+
+메인 메뉴 출력은 `show_menu()`가 담당합니다.
+
+```python
+def show_menu():
+    """메인 메뉴를 출력한다."""
+    print("\n=== 나만의 프롬프트 관리 프로그램 ===")
+    print("1. 프롬프트 추가")
+    print("2. 프롬프트 목록")
+    print("3. 카테고리별 조회")
+    print("4. 프롬프트 검색")
+    print("5. 프롬프트 상세 보기")
+    print("6. 즐겨찾기 관리")
+    print("7. 즐겨찾기 목록")
+    print("0. 종료")
+```
+
+메뉴 출력 코드를 `main()` 안에 직접 모두 작성하지 않고 별도 함수로 분리했습니다.
+
+따라서 메뉴 문구를 수정해야 하는 경우 `show_menu()` 한 곳만 수정하면 됩니다.
+
+---
+
+### 16.3 공통 입력 검증 함수
+
+프롬프트 제목, 내용, 직접 입력 카테고리, 검색어 등에서는 빈 값을 입력하지 못하도록 해야 합니다.
+
+이 기능을 매번 따로 작성하지 않고 다음 공통 함수를 사용했습니다.
+
+```python
+def get_non_empty_input(message):
+    """빈 값을 허용하지 않고 입력을 반복해서 받는다."""
+    while True:
+        try:
+            value = input(message).strip()
+        except (EOFError, KeyboardInterrupt):
+            return None
+
+        if value:
+            return value
+
+        print("빈 값은 입력할 수 없습니다. 다시 입력해주세요.")
+```
+
+이 함수는 입력값에서 앞뒤 공백을 제거한 뒤 실제 내용이 있는지 확인합니다.
+
+입력값이 비어 있으면 다음 메시지를 출력하고 다시 입력을 받습니다.
+
+```text
+빈 값은 입력할 수 없습니다. 다시 입력해주세요.
+```
+
+현재 이 함수는 프롬프트 추가와 검색 기능 등에서 재사용됩니다.
+
+예를 들어 프롬프트 추가에서는 다음과 같이 사용합니다.
+
+```python
+title = get_non_empty_input("제목: ")
+content = get_non_empty_input("내용: ")
+```
+
+검색에서는 다음처럼 같은 함수를 다시 사용합니다.
+
+```python
+keyword = get_non_empty_input("검색어: ")
+```
+
+이처럼 같은 입력 검증 코드를 여러 기능에서 반복 작성하지 않고 하나의 함수로 재사용했습니다.
+
+---
+
+### 16.4 프롬프트 추가 기능의 함수 분리
+
+프롬프트 추가 기능에서는 카테고리 선택과 실제 프롬프트 추가 작업을 서로 다른 함수로 나누었습니다.
+
+카테고리 선택은 다음 함수가 담당합니다.
+
+```python
+select_category()
+```
+
+실제 새로운 프롬프트 Dictionary를 만들고 `prompts` List에 추가하는 작업은 다음 함수가 담당합니다.
+
+```python
+add_prompt()
+```
+
+전체 흐름은 다음과 같습니다.
+
+```text
+add_prompt()
+    ↓
+get_non_empty_input()
+    ↓
+select_category()
+    ↓
+새 Dictionary 생성
+    ↓
+prompts.append()
+```
+
+따라서 `add_prompt()` 하나에 입력 검증, 카테고리 출력, 데이터 저장 코드를 모두 길게 작성하지 않고 역할을 나누었습니다.
+
+---
+
+### 16.5 프롬프트 목록 함수 재사용
+
+전체 프롬프트 목록은 `show_prompt_list()` 함수에서 출력합니다.
+
+```python
+def show_prompt_list():
+    """등록된 프롬프트 목록을 번호, 제목, 카테고리, 즐겨찾기와 함께 출력한다."""
+```
+
+이 함수는 메인 메뉴의 `2. 프롬프트 목록` 기능에서만 사용하는 것이 아니라 다른 기능에서도 재사용합니다.
+
+예를 들어 프롬프트 상세 보기에서는 먼저 사용자가 선택할 번호를 확인할 수 있도록 전체 목록을 보여줍니다.
+
+```python
+show_prompt_list()
+```
+
+즐겨찾기 관리 기능에서도 같은 방식으로 전체 목록을 다시 사용합니다.
+
+```python
+show_prompt_list()
+```
+
+즉 동일한 목록 출력 코드를 상세 보기 함수와 즐겨찾기 함수에 각각 다시 작성하지 않았습니다.
+
+이것이 함수를 분리한 가장 대표적인 재사용 사례입니다.
+
+---
+
+### 16.6 카테고리별 조회 기능의 역할 분리
+
+카테고리별 조회는 하나의 함수에서 모든 작업을 처리하지 않고 세 단계로 나누었습니다.
+
+첫 번째 함수는 사용할 수 있는 카테고리를 수집합니다.
+
+```python
+get_available_categories()
+```
+
+두 번째 함수는 사용자가 조회할 카테고리를 선택하도록 합니다.
+
+```python
+select_category_for_filter()
+```
+
+세 번째 함수는 실제로 선택한 카테고리의 프롬프트를 필터링하여 출력합니다.
+
+```python
+show_prompts_by_category()
+```
+
+전체 흐름은 다음과 같습니다.
+
+```text
+get_available_categories()
+        ↓
+select_category_for_filter()
+        ↓
+show_prompts_by_category()
+```
+
+이렇게 나누면 카테고리 목록을 만드는 코드와 사용자 입력을 받는 코드, 실제 데이터 필터링 코드를 각각 독립적으로 확인할 수 있습니다.
+
+---
+
+### 16.7 검색 기능 분리
+
+검색 기능은 `search_prompts()` 함수가 담당합니다.
+
+```python
+def search_prompts():
+    """제목 또는 내용에 검색어가 포함된 프롬프트를 찾는다."""
+```
+
+검색어 입력에는 기존의 `get_non_empty_input()` 함수를 재사용합니다.
+
+```python
+keyword = get_non_empty_input("검색어: ")
+```
+
+따라서 검색 함수에서는 빈 입력 검증 코드를 다시 만들지 않고 실제 검색 작업에 집중할 수 있습니다.
+
+검색 함수에서는 다음 작업을 담당합니다.
+
+```text
+검색어 입력
+→ casefold() 처리
+→ 제목 검색
+→ 내용 검색
+→ 결과 존재 여부 확인
+→ 결과 출력
+```
+
+---
+
+### 16.8 상세 보기 기능 분리
+
+프롬프트 상세 정보 출력은 `show_prompt_detail()` 함수가 담당합니다.
+
+```python
+def show_prompt_detail():
+    """선택한 프롬프트의 상세 정보를 출력한다."""
+```
+
+이 함수에서도 기존 `show_prompt_list()`를 재사용합니다.
+
+```text
+show_prompt_list()
+        ↓
+프롬프트 번호 입력
+        ↓
+번호 유효성 검사
+        ↓
+선택한 프롬프트 확인
+        ↓
+전체 내용 출력
+```
+
+따라서 전체 목록 기능과 상세 정보 기능이 서로 연결되지만 각각의 역할은 분리되어 있습니다.
+
+---
+
+### 16.9 즐겨찾기 기능 분리
+
+즐겨찾기는 상태를 변경하는 기능과 즐겨찾기된 항목을 조회하는 기능을 서로 다른 함수로 나누었습니다.
+
+즐겨찾기 상태 변경:
+
+```python
+toggle_favorite()
+```
+
+즐겨찾기 목록 출력:
+
+```python
+show_favorites()
+```
+
+`toggle_favorite()`는 선택한 프롬프트의 다음 값을 변경합니다.
+
+```python
+prompt["favorite"] = not prompt["favorite"]
+```
+
+반면 `show_favorites()`는 `favorite=True`인 프롬프트만 골라서 출력합니다.
+
+즉 다음 두 역할을 분리했습니다.
+
+```text
+toggle_favorite()
+→ 데이터의 즐겨찾기 상태 변경
+
+show_favorites()
+→ 현재 즐겨찾기 상태를 기준으로 목록 조회
+```
+
+등록과 조회를 한 함수에 모두 넣지 않았기 때문에 각 함수의 목적이 명확합니다.
+
+---
+
+### 16.10 `main()` 함수의 역할
+
+`main()` 함수는 각 기능의 세부 내용을 직접 구현하는 함수가 아니라 프로그램의 전체 실행 흐름을 관리하는 역할을 합니다.
+
+메뉴를 출력한 뒤 사용자의 선택에 따라 앞에서 만든 함수를 호출합니다.
+
+핵심 구조는 다음과 같습니다.
+
+```python
+def main():
+    while True:
+        show_menu()
+
+        choice = input("선택: ").strip()
+
+        if choice == "1":
+            add_prompt()
+
+        elif choice == "2":
+            show_prompt_list()
+
+        elif choice == "3":
+            show_prompts_by_category()
+
+        elif choice == "4":
+            search_prompts()
+
+        elif choice == "5":
+            show_prompt_detail()
+
+        elif choice == "6":
+            toggle_favorite()
+
+        elif choice == "7":
+            show_favorites()
+
+        elif choice == "0":
+            print("프로그램을 종료합니다.")
+            break
+```
+
+즉 `main()`은 각 기능의 실제 처리 코드를 직접 가지고 있기보다 **어떤 메뉴 번호가 어떤 함수를 실행할지 연결하는 역할**을 합니다.
+
+이 구조 덕분에 사용자가 새로운 메뉴 기능을 추가하더라도 해당 기능의 함수를 별도로 작성하고 `main()`에서 연결하면 됩니다.
+
+---
+
+### 16.11 함수 호출 구조
+
+현재 프로그램의 주요 함수 관계를 간단하게 표현하면 다음과 같습니다.
+
+```text
+main()
+│
+├── show_menu()
+│
+├── add_prompt()
+│   ├── get_non_empty_input()
+│   └── select_category()
+│       └── get_non_empty_input()
+│
+├── show_prompt_list()
+│
+├── show_prompts_by_category()
+│   └── select_category_for_filter()
+│       └── get_available_categories()
+│
+├── search_prompts()
+│   └── get_non_empty_input()
+│
+├── show_prompt_detail()
+│   └── show_prompt_list()
+│
+├── toggle_favorite()
+│   └── show_prompt_list()
+│
+└── show_favorites()
+```
+
+이 구조를 보면 하나의 함수 안에 모든 작업이 몰려 있는 것이 아니라, 필요한 기능을 서로 호출하면서 프로그램이 동작한다는 것을 확인할 수 있습니다.
+
+---
+
+### 16.12 함수 분리의 실제 장점
+
+이번 프로그램을 기능별 함수로 나누면서 다음과 같은 장점을 확인할 수 있었습니다.
+
+| 장점 | 이번 프로그램의 사례 |
+|---|---|
+| 가독성 | 함수 이름만 보아도 역할을 어느 정도 알 수 있음 |
+| 재사용 | `show_prompt_list()`를 상세 보기와 즐겨찾기 관리에서도 사용 |
+| 입력 검증 공통화 | `get_non_empty_input()`을 추가 기능과 검색 기능에서 함께 사용 |
+| 수정 용이 | 특정 기능 변경 시 해당 함수 중심으로 수정 가능 |
+| 오류 추적 | 문제가 발생한 기능의 함수를 중심으로 확인 가능 |
+| 기능 확장 | 새 기능을 함수로 작성한 뒤 `main()`에 연결 가능 |
+
+특히 `show_prompt_list()`와 `get_non_empty_input()`처럼 여러 기능에서 실제로 재사용한 함수가 있기 때문에 단순히 “함수를 여러 개 만들었다”는 것뿐 아니라 **중복 코드를 줄이기 위해 함수 분리를 실제로 활용했다는 점**을 확인할 수 있습니다.
+
+---
+
+### 16.13 현재 코드 구조의 한계
+
+현재 프로그램은 학습용 콘솔 프로그램이므로 모든 기능을 하나의 `main.py` 파일 안에서 함수 단위로 나누었습니다.
+
+프로그램 규모가 더 커진다면 다음과 같이 여러 Python 파일로 다시 분리할 수도 있습니다.
+
+```text
+main.py
+prompt_manager.py
+input_utils.py
+storage.py
+```
+
+예를 들어 프롬프트 데이터 관리 기능과 입력 검증 기능을 별도 Module로 분리하면 코드 규모가 커져도 관리하기 쉬워집니다.
+
+하지만 현재 과제 규모에서는 파일을 지나치게 세분화하는 것보다 **하나의 `main.py` 안에서 기능별 함수가 명확하게 분리되어 있는 구조가 초보자가 전체 흐름을 이해하기에 더 적절하다**고 판단했습니다.
+
+---
+
+### 16.14 구현 결과 정리
+
+현재 프로그램에서는 메뉴별 기능과 공통 기능을 각각 함수로 분리했습니다.
+
+실제 사용 중인 함수는 다음과 같습니다.
+
+```text
+show_menu()
+get_non_empty_input()
+select_category()
+add_prompt()
+show_prompt_list()
+get_available_categories()
+select_category_for_filter()
+show_prompts_by_category()
+search_prompts()
+show_prompt_detail()
+toggle_favorite()
+show_favorites()
+main()
+```
+
+이를 통해 과제에서 요구하는 **모든 코드를 하나의 함수에 작성하지 않고 기능별로 분리하는 구조**를 구현했습니다.
+
+특히 다음과 같은 재사용 관계를 만들었습니다.
+
+```text
+get_non_empty_input()
+→ 프롬프트 추가와 검색에서 재사용
+
+show_prompt_list()
+→ 전체 목록, 상세 보기, 즐겨찾기 관리에서 재사용
+
+get_available_categories()
+→ 카테고리 선택 기능에서 재사용
+```
+
+따라서 현재 프로그램은 다음 구조로 정리할 수 있습니다.
+
+**메뉴 제어 → 공통 입력 처리 → 기능별 함수 실행 → 필요한 공통 함수 재사용 → 결과 출력 → 메인 메뉴 복귀**
+
+---
+
+## 17. 조건문과 반복문
+
+이번 프로그램에서는 사용자의 입력에 따라 서로 다른 기능을 실행하고, 잘못된 입력이 들어오면 다시 입력을 받으며, 여러 프롬프트를 순서대로 처리하기 위해 조건문과 반복문을 사용했습니다.
+
+Python의 조건문과 반복문은 단순히 문법을 연습하기 위해 사용한 것이 아니라 실제 프롬프트 관리 프로그램의 흐름을 제어하기 위해 사용했습니다.
+
+현재 `main.py`에서는 다음과 같은 제어문을 사용합니다.
+
+```text
+if / elif / else
+while
+for
+try / except
+break
+return
+```
+
+각 문법이 이번 프로그램에서 어떤 역할을 하는지 실제 코드와 연결하여 설명합니다.
+
+---
+
+### 17.1 `if / elif / else` — 조건에 따라 다른 기능 실행
+
+조건문은 특정 조건이 맞는지 확인한 뒤 실행할 코드를 결정하는 문법입니다.
+
+이번 프로그램에서 가장 대표적인 조건문은 `main()` 함수의 메뉴 처리 부분입니다.
+
+```python
+if choice == "1":
+    add_prompt()
+
+elif choice == "2":
+    show_prompt_list()
+
+elif choice == "3":
+    show_prompts_by_category()
+
+elif choice == "4":
+    search_prompts()
+
+elif choice == "5":
+    show_prompt_detail()
+
+elif choice == "6":
+    toggle_favorite()
+
+elif choice == "7":
+    show_favorites()
+
+elif choice == "0":
+    print("프로그램을 종료합니다.")
+    break
+
+else:
+    print("잘못된 메뉴 번호입니다. 다시 입력해주세요.")
+```
+
+사용자가 입력한 `choice` 값에 따라 실행할 함수가 달라집니다.
+
+```text
+1 → 프롬프트 추가
+2 → 프롬프트 목록
+3 → 카테고리별 조회
+4 → 프롬프트 검색
+5 → 프롬프트 상세 보기
+6 → 즐겨찾기 관리
+7 → 즐겨찾기 목록
+0 → 프로그램 종료
+그 외 → 잘못된 메뉴 번호 안내
+```
+
+즉 `if / elif / else`는 메인 메뉴에서 사용자의 선택과 실제 기능을 연결하는 역할을 합니다.
+
+---
+
+### 17.2 `if` — 입력값과 데이터 상태 검사
+
+조건문은 메뉴 선택뿐 아니라 입력값이 올바른지 확인하거나 데이터가 존재하는지 판단할 때도 사용했습니다.
+
+예를 들어 프롬프트 목록 기능에서는 다음 조건을 확인합니다.
+
+```python
+if not prompts:
+    print("등록된 프롬프트가 없습니다.")
+    return
+```
+
+`not prompts`는 `prompts` List가 비어 있는지를 확인하는 조건입니다.
+
+프롬프트가 하나도 없으면 목록 출력 작업을 계속하지 않고 안내 메시지를 표시한 뒤 함수를 종료합니다.
+
+상세 보기와 즐겨찾기 관리에서도 같은 방식으로 데이터 존재 여부를 먼저 확인합니다.
+
+---
+
+### 17.3 번호 범위 확인
+
+상세 보기와 즐겨찾기 관리에서는 사용자가 입력한 번호가 실제 프롬프트 범위에 포함되는지 확인해야 합니다.
+
+먼저 입력값이 숫자인지 확인합니다.
+
+```python
+if choice.isdigit():
+```
+
+숫자인 경우 정수로 변환합니다.
+
+```python
+number = int(choice)
+```
+
+그 다음 실제 프롬프트 번호 범위에 포함되는지 검사합니다.
+
+```python
+if 1 <= number <= len(prompts):
+```
+
+예를 들어 프롬프트가 4개라면 다음 번호만 유효합니다.
+
+```text
+1
+2
+3
+4
+```
+
+`9`와 같은 번호를 입력하면 조건을 통과하지 못하고 다음 안내 메시지가 표시됩니다.
+
+```text
+잘못된 프롬프트 번호입니다. 다시 입력해주세요.
+```
+
+따라서 조건문은 사용자의 잘못된 번호 입력 때문에 프로그램에서 오류가 발생하는 것을 방지하는 역할도 합니다.
+
+---
+
+### 17.4 즐겨찾기 상태에 따른 조건 표현식
+
+즐겨찾기 상태는 Boolean 값인 `True` 또는 `False`로 저장합니다.
+
+화면에는 Boolean 값을 그대로 출력하지 않고 다음과 같이 `★`와 `☆`로 바꾸어 표시합니다.
+
+```python
+favorite_mark = "★" if prompt["favorite"] else "☆"
+```
+
+동작은 다음과 같습니다.
+
+```text
+favorite=True  → ★
+favorite=False → ☆
+```
+
+즐겨찾기 관리 기능에서는 상태 변경 결과 메시지도 조건에 따라 다르게 출력합니다.
+
+```python
+favorite_state = (
+    "즐겨찾기에 추가되었습니다."
+    if prompt["favorite"]
+    else "즐겨찾기에서 해제되었습니다."
+)
+```
+
+따라서 같은 즐겨찾기 관리 기능 안에서도 현재 데이터 상태에 따라 서로 다른 결과를 사용자에게 안내합니다.
+
+---
+
+### 17.5 `while` — 필요한 입력이 들어올 때까지 반복
+
+`while`은 특정 조건이 유지되는 동안 코드를 반복해서 실행하는 문법입니다.
+
+이번 프로그램에서는 주로 다음 두 가지 목적으로 사용했습니다.
+
+```text
+1. 프로그램 전체를 계속 실행
+2. 올바른 입력이 들어올 때까지 다시 입력
+```
+
+가장 대표적인 코드는 `main()` 함수입니다.
+
+```python
+while True:
+    show_menu()
+```
+
+`while True`는 조건이 항상 참이므로 프로그램이 계속 반복됩니다.
+
+따라서 하나의 기능을 실행한 뒤 함수가 끝나면 다시 `main()`의 반복문으로 돌아와 메인 메뉴가 표시됩니다.
+
+사용자가 `0`을 입력했을 때만 다음 `break`가 실행됩니다.
+
+```python
+break
+```
+
+이 구조 때문에 각 기능마다 별도의 “메인 메뉴로 돌아가기” 코드를 작성하지 않아도 됩니다.
+
+---
+
+### 17.6 빈 입력 재요청을 위한 `while`
+
+`get_non_empty_input()` 함수에서도 `while True`를 사용합니다.
+
+```python
+def get_non_empty_input(message):
+    while True:
+        try:
+            value = input(message).strip()
+        except (EOFError, KeyboardInterrupt):
+            return None
+
+        if value:
+            return value
+
+        print("빈 값은 입력할 수 없습니다. 다시 입력해주세요.")
+```
+
+사용자가 아무 내용도 입력하지 않고 Enter를 누르면 `value`가 비어 있으므로 함수가 종료되지 않습니다.
+
+대신 다음 메시지를 출력합니다.
+
+```text
+빈 값은 입력할 수 없습니다. 다시 입력해주세요.
+```
+
+그리고 반복문의 처음으로 돌아가 다시 입력을 받습니다.
+
+정상적인 값을 입력했을 때만 다음 코드가 실행됩니다.
+
+```python
+return value
+```
+
+따라서 빈 제목, 빈 내용, 빈 검색어 등이 등록되는 것을 방지할 수 있습니다.
+
+---
+
+### 17.7 잘못된 번호 재입력을 위한 `while`
+
+카테고리 선택에서도 같은 구조를 사용했습니다.
+
+```python
+while True:
+    choice = input("선택: ").strip()
+
+    if choice.isdigit():
+        number = int(choice)
+
+        if 1 <= number <= len(categories):
+            return categories[number - 1]
+
+    print("잘못된 카테고리 번호입니다. 다시 입력해주세요.")
+```
+
+잘못된 번호를 입력하면 함수가 끝나지 않고 다시 입력을 받습니다.
+
+실제 테스트에서도 존재하지 않는 카테고리 번호 `9`를 입력한 뒤 정상 번호를 다시 입력할 수 있음을 확인했습니다.
+
+상세 보기와 즐겨찾기 관리의 번호 입력도 같은 방식으로 구현했습니다.
+
+---
+
+### 17.8 `for` — 여러 데이터를 하나씩 처리
+
+`for` 반복문은 List처럼 여러 개의 데이터가 있을 때 각 데이터를 하나씩 순서대로 처리하는 데 사용합니다.
+
+예를 들어 프롬프트 목록 기능에서는 다음 코드를 사용합니다.
+
+```python
+for index, prompt in enumerate(prompts, start=1):
+    favorite_mark = "★" if prompt["favorite"] else "☆"
+
+    print(
+        f"{index}. "
+        f"{favorite_mark} "
+        f"{prompt['title']} "
+        f"[{prompt['category']}]"
+    )
+```
+
+`prompts` List에 저장된 프롬프트를 처음부터 마지막까지 하나씩 가져와 화면에 출력합니다.
+
+`enumerate(..., start=1)`을 사용했기 때문에 사람이 보기 쉬운 번호인 `1, 2, 3, 4` 형태로 표시됩니다.
+
+---
+
+### 17.9 카테고리 목록 구성에서의 `for`
+
+사용자가 직접 입력한 카테고리까지 조회할 수 있도록 `get_available_categories()`에서도 `for` 반복문을 사용합니다.
+
+```python
+for prompt in prompts:
+    category = prompt["category"]
+
+    if category not in categories:
+        categories.append(category)
+```
+
+전체 프롬프트를 하나씩 확인하면서 기존 카테고리 목록에 없는 값만 추가합니다.
+
+따라서 직접 입력한 카테고리가 여러 프롬프트에 반복되어 있더라도 중복해서 추가되지 않습니다.
+
+여기에서는 `for` 반복문과 `if` 조건문을 함께 사용했습니다.
+
+---
+
+### 17.10 List Comprehension을 이용한 조건 필터링
+
+카테고리별 조회, 검색, 즐겨찾기 목록에서는 List Comprehension도 사용했습니다.
+
+List Comprehension은 반복문과 조건식을 이용해 필요한 데이터만 새로운 List로 만드는 Python 표현 방식입니다.
+
+카테고리별 조회에서는 다음과 같이 사용합니다.
+
+```python
+filtered_prompts = [
+    prompt
+    for prompt in prompts
+    if prompt["category"] == category
+]
+```
+
+전체 `prompts` 가운데 사용자가 선택한 카테고리와 같은 데이터만 `filtered_prompts`에 저장합니다.
+
+검색 기능에서도 같은 방식으로 제목 또는 내용에 검색어가 포함된 프롬프트만 선택합니다.
+
+```python
+search_results = [
+    prompt
+    for prompt in prompts
+    if normalized_keyword in prompt["title"].casefold()
+    or normalized_keyword in prompt["content"].casefold()
+]
+```
+
+즐겨찾기 목록에서는 `favorite=True`인 데이터만 선택합니다.
+
+```python
+favorite_prompts = [
+    (index, prompt)
+    for index, prompt in enumerate(prompts, start=1)
+    if prompt["favorite"]
+]
+```
+
+따라서 반복문을 단순 출력뿐 아니라 조건에 맞는 데이터를 찾아내는 작업에도 활용했습니다.
+
+---
+
+### 17.11 `try / except` — 입력 중단 예외 처리
+
+사용자가 입력 중 `Ctrl+C`를 누르거나 EOF 입력이 발생하면 일반적으로 Python 프로그램에서 오류 메시지가 나타날 수 있습니다.
+
+이번 프로그램에서는 이를 그대로 노출하지 않도록 `try / except`를 사용했습니다.
+
+예를 들어 메인 메뉴에서는 다음과 같이 처리합니다.
+
+```python
+try:
+    choice = input("선택: ").strip()
+except (EOFError, KeyboardInterrupt):
+    print("\n프로그램을 종료합니다.")
+    break
+```
+
+`input()`이 정상적으로 실행되면 사용자의 값을 `choice`에 저장합니다.
+
+입력 도중 `EOFError` 또는 `KeyboardInterrupt`가 발생하면 프로그램에 긴 오류 메시지를 표시하는 대신 안내 메시지를 출력하고 반복문을 종료합니다.
+
+비슷한 예외 처리는 다음 기능에도 적용했습니다.
+
+```text
+프롬프트 입력
+카테고리 선택
+카테고리별 조회
+상세 보기
+즐겨찾기 관리
+```
+
+이를 통해 사용자가 입력을 중단하더라도 가능한 범위에서 프로그램이 정리된 방식으로 종료되거나 현재 기능을 취소하도록 했습니다.
+
+---
+
+### 17.12 `break` — 반복문 자체 종료
+
+`break`는 현재 실행 중인 반복문을 즉시 끝내는 명령입니다.
+
+메인 메뉴에서 사용자가 `0`을 입력하면 다음 코드가 실행됩니다.
+
+```python
+elif choice == "0":
+    print("프로그램을 종료합니다.")
+    break
+```
+
+`main()`의 `while True`가 종료되면서 프로그램도 끝납니다.
+
+입력 도중 `Ctrl+C` 또는 EOF가 발생했을 때도 같은 방식으로 `break`를 사용합니다.
+
+따라서 `break`는 **프로그램 전체 메뉴 반복을 종료할 때** 사용했습니다.
+
+---
+
+### 17.13 `return` — 현재 함수 종료
+
+`return`은 현재 실행 중인 함수를 종료하고 호출한 위치로 돌아가는 데 사용합니다.
+
+예를 들어 검색 결과가 하나도 없으면 다음 코드가 실행됩니다.
+
+```python
+if not search_results:
+    print(f"\n'{keyword}'에 대한 검색 결과가 없습니다.")
+    return
+```
+
+검색 결과가 없는데 이후 출력 코드를 계속 실행할 필요가 없으므로 함수가 바로 종료됩니다.
+
+상세 보기에서도 정상적인 프롬프트를 출력한 뒤 다음과 같이 함수를 종료합니다.
+
+```python
+return
+```
+
+`break`와 `return`은 비슷하게 보이지만 역할이 다릅니다.
+
+| 문법 | 이번 프로그램에서의 의미 |
+|---|---|
+| `break` | 현재 반복문을 끝냄 |
+| `return` | 현재 함수를 끝냄 |
+
+예를 들어 메인 프로그램 자체의 `while` 반복을 끝낼 때는 `break`를 사용하고, 프롬프트 추가나 검색 같은 개별 기능을 끝낼 때는 `return`을 사용합니다.
+
+---
+
+### 17.14 조건문과 반복문이 실제로 연결되는 방식
+
+이번 프로그램의 기본 실행 흐름을 제어문 관점에서 정리하면 다음과 같습니다.
+
+```text
+while True
+    ↓
+메인 메뉴 반복
+    ↓
+사용자 입력
+    ↓
+if / elif / else
+    ↓
+선택한 기능 실행
+    ↓
+기능 내부의 if로 입력·데이터 검사
+    ↓
+for 또는 List Comprehension으로 데이터 처리
+    ↓
+필요하면 while로 재입력
+    ↓
+return으로 기능 종료
+    ↓
+main()의 while로 복귀
+```
+
+사용자가 종료를 선택하면 다음과 같이 흐름이 끝납니다.
+
+```text
+0 입력
+  ↓
+elif choice == "0"
+  ↓
+break
+  ↓
+main() 반복 종료
+  ↓
+프로그램 종료
+```
+
+따라서 조건문과 반복문은 각각 따로 사용한 것이 아니라 프로그램 전체 흐름 안에서 서로 연결되어 동작합니다.
+
+---
+
+### 17.15 구현 결과 정리
+
+현재 프로그램에서 조건문과 반복문은 다음 목적으로 사용했습니다.
+
+| 문법 | 실제 사용 목적 |
+|---|---|
+| `if` | 데이터 존재 여부, 입력값, 번호 범위, 즐겨찾기 상태 확인 |
+| `elif` | 메인 메뉴 번호별 기능 연결 |
+| `else` | 잘못된 메뉴 번호 처리 |
+| `while` | 메인 메뉴 반복 및 올바른 입력이 들어올 때까지 재요청 |
+| `for` | 프롬프트와 카테고리를 하나씩 순서대로 처리 |
+| List Comprehension | 카테고리·검색·즐겨찾기 조건에 맞는 데이터만 선택 |
+| `try / except` | 입력 중단 예외 처리 |
+| `break` | 메인 메뉴 반복 및 프로그램 종료 |
+| `return` | 현재 기능의 실행 종료 |
+
+이를 통해 Python 문법을 단순한 예제 수준으로 사용한 것이 아니라 **사용자 입력 검증, 메뉴 이동, 데이터 검색, 필터링, 오류 방지, 프로그램 종료와 같은 실제 프로그램 동작에 연결하여 사용했습니다.**
+
+---
+
+## 18. 프로그램 실행 중 데이터 유지와 종료 시 초기화 ★중요
+
+이번 프로그램의 기본 데이터는 Python 코드 안의 `prompts` List에 저장되어 있습니다.
+
+프로그램이 시작되면 이전 AI 미션에서 실제로 사용한 기본 프롬프트 4개가 먼저 생성됩니다.
+
+각 프롬프트는 다음과 같은 Dictionary 구조를 사용합니다.
+
+```python
+{
+    "title": "...",
+    "content": "...",
+    "category": "...",
+    "favorite": False,
+}
+```
+
+현재 기본 데이터에는 다음 4개의 프롬프트가 들어 있습니다.
+
+```text
+1. 몸 이상 신호 기반 컬러푸드 서비스 기획
+2. 주식투자 위험 영상 이미지 수정
+3. 결과 캐싱 개념 설명
+4. 복수 여행지 증빙 확인
+```
+
+기본 프롬프트의 즐겨찾기 값은 모두 다음과 같이 시작합니다.
+
+```python
+"favorite": False
+```
+
+---
+
+### 18.1 프로그램 실행 중 새 프롬프트 유지
+
+새로운 프롬프트를 추가하면 다음 코드가 실행됩니다.
+
+```python
+prompts.append(new_prompt)
+```
+
+`append()`는 새 데이터를 현재 `prompts` List의 마지막에 추가합니다.
+
+예를 들어 프로그램을 실행한 뒤 새로운 프롬프트를 하나 추가하면 기존 4개에 새 데이터가 추가됩니다.
+
+```text
+프로그램 시작
+    ↓
+기본 프롬프트 4개
+    ↓
+새 프롬프트 1개 추가
+    ↓
+실행 중 프롬프트 5개
+```
+
+프로그램을 종료하지 않는 동안에는 같은 `prompts` List를 계속 사용하므로 새로 추가한 프롬프트를 목록, 검색, 상세 보기 등의 다른 기능에서도 사용할 수 있습니다.
+
+즉 새로 추가된 데이터는 **현재 프로그램이 실행되는 동안 메모리에 유지**됩니다.
+
+---
+
+### 18.2 즐겨찾기 상태도 실행 중 유지
+
+즐겨찾기 관리에서는 선택한 프롬프트의 `favorite` 값을 다음 코드로 변경합니다.
+
+```python
+prompt["favorite"] = not prompt["favorite"]
+```
+
+처음 값이 다음과 같다면:
+
+```text
+False
+```
+
+즐겨찾기에 등록했을 때:
+
+```text
+True
+```
+
+로 바뀝니다.
+
+화면에서도 다음과 같이 표시됩니다.
+
+```text
+☆ → ★
+```
+
+같은 프로그램 실행 상태에서 즐겨찾기 목록을 확인하면 변경된 `True` 값이 그대로 유지되어 해당 프롬프트가 표시됩니다.
+
+실제 즐겨찾기 테스트에서도 한 번의 프로그램 실행 안에서 다음 흐름을 확인했습니다.
+
+```text
+초기 favorite=False
+        ↓
+2번 프롬프트 선택
+        ↓
+False → True
+        ↓
+☆ → ★
+        ↓
+즐겨찾기 목록에 표시
+```
+
+따라서 프롬프트 추가 데이터뿐 아니라 즐겨찾기 상태도 현재 프로그램 실행 중에는 유지됩니다.
+
+---
+
+### 18.3 다시 변경하면 같은 실행 중 즉시 반영
+
+즐겨찾기 기능은 단순히 `False → True`로 한 번만 변경하는 기능이 아니라 Toggle 방식으로 구현했습니다.
+
+같은 프롬프트를 다시 선택하면:
+
+```text
+True → False
+```
+
+로 변경됩니다.
+
+화면 표시 역시:
+
+```text
+★ → ☆
+```
+
+로 돌아갑니다.
+
+실제 테스트에서는 다음 흐름까지 연속으로 확인했습니다.
+
+```text
+False
+  ↓
+True
+  ↓
+즐겨찾기 목록에 표시
+  ↓
+다시 같은 프롬프트 선택
+  ↓
+False
+  ↓
+즐겨찾기 목록에서 제외
+```
+
+이 과정이 프로그램을 재실행하지 않고 한 번의 실행 상태에서 이루어졌으므로, 프로그램이 실행 중인 동안 변경된 상태를 실제로 계속 사용하고 있음을 확인할 수 있습니다.
+
+---
+
+### 18.4 프로그램 종료 후 초기화되는 이유
+
+현재 프로그램은 데이터베이스나 자동 JSON 저장 파일을 사용하지 않습니다.
+
+기본 데이터는 `main.py`의 다음 구조에서 프로그램 실행 시 만들어집니다.
+
+```python
+prompts = [
+    {
+        "title": "...",
+        "content": "...",
+        "category": "...",
+        "favorite": False,
+    },
+    ...
+]
+```
+
+프로그램 실행 중에는 이 List의 내용이 변경될 수 있습니다.
+
+예를 들어:
+
+```text
+새 프롬프트 추가
+favorite 값 변경
+```
+
+과 같은 작업이 가능합니다.
+
+하지만 이러한 변경 내용은 현재 실행 중인 Python 프로그램의 메모리에 존재하는 값입니다.
+
+프로그램을 종료하면 해당 실행에서 사용하던 메모리의 데이터도 함께 사라집니다.
+
+다음에 다시:
+
+```bash
+python .\main.py
+```
+
+를 실행하면 `main.py`가 처음부터 다시 실행되면서 코드에 작성된 기본 `prompts` List가 새로 생성됩니다.
+
+따라서 추가한 프롬프트나 변경된 즐겨찾기 상태가 자동으로 복원되지 않습니다.
+
+---
+
+### 18.5 실행 흐름으로 이해하기
+
+전체 과정을 간단하게 표현하면 다음과 같습니다.
+
+```text
+프로그램 실행
+      ↓
+main.py의 기본 prompts 생성
+      ↓
+기본 프롬프트 4개
+favorite=False
+      ↓
+프롬프트 추가 또는 즐겨찾기 변경
+      ↓
+실행 중 변경 상태 유지
+      ↓
+목록·검색·상세 보기·즐겨찾기에서
+변경된 데이터 사용 가능
+      ↓
+0번 선택
+      ↓
+프로그램 종료
+      ↓
+현재 실행의 메모리 데이터 소멸
+      ↓
+python .\main.py 다시 실행
+      ↓
+코드에 작성된 기본 prompts 다시 생성
+      ↓
+기본 상태에서 다시 시작
+```
+
+---
+
+### 18.6 이것은 오류가 아니라 과제의 기본 동작
+
+프로그램 종료 후 데이터가 초기화된다고 해서 프로그램이 데이터를 잘못 처리하는 것은 아닙니다.
+
+현재 프로그램은 **프로그램 실행 중에만 데이터를 유지하는 메모리 기반 구조**입니다.
+
+따라서 다음 두 동작은 서로 모순되지 않습니다.
+
+```text
+실행 중
+→ 새 프롬프트와 즐겨찾기 변경사항 유지
+
+프로그램 종료 후 다시 실행
+→ 기본 데이터 상태로 초기화
+```
+
+현재 README 초안에서도 이 동작을 중요한 과제 요구사항으로 구분해 두었으며, 기본 기능에서는 프로그램을 종료하면 초기 상태로 돌아가는 구조를 유지합니다.
+
+---
+
+### 18.7 실제 즐겨찾기 테스트와의 관계
+
+즐겨찾기 기능 테스트에서는 프로그램을 중간에 종료하지 않고 다음 순서로 실행했습니다.
+
+```text
+7
+6
+9
+2
+7
+6
+2
+7
+0
+```
+
+이 테스트에서 다음 상태 변화가 확인되었습니다.
+
+```text
+즐겨찾기 없음
+    ↓
+2번 프롬프트 추가
+    ↓
+★ 상태 유지
+    ↓
+즐겨찾기 목록에서 확인
+    ↓
+2번 프롬프트 다시 선택
+    ↓
+☆ 상태로 해제
+    ↓
+즐겨찾기 목록이 다시 비어 있음
+    ↓
+프로그램 종료
+```
+
+이 결과는 **한 번의 프로그램 실행 안에서는 변경된 상태가 다음 기능에서도 그대로 사용된다**는 것을 보여줍니다.
+
+---
+
+### 18.8 프롬프트 추가 기능과의 관계
+
+프롬프트 추가 기능도 같은 원리로 동작합니다.
+
+새 프롬프트를 만들면 다음 코드로 현재 List에 추가합니다.
+
+```python
+prompts.append(new_prompt)
+```
+
+새로 추가된 프롬프트의 기본 즐겨찾기 값은 다음과 같습니다.
+
+```python
+"favorite": False
+```
+
+따라서 실행 중에는 새 데이터가 기존 프롬프트와 동일한 구조로 관리됩니다.
+
+```text
+기본 프롬프트
++
+실행 중 추가한 프롬프트
+=
+현재 실행에서 사용하는 prompts List
+```
+
+하지만 추가된 데이터를 파일에 자동 저장하는 코드는 없으므로 프로그램 종료 후에는 코드에 작성된 기본 프롬프트 상태에서 다시 시작합니다.
+
+---
+
+### 18.9 JSON Bonus를 구현할 때 주의할 점
+
+추후 Bonus 기능으로 JSON 저장과 불러오기를 추가할 수 있습니다.
+
+하지만 기본 프로그램을 시작하자마자 JSON 파일을 자동으로 불러오도록 만들면 현재의 기본 동작이 바뀔 수 있습니다.
+
+예를 들어 자동 저장·자동 불러오기를 적용하면:
+
+```text
+프로그램 종료
+    ↓
+다시 실행
+    ↓
+이전 추가 데이터 자동 복원
+```
+
+형태가 됩니다.
+
+이는 현재 기본 기능의:
+
+```text
+프로그램 종료
+    ↓
+다시 실행
+    ↓
+기본 데이터로 시작
+```
+
+구조와 다릅니다.
+
+따라서 Bonus JSON 기능을 구현한다면 기본 동작을 변경하지 않도록 다음과 같이 **사용자가 직접 선택하는 별도 기능**으로 만드는 것이 안전합니다.
+
+```text
+JSON 저장
+→ 사용자가 명시적으로 선택
+
+JSON 불러오기
+→ 사용자가 명시적으로 선택
+```
+
+이렇게 하면 필수 기능의 메모리 기반 동작을 그대로 유지하면서 필요할 때만 데이터를 파일에 저장하거나 불러올 수 있습니다.
+
+---
+
+### 18.10 현재 방식의 장점
+
+현재 메모리 기반 구조는 초보자가 Python의 List와 Dictionary가 프로그램 실행 중 어떻게 변경되는지 이해하기 쉽다는 장점이 있습니다.
+
+별도의 파일 저장 기능이나 Database를 사용하지 않아도 다음 흐름을 직접 확인할 수 있습니다.
+
+```text
+List 생성
+→ Dictionary 추가
+→ 값 변경
+→ 다른 함수에서 변경된 값 확인
+```
+
+또한 이번 과제에서 학습하려는 Python의 기본 자료구조와 프로그램 상태 변화를 직접 확인하기에 적합합니다.
+
+---
+
+### 18.11 현재 방식의 한계
+
+반대로 프로그램을 종료하면 새로 추가한 데이터와 변경한 즐겨찾기 상태가 사라진다는 한계가 있습니다.
+
+실제 장기간 사용하는 프로그램이라면 다음과 같은 영구 저장 방식이 필요할 수 있습니다.
+
+```text
+JSON
+CSV
+Database
+```
+
+하지만 현재 과제에서는 이 한계를 오류로 보지 않고 **필수 기능과 Bonus 저장 기능을 구분하는 기준**으로 사용합니다.
+
+---
+
+### 18.12 구현 결과 정리
+
+현재 프로그램의 데이터 상태는 다음과 같이 정리할 수 있습니다.
+
+| 상황 | 결과 |
+|---|---|
+| 프로그램 최초 실행 | 기본 프롬프트 4개 생성 |
+| 새 프롬프트 추가 | 현재 `prompts` List에 추가 |
+| 추가 후 다른 메뉴 사용 | 추가된 데이터 유지 |
+| 즐겨찾기 등록 | `favorite=False → True` |
+| 같은 실행에서 즐겨찾기 목록 확인 | 변경 상태 유지 |
+| 즐겨찾기 해제 | `favorite=True → False` |
+| 프로그램 종료 | 현재 실행의 메모리 데이터 소멸 |
+| 프로그램 다시 실행 | 코드에 작성된 기본 데이터로 시작 |
+| 자동 JSON 저장/불러오기 | 현재 기본 기능에는 사용하지 않음 |
+
+따라서 현재 프로그램의 기본 데이터 처리 구조는 다음 한 문장으로 정리할 수 있습니다.
+
+**프로그램이 실행되는 동안에는 새로 추가한 프롬프트와 변경된 즐겨찾기 상태를 메모리에서 유지하고, 프로그램을 종료한 뒤 다시 실행하면 `main.py`에 정의된 기본 프롬프트 상태에서 새로 시작합니다.**
+
+이 구조를 통해 과제에서 요구하는 기본 데이터 관리 동작을 유지하면서, 추후 Bonus에서 영구 저장 기능을 별도로 확장할 수 있도록 구성했습니다.
+
+---
+
+## 19. Git과 GitHub
+
+이번 과제에서는 Python 프로그램을 작성하는 것뿐 아니라 Git과 GitHub를 이용하여 개발 과정을 단계별로 기록했습니다.
+
+Git은 내 컴퓨터에서 파일의 변경 이력을 관리하는 버전 관리 도구이고, GitHub는 Git으로 관리한 Repository를 온라인에 저장하고 공유할 수 있는 서비스입니다.
+
+이번 프로젝트에서는 다음과 같은 흐름으로 Git과 GitHub를 사용했습니다.
+
+```text
+Python 코드 작성
+    ↓
+git status로 변경사항 확인
+    ↓
+git add로 Commit 대상 준비
+    ↓
+git commit으로 변경 이력 저장
+    ↓
+git push로 GitHub에 전송
+```
+
+또한 프롬프트 목록 기능은 별도의 `feature/prompt-list` Branch에서 개발한 뒤 `main` Branch로 Merge하여 Branch 개발 과정도 직접 수행했습니다.
+
+---
+
+### 19.1 Git을 사용한 이유
+
+프로그램을 개발하면서 파일을 계속 수정하면 어느 시점에 어떤 기능을 추가했는지 확인하기 어려울 수 있습니다.
+
+Git을 사용하면 변경사항을 Commit 단위로 기록할 수 있기 때문에 다음과 같은 장점이 있습니다.
+
+- 어떤 기능을 언제 추가했는지 확인할 수 있습니다.
+- 문제가 발생했을 때 이전 변경 기록을 확인할 수 있습니다.
+- 기능별로 작업 내용을 구분할 수 있습니다.
+- Branch를 이용하여 기존 코드와 분리된 공간에서 새로운 기능을 개발할 수 있습니다.
+- GitHub와 연결하여 로컬 개발 내용을 온라인 Repository에도 보관할 수 있습니다.
+
+이번 프로젝트에서는 단순히 최종 `main.py`만 제출하는 것이 아니라 **프로그램이 어떤 순서로 발전했는지 Git 변경 이력으로 확인할 수 있도록 기능 단위 Commit을 남겼습니다.**
+
+---
+
+### 19.2 Git과 GitHub의 차이
+
+Git과 GitHub는 이름이 비슷하지만 역할이 다릅니다.
+
+| 구분 | 역할 | 이번 프로젝트에서의 사용 |
+|---|---|---|
+| Git | 내 컴퓨터에서 파일 변경 이력을 관리 | Commit, Branch, Merge, Log 관리 |
+| GitHub | Git Repository를 온라인에 저장·공유 | 프로젝트 Push 및 제출용 Repository |
+| GitHub CLI | 터미널에서 GitHub 기능을 사용할 수 있도록 지원 | 로그인, Repository 생성 및 연결 |
+
+Git 자체만으로도 로컬에서 Commit과 Branch를 관리할 수 있습니다.
+
+GitHub는 이 Git Repository를 인터넷의 원격 저장소에 올려 다른 컴퓨터에서도 확인하거나 다른 사람과 공유할 수 있도록 합니다.
+
+이번 과제에서는 GitHub CLI도 추가로 사용하여 Repository 생성과 GitHub 인증 과정을 Terminal에서 직접 수행했습니다.
+
+---
+
+### 19.3 Repository란?
+
+Repository는 Git이 프로젝트 파일과 변경 이력을 관리하는 저장 공간입니다.
+
+이번 프로젝트에서는 다음 명령어로 현재 폴더를 Git Repository로 만들었습니다.
+
+```bash
+git init
+```
+
+프로젝트 폴더는 다음과 같습니다.
+
+```text
+C:\Python-Workspace\python-git-prompt-manager
+```
+
+`git init`을 실행한 뒤부터 이 폴더 안의 파일 변경사항을 Git으로 관리할 수 있게 되었습니다.
+
+---
+
+### 19.4 Staging Area와 `git add`
+
+파일을 수정했다고 해서 바로 Commit에 포함되는 것은 아닙니다.
+
+먼저 Commit에 포함할 변경사항을 Staging Area에 등록합니다.
+
+이번 프로젝트에서는 다음 명령어를 반복적으로 사용했습니다.
+
+```bash
+git add .
+git status
+```
+
+`git add .`은 현재 프로젝트의 변경사항을 다음 Commit에 포함할 수 있도록 준비합니다.
+
+`git status`는 어떤 파일이 수정되었는지, 어떤 파일이 Staging되어 있는지, 현재 작업 폴더가 Clean 상태인지 확인하는 데 사용했습니다.
+
+이번 프로젝트에서는 기능 구현 후 곧바로 Commit하지 않고 다음 순서를 사용했습니다.
+
+```text
+코드 수정
+    ↓
+실행 테스트
+    ↓
+증빙 이미지 저장
+    ↓
+README 수정
+    ↓
+git add .
+    ↓
+git status
+    ↓
+Commit 대상 확인
+    ↓
+git commit
+```
+
+이 방식을 사용하여 의도하지 않은 파일이 Commit되는 것을 줄였습니다.
+
+---
+
+### 19.5 Commit
+
+Commit은 현재 Staging Area에 준비된 변경사항을 하나의 개발 기록으로 저장하는 작업입니다.
+
+예를 들어 프로젝트의 첫 Commit은 다음과 같이 작성했습니다.
+
+```bash
+git commit -m "chore: initialize Python project"
+```
+
+이후 기능을 구현할 때도 다음처럼 기능 내용을 알아볼 수 있는 메시지를 사용했습니다.
+
+```text
+feat: add prompt creation
+feat: add prompt list
+feat: add category filter
+feat: add prompt search
+feat: add prompt detail view
+feat: add favorite management
+```
+
+단순히 `update`, `수정`, `test`처럼 어떤 작업인지 알기 어려운 메시지보다 Commit 메시지만 읽어도 변경 내용을 이해할 수 있도록 작성했습니다.
+
+---
+
+### 19.6 Push와 원격 Repository
+
+로컬 Git Repository에서 만든 Commit은 `git push`를 사용하여 GitHub에 전송했습니다.
+
+첫 Push에서는 다음 명령어를 사용했습니다.
+
+```bash
+git push -u origin main
+```
+
+여기서:
+
+| 항목 | 의미 |
+|---|---|
+| `git push` | 로컬 Commit을 GitHub로 전송 |
+| `-u` | 로컬 Branch와 원격 Branch의 추적 관계 설정 |
+| `origin` | GitHub 원격 Repository 이름 |
+| `main` | 전송할 Branch |
+
+첫 Push에서 추적 관계를 설정한 뒤에는 다음처럼 간단히 사용할 수 있었습니다.
+
+```bash
+git push
+```
+
+Push가 끝난 뒤에는 다음 명령어로 동기화 상태를 확인했습니다.
+
+```bash
+git status
+```
+
+정상적으로 동기화되고 변경사항이 남아 있지 않을 때 다음 메시지를 확인했습니다.
+
+```text
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+```
+
+---
+
+### 19.7 Branch와 Checkout
+
+Branch는 기존 코드를 그대로 유지하면서 새로운 기능을 별도의 작업 공간에서 개발할 수 있도록 하는 Git 기능입니다.
+
+이번 과제에서 프롬프트 목록 기능은 과제 요구사항에 따라 `main` Branch에서 바로 개발하지 않고 별도 Branch를 만들었습니다.
+
+```bash
+git checkout -b feature/prompt-list
+```
+
+이 명령은 다음 두 작업을 한 번에 수행합니다.
+
+```text
+feature/prompt-list Branch 생성
++
+feature/prompt-list Branch로 이동
+```
+
+현재 Branch는 다음 명령어로 다시 확인했습니다.
+
+```bash
+git branch --show-current
+```
+
+실행 결과:
+
+```text
+feature/prompt-list
+```
+
+가 표시되는 것을 확인한 뒤 해당 Branch에서 프롬프트 목록 기능을 구현하고 Commit했습니다.
+
+---
+
+### 19.8 Merge
+
+`feature/prompt-list`에서 목록 기능 개발과 Commit을 완료한 뒤 `main`으로 돌아왔습니다.
+
+```bash
+git checkout main
+```
+
+그 다음 다음 명령어로 목록 기능을 `main`에 합쳤습니다.
+
+```bash
+git merge feature/prompt-list
+```
+
+실제 Merge에서는 다음 결과가 표시되었습니다.
+
+```text
+Fast-forward
+```
+
+Fast-forward는 Merge 실패가 아닙니다.
+
+`main` Branch에 서로 충돌하는 별도의 Commit이 없었기 때문에 `main`이 `feature/prompt-list`의 최신 Commit 위치까지 이동하는 방식으로 정상 Merge된 것입니다.
+
+따라서 이번 프로젝트에서는 다음 Branch 작업 흐름을 실제로 수행했습니다.
+
+```text
+main
+  ↓
+feature/prompt-list 생성
+  ↓
+목록 기능 개발
+  ↓
+feature/prompt-list에서 Commit
+  ↓
+main으로 Checkout
+  ↓
+feature/prompt-list Merge
+  ↓
+Git Log 확인
+  ↓
+GitHub Push
+```
+
+---
+
+### 19.9 Git Log
+
+Commit 기록은 다음 명령어로 확인할 수 있습니다.
+
+```bash
+git log --oneline --graph --all --decorate
+```
+
+각 옵션의 의미는 다음과 같습니다.
+
+| 옵션 | 의미 |
+|---|---|
+| `--oneline` | Commit 하나를 한 줄로 간단히 표시 |
+| `--graph` | Commit 관계를 그래프 형태로 표시 |
+| `--all` | 여러 Branch의 기록을 함께 표시 |
+| `--decorate` | `HEAD`, `main`, `origin/main`, Branch 이름 표시 |
+
+프롬프트 목록 기능 Merge 후 실제 Git Log에서는 `main`과 `feature/prompt-list`가 같은 목록 기능 Commit을 가리키는 것을 확인했습니다.
+
+![프롬프트 목록 Branch Git Log 확인](images/33-feature-prompt-list-git-log.jpg)
+
+**그림 47. Git Log를 이용한 `main`과 `feature/prompt-list`의 Commit 위치 확인**
+
+해당 화면을 통해 단순히 Merge 명령어가 실행된 것뿐 아니라 Git 변경 이력에서도 목록 기능 Commit이 정상적으로 반영된 것을 확인했습니다.
+
+---
+
+### 19.10 과제에서 요구하는 주요 Git 명령어 점검
+
+과제에서는 다음 Git 명령어를 각각 최소 한 번 이상 사용하는 것이 중요합니다.
+
+| Git 명령어 | 의미 | 현재 수행 상태 |
+|---|---|---|
+| `git init` | 현재 폴더를 Git Repository로 초기화 | ✅ 완료 |
+| `git add` | 변경사항을 Staging Area에 등록 | ✅ 완료 |
+| `git commit` | 변경사항을 Commit으로 기록 | ✅ 완료 |
+| `git push` | 로컬 Commit을 GitHub로 전송 | ✅ 완료 |
+| `git pull` | GitHub의 변경사항을 로컬로 가져오기 | ⏳ 아직 최종 확인 필요 |
+| `git checkout` | 다른 Branch로 이동 | ✅ 완료 |
+| `git clone` | 원격 Repository를 새 폴더에 복제 | ⏳ Chapter 22에서 수행 예정 |
+| `git merge` | 다른 Branch의 변경사항을 현재 Branch에 합치기 | ✅ 완료 |
+
+현재까지 완료하지 않은 항목을 완료한 것처럼 작성하지 않았습니다.
+
+`git clone`은 다음 Chapter에서 자신의 Repository가 아닌 공개 Sample Repository를 대상으로 수행할 예정입니다.
+
+`git pull`도 실제 실행 결과를 확인한 뒤 완료 상태로 변경합니다.
+
+---
+
+### 19.11 현재 Git/GitHub 작업 결과
+
+현재까지 실제로 수행한 Git/GitHub 흐름을 정리하면 다음과 같습니다.
+
+```text
+Git 설치 및 설정
+    ↓
+git init
+    ↓
+.gitignore 작성
+    ↓
+git add
+    ↓
+git commit
+    ↓
+GitHub CLI 설치 및 로그인
+    ↓
+GitHub Repository 생성
+    ↓
+origin 연결
+    ↓
+git push -u origin main
+    ↓
+기능별 개발
+    ↓
+기능별 Commit
+    ↓
+feature/prompt-list 생성
+    ↓
+목록 기능 Branch 개발
+    ↓
+git checkout main
+    ↓
+git merge feature/prompt-list
+    ↓
+git log 확인
+    ↓
+계속된 기능별 Commit 및 Push
+```
+
+이 과정을 통해 Git 명령어를 단순히 외우는 것이 아니라 **실제 Python 프로그램의 기능 개발 과정과 연결하여 사용했습니다.**
+
+---
+
+## 20. 실제 Git 작업 과정
+
+이번 프로젝트에서는 먼저 모든 기능을 만든 뒤 한 번에 Commit하는 방식이 아니라 기능이 발전하는 순서에 맞춰 Git 기록을 남겼습니다.
+
+Git 작업의 전체 흐름을 실제 수행 순서 중심으로 정리하면 다음과 같습니다.
+
+---
+
+### 20.1 프로젝트 초기 설정
+
+프로젝트 작업 폴더를 만든 뒤 Git 설정을 확인하고 Repository를 초기화했습니다.
+
+```bash
+git config --global user.name
+git config --global user.email
+git config --global init.defaultBranch
+git init
+git branch --show-current
+```
+
+현재 Branch가 `main`인지 확인한 뒤 프로젝트 파일을 Git으로 관리하기 시작했습니다.
+
+---
+
+### 20.2 `.gitignore` 설정
+
+처음 `git add .`을 실행했을 때 Windows 시스템 파일인 `desktop.ini`도 Commit 대상에 포함된 것을 발견했습니다.
+
+따라서 `.gitignore`에 다음 항목을 추가했습니다.
+
+```gitignore
+desktop.ini
+```
+
+수정 후 `git status`를 다시 확인하여 `desktop.ini`가 Commit 대상에서 제외되었는지 검증했습니다.
+
+이 작업은 다음 순서로 진행했습니다.
+
+```text
+git add .
+    ↓
+git status
+    ↓
+불필요한 desktop.ini 발견
+    ↓
+.gitignore 수정
+    ↓
+git status 재확인
+    ↓
+desktop.ini 제외 확인
+```
+
+---
+
+### 20.3 첫 Commit
+
+프로젝트 초기 구조를 다음 Commit으로 기록했습니다.
+
+```bash
+git commit -m "chore: initialize Python project"
+```
+
+이후 다음 명령어로 첫 Commit이 실제 Git 기록에 저장되었는지 확인했습니다.
+
+```bash
+git log --oneline
+```
+
+---
+
+### 20.4 GitHub 연결 및 첫 Push
+
+GitHub CLI를 설치하고 인증한 뒤 GitHub Repository를 생성했습니다.
+
+```bash
+gh repo create python-git-prompt-manager --public --source=. --remote=origin
+```
+
+원격 Repository 연결 상태는 다음 명령어로 확인했습니다.
+
+```bash
+git remote -v
+```
+
+GitHub 설정 관련 내용을 Commit한 뒤 처음으로 GitHub에 Push했습니다.
+
+```bash
+git push -u origin main
+```
+
+이때 로컬 `main`과 GitHub `origin/main` 사이의 추적 관계도 함께 설정했습니다.
+
+---
+
+### 20.5 기본 데이터와 메인 메뉴 개발
+
+기본 프롬프트 데이터와 메인 메뉴 기능을 구현하고 별도의 기능 Commit으로 기록했습니다.
+
+```text
+feat: add default prompts and main menu
+```
+
+기본 데이터에는 이전 AI 작업에서 실제로 사용한 프롬프트 4개를 사용했습니다.
+
+---
+
+### 20.6 프롬프트 추가 기능 개발
+
+프롬프트의 제목, 내용, 카테고리를 입력하여 새로운 데이터를 추가하는 기능을 구현했습니다.
+
+빈 제목과 빈 내용 입력을 방지하고, 잘못된 카테고리 번호 입력 시 다시 입력하도록 검증 기능도 포함했습니다.
+
+기능을 테스트한 뒤 다음 Commit을 생성했습니다.
+
+```text
+feat: add prompt creation
+```
+
+---
+
+### 20.7 프롬프트 목록 기능 Branch 개발
+
+과제에서 Branch 사용을 요구한 프롬프트 목록 기능은 별도의 Branch를 생성했습니다.
+
+```bash
+git checkout -b feature/prompt-list
+```
+
+현재 Branch를 확인했습니다.
+
+```bash
+git branch --show-current
+```
+
+목록 기능을 구현하고 실행 테스트한 뒤 해당 Branch에서 다음 Commit을 생성했습니다.
+
+```text
+feat: add prompt list
+```
+
+---
+
+### 20.8 `main` Branch Merge
+
+목록 기능 Commit 후 작업 폴더가 Clean 상태인지 확인했습니다.
+
+```bash
+git status
+```
+
+그 다음 `main` Branch로 이동했습니다.
+
+```bash
+git checkout main
+```
+
+목록 기능 Branch를 Merge했습니다.
+
+```bash
+git merge feature/prompt-list
+```
+
+실제 결과는 `Fast-forward` 방식으로 정상 병합되었습니다.
+
+이후 다음 명령어로 Branch와 Commit 위치를 다시 검증했습니다.
+
+```bash
+git log --oneline --graph --all --decorate
+```
+
+---
+
+### 20.9 카테고리별 조회 기능 개발
+
+카테고리 선택, 잘못된 번호 재입력, 해당 카테고리 필터링, 빈 결과 안내 기능을 구현했습니다.
+
+실행 테스트에서는 `텍스트 생성` 카테고리가 정상 조회되는 것과 데이터가 없는 `페르소나` 카테고리의 빈 결과 처리까지 확인했습니다.
+
+기능 완료 후 다음 Commit을 생성했습니다.
+
+```text
+feat: add category filter
+```
+
+---
+
+### 20.10 프롬프트 검색 기능 개발
+
+제목 또는 내용에 검색어가 포함된 프롬프트를 찾는 기능을 구현했습니다.
+
+빈 검색어 방지와 검색 결과 없음 안내를 포함하고, 영문 검색에서는 `casefold()`를 사용하여 대소문자 차이를 줄였습니다.
+
+실행 테스트 후 다음 Commit을 생성했습니다.
+
+```text
+feat: add prompt search
+```
+
+---
+
+### 20.11 프롬프트 상세 보기 기능 개발
+
+프롬프트 번호를 입력하여 제목, 카테고리, 즐겨찾기, 전체 내용을 확인하는 기능을 구현했습니다.
+
+존재하지 않는 번호를 입력했을 때 다시 입력할 수 있도록 검증 기능도 포함했습니다.
+
+실제 실행 결과를 확인한 뒤 다음 Commit을 생성했습니다.
+
+```text
+feat: add prompt detail view
+```
+
+---
+
+### 20.12 즐겨찾기 관리 및 목록 기능 개발
+
+선택한 프롬프트의 `favorite` 값을 다음 코드로 Toggle하도록 구현했습니다.
+
+```python
+prompt["favorite"] = not prompt["favorite"]
+```
+
+한 번 선택하면:
+
+```text
+False → True
+☆ → ★
+```
+
+다시 선택하면:
+
+```text
+True → False
+★ → ☆
+```
+
+로 변경됩니다.
+
+즐겨찾기 목록에서도 변경 상태가 즉시 반영되는 것을 확인했습니다.
+
+기능 완료 후 다음 Commit을 생성했습니다.
+
+```text
+feat: add favorite management
+```
+
+---
+
+### 20.13 기능 구현 후 반복한 Git 작업
+
+각 기능을 구현할 때 기본적으로 다음 순서를 반복했습니다.
+
+```text
+기능 코드 작성
+    ↓
+python .\main.py
+    ↓
+정상·오류 상황 테스트
+    ↓
+증빙 화면 저장
+    ↓
+README에 실제 결과 기록
+    ↓
+git add .
+    ↓
+git status
+    ↓
+Commit 대상 확인
+    ↓
+git commit
+    ↓
+git push
+    ↓
+git status
+    ↓
+working tree clean 확인
+```
+
+이 방식의 장점은 코드만 Commit하는 것이 아니라 **기능 구현, 실제 테스트, 증빙, 설명 문서가 하나의 개발 과정으로 연결된다는 것**입니다.
+
+---
+
+### 20.14 현재까지 완료된 Git 작업 흐름
+
+현재까지 실제 수행한 전체 흐름은 다음과 같이 정리할 수 있습니다.
+
+```text
+프로젝트 생성
+    ↓
+Git 환경 설정
+    ↓
+git init
+    ↓
+.gitignore 작성 및 검증
+    ↓
+첫 Commit
+    ↓
+GitHub CLI 설치·인증
+    ↓
+GitHub Repository 생성
+    ↓
+Remote 연결
+    ↓
+첫 Push
+    ↓
+기본 프롬프트 + 메인 메뉴
+    ↓
+프롬프트 추가
+    ↓
+feature/prompt-list Branch 생성
+    ↓
+프롬프트 목록 기능 개발
+    ↓
+Branch Commit
+    ↓
+checkout main
+    ↓
+merge feature/prompt-list
+    ↓
+Git Log 검증
+    ↓
+카테고리별 조회
+    ↓
+프롬프트 검색
+    ↓
+상세 보기
+    ↓
+즐겨찾기 관리·목록
+    ↓
+각 단계 Commit 및 GitHub Push
+```
+
+다음 단계에서는 아직 확인하지 않은 `git clone`과 `git pull`도 실제 명령 실행 결과를 기준으로 문서화합니다.
+
+---
+
+## 21. 의미 있는 Commit 기록
+
+이번 과제에서는 단순히 Commit 개수만 늘리는 것이 아니라 **프로그램 개발 과정에서 실제 기능이나 문서 상태가 변경된 시점에 의미 있는 Commit을 만드는 것**을 기준으로 작업했습니다.
+
+Commit 메시지는 가능하면 다음 형식을 사용했습니다.
+
+```text
+종류: 작업 내용
+```
+
+예:
+
+```text
+feat: add prompt search
+```
+
+여기서 `feat`는 새로운 기능을 추가했다는 의미이고, `add prompt search`는 어떤 기능이 추가되었는지를 설명합니다.
+
+---
+
+### 21.1 Commit 메시지 종류
+
+이번 프로젝트에서 주로 사용한 Commit 메시지 접두어는 다음과 같습니다.
+
+| 종류 | 의미 | 예 |
+|---|---|---|
+| `chore` | 프로젝트 초기 설정이나 구조 작업 | `chore: initialize Python project` |
+| `feat` | 새로운 프로그램 기능 추가 | `feat: add prompt search` |
+| `docs` | README와 증빙 등 문서 작업 | `docs: add first push evidence` |
+
+이처럼 Commit 메시지 앞부분만 보아도 작업 성격을 구분할 수 있도록 했습니다.
+
+---
+
+### 21.2 실제 생성한 주요 Commit
+
+현재까지 실제 개발 과정에서 다음과 같은 Commit을 생성했습니다.
+
+```text
+chore: initialize Python project
+docs: document GitHub setup process
+docs: add first push evidence
+docs: verify GitHub repository display
+feat: add default prompts and main menu
+feat: add prompt creation
+feat: add prompt list
+docs: add prompt list merge evidence
+docs: update README and prompt list evidence
+feat: add category filter
+feat: add prompt search
+feat: add prompt detail view
+feat: add favorite management
+```
+
+위 기록만 기준으로 해도 **10개 이상의 의미 있는 Commit을 실제 개발 과정에서 생성**했습니다.
+
+단순히 제출 직전에 Commit 수를 맞추기 위해 빈 Commit을 만든 것이 아니라 다음과 같이 기능과 작업 단계가 실제로 달라질 때 기록했습니다.
+
+```text
+프로젝트 초기화
+GitHub 설정
+첫 Push 증빙
+GitHub 표시 확인
+기본 데이터와 메뉴
+프롬프트 추가
+프롬프트 목록
+Branch·Merge 증빙
+카테고리별 조회
+검색
+상세 보기
+즐겨찾기
+```
+
+---
+
+### 21.3 기능 Commit과 문서 Commit을 구분한 이유
+
+프로그램 기능을 추가한 작업과 README·증빙을 정리한 작업은 성격이 다릅니다.
+
+예를 들어:
+
+```text
+feat: add prompt search
+```
+
+는 `main.py`에 검색 기능을 구현한 기능 Commit입니다.
+
+반면:
+
+```text
+docs: add prompt list merge evidence
+```
+
+는 Branch·Merge 과정에서 생성한 증빙 이미지와 설명을 README에 기록한 문서 Commit입니다.
+
+두 종류를 구분하면 Git Log를 보았을 때:
+
+```text
+이 Commit은 코드 기능을 추가했는가?
+또는 문서를 정리했는가?
+```
+
+를 쉽게 판단할 수 있습니다.
+
+---
+
+### 21.4 기능 단위 Commit의 장점
+
+기능별로 Commit을 구분하면 문제가 생겼을 때 전체 프로젝트를 한 번에 살펴보지 않고 관련 변경 이력을 좁혀 볼 수 있습니다.
+
+예를 들어 검색 기능에서 문제가 발생한다면 다음 Commit을 중심으로 변경 내용을 확인할 수 있습니다.
+
+```text
+feat: add prompt search
+```
+
+상세 보기 기능이라면:
+
+```text
+feat: add prompt detail view
+```
+
+를 확인할 수 있습니다.
+
+따라서 Commit 메시지는 단순한 메모가 아니라 **프로젝트 개발 이력을 찾기 위한 제목 역할**도 합니다.
+
+---
+
+### 21.5 Branch 작업과 Commit의 관계
+
+프롬프트 목록 기능은 `feature/prompt-list` Branch에서 다음 Commit을 생성했습니다.
+
+```text
+feat: add prompt list
+```
+
+그 다음:
+
+```bash
+git checkout main
+git merge feature/prompt-list
+```
+
+순서로 `main`에 병합했습니다.
+
+따라서 해당 기능은 단순히 Commit 메시지만 존재하는 것이 아니라 다음 개발 흐름을 실제로 거쳤습니다.
+
+```text
+별도 Branch 생성
+    ↓
+기능 개발
+    ↓
+Branch에서 Commit
+    ↓
+main으로 이동
+    ↓
+Merge
+```
+
+이 과정은 과제에서 요구한 Branch 활용을 실제 Git 작업으로 수행한 사례입니다.
+
+---
+
+### 21.6 Git Log로 Commit 기록 확인
+
+Commit 기록을 확인하기 위해 다음 명령어를 사용했습니다.
+
+```bash
+git log --oneline --graph --all --decorate
+```
+
+![프롬프트 목록 Branch Git Log 확인](images/33-feature-prompt-list-git-log.jpg)
+
+**그림 48. Git Log를 이용한 기능별 Commit 및 Branch 기록 확인**
+
+이 화면에서는 당시 `feat: add prompt list`까지의 Commit과 `main`, `feature/prompt-list`, `origin/main` 위치를 확인했습니다.
+
+이후 카테고리별 조회, 검색, 상세 보기, 즐겨찾기 기능 Commit이 추가되었으므로 **최종 제출 전 Git Log를 다시 실행하여 전체 Commit 기록을 한 번 더 캡처할 예정입니다.**
+
+최종 확인 명령은 다음과 같습니다.
+
+```bash
+git log --oneline --graph --all --decorate
+```
+
+최종 Git Log에서는 다음 내용을 확인합니다.
+
+1. 의미 있는 Commit이 10개 이상 존재하는지
+2. `feat: add prompt list` 기록이 존재하는지
+3. `feature/prompt-list` Branch 기록이 확인되는지
+4. 이후 카테고리·검색·상세 보기·즐겨찾기 Commit이 존재하는지
+5. Commit 메시지만 보고 각 작업 내용을 구분할 수 있는지
+
+---
+
+### 21.7 현재 Commit 기록 평가
+
+현재 Commit 구성은 단순히 다음과 같은 메시지를 반복하지 않습니다.
+
+```text
+update
+update2
+수정
+최종
+진짜최종
+```
+
+대신 다음처럼 작업 목적이 드러나는 메시지를 사용했습니다.
+
+```text
+feat: add category filter
+feat: add prompt search
+feat: add prompt detail view
+feat: add favorite management
+```
+
+따라서 다른 사람이 Git Log만 확인하더라도 프로그램이 어떤 순서로 발전했는지 비교적 쉽게 이해할 수 있습니다.
+
+---
+
+### 21.8 현재 상태와 최종 확인 계획
+
+현재까지 의미 있는 Commit 10개 이상을 실제 작업 과정에서 확보했습니다.
+
+다만 과제 최종 증빙은 중간 단계의 Git Log가 아니라 **모든 필수 기능과 남은 Git 실습까지 완료한 후의 최종 Git Log**를 사용하는 편이 더 적절합니다.
+
+따라서 현재 `33-feature-prompt-list-git-log.jpg`는 Branch와 Merge 과정을 설명하는 증빙으로 유지하고, 모든 작업이 끝난 뒤 별도의 최종 Git Log 화면을 추가합니다.
+
+최종적으로 다음 흐름을 확인할 예정입니다.
+
+```text
+기능 개발 완료
+    ↓
+공개 Sample Repository Clone
+    ↓
+git pull 사용 확인
+    ↓
+README 최종 정리
+    ↓
+최종 Commit 및 Push
+    ↓
+git status
+    ↓
+git log --oneline --graph --all --decorate
+    ↓
+10개 이상 의미 있는 Commit + Branch 기록 확인
+```
+
+따라서 현재 Chapter 21은 **실제 생성한 Commit을 기준으로 작성했으며, 최종 Git Log 증빙만 모든 작업 완료 후 추가하는 구조**로 정리했습니다.
+
+---
