@@ -283,6 +283,40 @@ def search_prompts():
         )
 
 
+def show_prompt_detail():
+    """선택한 프롬프트의 상세 정보를 출력한다."""
+    if not prompts:
+        print("\n등록된 프롬프트가 없습니다.")
+        return
+
+    show_prompt_list()
+
+    while True:
+        try:
+            choice = input("\n상세 보기할 프롬프트 번호: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print("\n프롬프트 상세 보기를 취소합니다.")
+            return
+
+        if choice.isdigit():
+            number = int(choice)
+
+            if 1 <= number <= len(prompts):
+                prompt = prompts[number - 1]
+                favorite_mark = "★" if prompt["favorite"] else "☆"
+
+                print("\n=== 프롬프트 상세 정보 ===")
+                print(f"번호: {number}")
+                print(f"제목: {prompt['title']}")
+                print(f"카테고리: {prompt['category']}")
+                print(f"즐겨찾기: {favorite_mark}")
+                print("내용:")
+                print(prompt["content"])
+                return
+
+        print("잘못된 프롬프트 번호입니다. 다시 입력해주세요.")
+
+
 def main():
     """사용자가 종료를 선택할 때까지 메인 메뉴를 반복 실행한다."""
     while True:
@@ -307,7 +341,7 @@ def main():
             search_prompts()
 
         elif choice == "5":
-            print("[프롬프트 상세 보기] 기능은 다음 단계에서 구현합니다.")
+            show_prompt_detail()
 
         elif choice == "6":
             print("[즐겨찾기 관리] 기능은 다음 단계에서 구현합니다.")
