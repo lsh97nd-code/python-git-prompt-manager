@@ -846,305 +846,263 @@ GitHub Repository의 README 영역을 아래로 이동하여 Markdown 문법과 
 
 **---**
 
-**## 4. 프로젝트 파일 구조**
+## 4. 프로젝트 파일 구조
 
+현재 프로젝트의 핵심 구조는 다음과 같습니다.
 
-
-
-
-현재 프로젝트는 다음과 같이 구성했습니다.
-
-\`\`\`text
-
+```text
 python-git-prompt-manager/
-
 │
-
 ├── main.py
-
 ├── hello.py
-
 ├── README.md
-
 ├── .gitignore
-
 │
-
 └── images/
+    ├── 01-development-environment.png
+    ├── 02-python-installation.jpg
+    ├── ...
+    ├── 69-prompt-list-after-input-validation-and-exit.jpg
+    ├── git-error-not-repository.jpg
+    └── git-status-after-readme-update.jpg
+```
 
-    ├── 01-development-environment.png
+`images/` 폴더에는 개발 환경, Git/GitHub 작업, 프로그램 기능 테스트, 입력 검증, Bonus 기능 검증 과정에서 생성한 증빙 이미지를 순서대로 저장했습니다.
 
-    ├── 02-python-installation.jpg
+| 파일 및 폴더 | 역할 |
+|---|---|
+| `main.py` | 프롬프트 관리 프로그램의 필수 기능과 Bonus 기능을 구현한 Python 실행 파일 |
+| `hello.py` | `print("Hello")`를 실행하여 Python 환경을 확인하기 위한 파일 |
+| `README.md` | 프로젝트 소개, 구현 과정, Git 실습, 테스트 결과와 증빙을 정리한 문서 |
+| `.gitignore` | `desktop.ini`, `__pycache__/`, `.venv/` 등 불필요한 파일을 Git 추적 대상에서 제외 |
+| `images/` | 설치·Git·기능 테스트·입력 검증·Bonus 결과 등의 증빙 이미지 보관 |
 
-    ├── 03-vscode-installation.jpg
+이미지 파일은 가능한 한 `번호-작업내용.jpg/png` 형식으로 이름을 작성하여, 파일명만 보아도 어떤 작업을 증명하는 화면인지 알 수 있도록 정리했습니다.
 
-    ├── 04-git-installation.jpg
+---
 
-    ├── 05-git-add-status.png
+## 5. 프로그램 실행 방법
 
-    ├── 06-gitignore-desktop-ini.jpg
+VS Code에서 프로젝트 폴더를 연 뒤 Terminal에서 다음 명령어를 입력합니다.
 
-    ├── 07-gitignore-verification.jpg
-
-    ├── 08-git-staging-final.jpg
-
-    ├── 09-git-staging-complete.jpg
-
-    ├── 10-before-first-commit.jpg
-
-    ├── 11-first-commit-and-git-log.jpg
-
-    ├── 12-github-cli-install-and-verification.jpg
-
-    ├── 13-github-device-activation.jpg
-
-    ├── 14-github-cli-authorization.jpg
-
-    ├── 15-github-cli-confirm-access.jpg
-
-    ├── 16-github-cli-login-success.jpg
-
-    ├── 17-github-auth-status.jpg
-
-    ├── 18-github-repository-and-remote.jpg
-
-    ├── 19-github-setup-docs-commit.jpg
-
-    ├── 20-first-github-push-and-status.jpg
-
-    ├── 21-first-push-evidence-commit.jpg
-
-    ├── 22-github-push-and-clean-status.jpg
-
-    ├── 23-github-repository-and-readme-overview\.jpg
-
-    ├── 24-github-readme-image-rendering.jpg
-
-    ├── git-error-not-repository.jpg
-
-    └── git-status-after-readme-update.jpg
-
-\`\`\`
-
-각 파일과 폴더의 역할은 다음과 같습니다.
-
-\| 파일 및 폴더 | 역할 |
-
-\|---|---|
-
-\| \`main.py\` | 프롬프트 관리 프로그램의 주요 기능을 작성하는 Python 파일 |
-
-\| \`hello.py\` | \`print("Hello")\`를 실행하여 Python이 정상적으로 동작하는지 확인하기 위한 파일 |
-
-\| \`README.md\` | 프로젝트 소개, 개발 과정, 실행 방법 및 증빙 자료를 정리하는 문서 |
-
-\| \`.gitignore\` | Git으로 관리할 필요가 없는 파일과 폴더를 추적 대상에서 제외하기 위한 설정 파일 |
-
-\| \`images/\` | 설치 과정, 개발 환경, Git 작업 과정 및 프로그램 실행 결과 등의 증빙 이미지를 보관하는 폴더 |
-
-프로그램 개발과 Git/GitHub 실습을 진행하면서 새로운 증빙 자료가 생성되면 \`images/\` 폴더에 순서대로 추가합니다.
-
-**---**
-
-**## 5. 프로그램 실행 방법**
-
-VS Code에서 프로젝트 폴더를 연 뒤 Terminal(터미널)에서 다음 명령어를 입력합니다.
-
-\`\`\`bash
-
+```bash
 python main.py
+```
 
-\`\`\`
+또는 Windows PowerShell에서는 다음과 같이 실행해도 됩니다.
 
-\`python\`은 Python 프로그램을 실행한다는 뜻이고, \`main.py\`는 이번 과제에서 작성하는 프롬프트 관리 프로그램의 실행 파일입니다.
+```powershell
+python .\main.py
+```
 
-프로그램이 시작되면 메뉴 번호를 입력하여 원하는 기능을 선택합니다.
+프로그램이 시작되면 숫자 메뉴를 입력하여 원하는 기능을 선택합니다.
 
+각 기능을 수행한 뒤에는 다시 메인 메뉴로 돌아오며, `0`을 선택하면 프로그램을 종료합니다.
 
+---
 
+## 6. 프로그램 주요 기능
 
+현재 프로그램은 필수 기능과 선택한 Bonus 2 기능을 함께 제공합니다.
 
-**## 6. 프로그램 주요 기능**
+| 번호 | 기능 | 구분 | 설명 |
+|---:|---|---|---|
+| 1 | 프롬프트 추가 | 필수 | 제목·내용·카테고리를 입력하여 새 프롬프트 등록 |
+| 2 | 프롬프트 목록 | 필수 | 전체 프롬프트의 번호·제목·카테고리·즐겨찾기 표시 |
+| 3 | 카테고리별 조회 | 필수 | 선택한 카테고리에 해당하는 프롬프트만 조회 |
+| 4 | 프롬프트 검색 | 필수 | 제목 또는 내용에 검색어가 포함된 프롬프트 검색 |
+| 5 | 프롬프트 상세 보기 | 필수 + Bonus 연계 | 전체 내용을 확인하고 조회수 증가 |
+| 6 | 즐겨찾기 관리 | 필수 | 즐겨찾기 추가·해제 |
+| 7 | 즐겨찾기 목록 | 필수 | 즐겨찾기된 프롬프트만 조회 |
+| 8 | 프롬프트 수정 | Bonus 2 | 기존 제목·내용·카테고리 수정 |
+| 9 | 프롬프트 삭제 | Bonus 2 | 확인 절차 후 프롬프트 삭제 |
+| 10 | 많이 본 프롬프트 Top 5 | Bonus 2 | 현재 실행 세션의 조회수를 기준으로 상위 항목 표시 |
+| 0 | 종료 | 필수 | 프로그램 종료 |
 
-프로그램은 다음 필수 기능을 제공합니다.
+잘못된 메뉴 번호를 입력하면 프로그램을 종료하지 않고 안내 메시지를 출력한 뒤 다시 입력할 수 있도록 구현했습니다.
 
-기능    설명
+---
 
-프롬프트 추가   제목·내용·카테고리를 입력하여 새로운 프롬프트 등록
+## 7. 프로그램의 데이터 구조
 
-프롬프트 목록   저장된 모든 프롬프트 확인
+### 7.1 List와 Dictionary
 
-카테고리별 조회 선택한 카테고리의 프롬프트만 확인
+여러 프롬프트는 하나의 `List`에 저장하고, 프롬프트 하나는 `Dictionary`로 표현합니다.
 
-프롬프트 검색   제목 또는 내용에 검색어가 포함된 프롬프트 검색
+현재 각 프롬프트는 다음 다섯 가지 정보를 가집니다.
 
-상세 보기       선택한 프롬프트의 전체 내용 확인
-
-즐겨찾기 관리   즐겨찾기 추가 또는 해제
-
-즐겨찾기 목록   즐겨찾기된 프롬프트만 모아서 확인
-
-종료    프로그램 종료
-
-각 기능 수행 후 다시 메인 메뉴로 돌아오며, 잘못된 메뉴 번호를 입력하면 안내 메시지를 표시한 뒤 다시 입력할 수 있도록 구현합니다. 이는 과제의 메뉴 동작 요구사항입니다.
-
-**## 7. 프로그램의 데이터 구조**
-
-**### 7.1 List와 Dictionary**
-
-List(리스트)는 여러 데이터를 순서대로 저장할 수 있는 Python 자료구조입니다.
-
-Dictionary(딕셔너리)는 하나의 데이터에 포함된 여러 정보를 이름: 값 형태로 관리하는 자료구조입니다.
-
-이번 프로그램에서는 여러 프롬프트를 하나의 List에 저장하고, 프롬프트 하나는 Dictionary로 표현합니다.
-
+```text
 prompts (List)
-
 │
-
 ├── 프롬프트 1 (Dictionary)
-
-│   ├── title
-
-│   ├── content
-
-│   ├── category
-
-│   └── favorite
-
+│   ├── title
+│   ├── content
+│   ├── category
+│   ├── favorite
+│   └── view_count
 │
-
 ├── 프롬프트 2 (Dictionary)
+├── 프롬프트 3 (Dictionary)
+└── 프롬프트 4 (Dictionary)
+```
 
-└── 프롬프트 3 (Dictionary)
+실제 구조 예시는 다음과 같습니다.
 
-예:
+```python
+{
+    "title": "결과 캐싱 개념 설명",
+    "content": "...",
+    "category": "텍스트 생성",
+    "favorite": False,
+    "view_count": 0,
+}
+```
 
-prompts = [
+`favorite`는 즐겨찾기 여부를 `True / False`로 관리하고, `view_count`는 Bonus 기능에서 상세 보기 횟수를 기록합니다.
 
-    {
+### 7.2 List + Dictionary를 선택한 이유
 
-        "title": "【실제 기본 프롬프트 제목】",
+여러 프롬프트를 순서대로 관리하기에는 List가 적합하고, 하나의 프롬프트에 제목·내용·카테고리·즐겨찾기·조회수처럼 서로 다른 속성이 있으므로 Dictionary를 사용하면 각 정보의 의미를 명확하게 표현할 수 있습니다.
 
-        "content": "【실제 프롬프트 내용】",
+### 7.3 현재 구조의 한계
 
-        "category": "【카테고리】",
+현재 데이터는 메모리에만 존재하므로 프로그램을 종료하면 실행 중 변경한 내용이 초기화됩니다.
 
-        "favorite": False
+이번 과제에서는 이 동작이 필수 요구사항과 일치하지만, 실제 장기 사용 프로그램으로 확장하려면 JSON, CSV, SQLite 또는 Database 같은 영구 저장 방식이 필요합니다.
 
-    }
+---
 
-]
+## 8. 기본 프롬프트 데이터
 
-**### 왜 List + Dictionary를 선택했는가?**
+프로그램 실행 시 이전 미션과 학습 과정에서 사용한 프롬프트를 기본 데이터로 제공합니다.
 
-여러 프롬프트를 순서대로 관리하기에는 List가 적합하고, 하나의 프롬프트에는 제목·내용·카테고리·즐겨찾기처럼 서로 다른 속성이 있으므로 Dictionary를 사용하면 각 정보의 의미를 명확하게 표현할 수 있습니다.
+과제 요구사항은 최소 3개 이상이며, 현재 프로그램에는 총 4개가 등록되어 있습니다.
 
-**### 한계**
+| 번호 | 제목 | 카테고리 |
+|---:|---|---|
+| 1 | 몸 이상 신호 기반 컬러푸드 서비스 기획 | 텍스트 생성 |
+| 2 | 주식투자 위험 영상 이미지 수정 | 이미지 생성 |
+| 3 | 결과 캐싱 개념 설명 | 텍스트 생성 |
+| 4 | 복수 여행지 증빙 확인 | 기타 |
 
-데이터가 매우 많아지거나 프로그램 종료 후에도 계속 보존해야 하는 프로그램이라면 파일이나 데이터베이스와 같은 별도의 저장 방식이 필요합니다.
+각 기본 프롬프트의 초기값은 다음과 같습니다.
 
-힌트: “사용했다”에서 끝내지 않고 무엇인지 → 왜 선택했는지 → 장점 → 한계까지 설명합니다.
+```text
+favorite = False
+view_count = 0
+```
 
-과제에서도 List와 Dictionary를 사용하고 각 프롬프트에 제목·내용·카테고리·즐겨찾기 여부를 포함하도록 명시합니다.
+따라서 프로그램을 처음 실행하면 목록에서 즐겨찾기 표시가 `☆`로 보이고, 조회수도 `0`부터 시작합니다.
 
-**## 8. 기본 프롬프트 데이터**
+---
 
-프로그램 실행 시 이전 미션에서 작성한 프롬프트를 최소 3개 이상 기본 데이터로 제공합니다.
+## 9. 메뉴와 프로그램 흐름
 
-번호    제목    카테고리        출처
+전체 흐름은 다음과 같습니다.
 
-1       【직접 입력】   【직접 입력】   이전 미션
-
-2       【직접 입력】   【직접 입력】   이전 미션
-
-3       【직접 입력】   【직접 입력】   이전 미션
-
-힌트: 여기에는 아무 예시를 새로 만드는 것이 아니라 사용자님이 실제 이전 미션에서 작성했던 프롬프트 최소 3개를 넣어야 합니다. 이 부분은 제가 임의로 결정하지 않겠습니다.
-
-**## 9. 메뉴와 프로그램 흐름**
-
+```text
 프로그램 실행
-
-      ↓
-
+    ↓
 메인 메뉴 출력
-
-      ↓
-
+    ↓
 사용자가 번호 입력
-
-      ↓
-
+    ↓
 선택한 기능 실행
-
-      ↓
-
+    ↓
 결과 출력
-
-      ↓
-
+    ↓
 메인 메뉴로 복귀
-
-      ↓
-
-0\. 종료 선택
-
-      ↓
-
+    ↓
+0. 종료 선택
+    ↓
 프로그램 종료
+```
 
-잘못된 메뉴 번호를 입력하면 프로그램이 종료되거나 오류가 발생하는 대신 안내 메시지를 출력하고 다시 메뉴를 보여줍니다.
+잘못된 메뉴 번호를 입력하면 다음과 같이 안내합니다.
 
-📷 증빙
+```text
+잘못된 메뉴 번호입니다. 다시 입력해주세요.
+```
 
-05-program-main-and-list.png
+프로그램은 종료되지 않고 다시 메인 메뉴를 표시합니다.
 
-【이미지 삽입】
+#### 📷 메인 메뉴 및 잘못된 입력 처리
 
-그림 5. 메인 메뉴 및 기본 프롬프트 목록
+![메인 메뉴 잘못된 번호 처리](images/25-main-menu-invalid-input-and-retry.jpg)
 
-프로그램을 실행했을 때 메인 메뉴가 정상적으로 출력되고 기본 프롬프트가 최소 3개 이상 등록되어 있음을 확인한 화면입니다.
+**그림 20-1. 잘못된 메뉴 번호 입력 후 안내하고 다시 메뉴를 표시한 결과**
 
-힌트: 메뉴 + 기본 데이터 + 목록 기능을 한 장에서 확인할 수 있도록 캡처하면 효율적입니다.
+#### 📷 메뉴 선택 및 정상 종료
 
-**## 10. 프롬프트 추가**
+![메인 메뉴 선택 및 종료](images/26-main-menu-selection-and-exit.jpg)
+
+**그림 20-2. 메뉴 기능 실행 후 다시 메인 메뉴로 돌아오고 `0`을 선택하여 정상 종료한 결과**
+
+이후 Chapter 25에서는 `99` 입력을 사용해 잘못된 메뉴 번호 처리도 다시 실제 검증했습니다.
+
+---
+
+## 10. 프롬프트 추가
 
 사용자는 다음 세 가지 정보를 입력하여 새로운 프롬프트를 등록할 수 있습니다.
 
+```text
 제목
-
 내용
-
 카테고리
+```
 
-카테고리는 미리 정의된 목록에서 선택하거나 직접 입력할 수 있도록 구현합니다.
+카테고리는 미리 정의된 항목에서 선택하거나 `0. 직접 입력`을 선택하여 새 카테고리 이름을 입력할 수 있습니다.
 
-새로 등록된 프롬프트의 즐겨찾기 기본값은 False입니다. 과제에서도 입력값이 비어 있으면 다시 입력을 요구하고, 추가된 데이터는 프로그램 실행 중에만 유지하도록 명시합니다.
+새 프롬프트의 초기 상태는 다음과 같습니다.
 
-**### 입력 검증**
+```python
+"favorite": False
+"view_count": 0
+```
 
-문제: 사용자가 제목이나 내용을 입력하지 않고 Enter를 누르면 내용이 없는 프롬프트가 등록될 수 있습니다.
+### 10.1 입력 검증
 
-해결: .strip()으로 앞뒤 공백을 제거한 뒤 입력값이 비어 있는지 검사하고, 비어 있으면 다시 입력하도록 합니다.
+제목, 내용, 직접 입력 카테고리는 빈 값을 허용하지 않습니다.
 
-카테고리에서 직접 입력을 선택한 경우에도 빈 값을 입력하면 다시 입력하도록 합니다.
+빈 값을 입력하면 다음 메시지를 출력하고 같은 항목을 다시 입력받습니다.
 
-장점: 사용자의 단순한 입력 실수로 잘못된 데이터가 등록되는 것을 예방할 수 있습니다.
+```text
+빈 값은 입력할 수 없습니다. 다시 입력해주세요.
+```
 
-📷 증빙
+이 처리는 공통 함수 `get_non_empty_input()`을 사용합니다.
 
-06-add-prompt.png
+### 10.2 프롬프트 추가 실행 결과
 
-【이미지 삽입】
+#### 📷 빈 입력 검증
 
-그림 6. 프롬프트 추가 기능 테스트
+![프롬프트 추가 입력 검증](images/28-add-prompt-input-validation.jpg)
 
-제목·내용·카테고리를 입력해 새로운 프롬프트를 추가했으며, 이후 전체 목록의 개수가 3개 → 4개로 증가한 것을 통해 추가 기능이 정상적으로 동작함을 확인했습니다.
+**그림 20-3. 프롬프트 추가 과정에서 빈 입력을 검증하고 정상 값을 다시 입력한 결과**
 
-힌트: “추가되었습니다”만 캡처하지 말고 추가 결과가 실제 목록에 반영된 것까지 보여주세요.
+#### 📷 프롬프트 추가 성공
 
-**## 11. 프롬프트 목록 — Branch 활용 ★중요**
+![프롬프트 추가 성공](images/29-add-prompt-success.jpg)
+
+**그림 20-4. 제목·내용·카테고리를 입력한 뒤 새 프롬프트가 정상 추가된 결과**
+
+추가 기능은 성공 메시지만 확인하지 않고 이후 목록을 다시 열어 새 데이터가 실제 List에 반영되었는지 확인했습니다.
+
+Chapter 25에서는 추가 검증으로 다음 항목도 실제 테스트했습니다.
+
+```text
+빈 제목
+빈 내용
+직접 입력 카테고리 빈 값
+잘못된 메뉴 번호
+```
+
+관련 증빙은 `66`~`69`번 이미지에 정리했습니다.
+
+---
+
+## 11. 프롬프트 목록 — Branch 활용 ★중요
 
 프롬프트 목록 기능은 과제에서 단순히 기능만 구현하는 것이 아니라, *\*\****\*\*\`main\`이 아닌 별도의 Branch에서 개발한 뒤 다시 \`main\` Branch에 Merge하는 과정까지 수행하도록 요구된 기능\*\***\*\*입니다.
 
@@ -8608,7 +8566,7 @@ JSON 저장·불러오기는 선택 Bonus이므로 미구현 자체가 필수 �
 
 ```text
 1. ✅ Chapter 30에 실제 GitHub Repository URL 기재 완료
-2. ⏳ README Chapter 31까지 정리하고 마지막 Commit·Push 후 최신 Git Graph 캡처
+2. ✅ Chapter 31 작성 완료 → ⏳ 마지막 Commit·Push 후 최신 Git Graph 캡처
 ```
 
 즉, 지금 단계에서 기능을 더 추가하기보다 **제출 문서와 최종 증빙을 정확하게 마무리하는 것이 우선**입니다.
@@ -8617,7 +8575,7 @@ JSON 저장·불러오기는 선택 Bonus이므로 미구현 자체가 필수 �
 
 ## 30. GitHub Repository
 
-이번 과제의 소스 코드, README, Git 작업 기록 및 증빙 이미지는 GitHub Public Repository에 업로드했습니다.
+이번 과제의 소스 코드, README, Git 작업 기록 및 증빙 이미지는 GitHub Public Repository에서 관리했습니다.
 
 ### 30.1 GitHub URL
 
@@ -8633,58 +8591,38 @@ Repository 이름은 `python-git-prompt-manager`이며, GitHub 사용자 계정 
 
 ---
 
-### 30.2 GitHub 웹페이지와 로컬 README 비교 확인
+### 30.2 GitHub 웹페이지와 현재 README 비교 확인
 
-첨부한 GitHub Repository 웹페이지 화면과 현재 로컬 README를 비교했습니다.
+최신으로 첨부한 GitHub `README.md` 웹페이지와 현재 Markdown 파일을 다시 비교했습니다.
 
-GitHub 웹페이지에서 다음 항목을 확인할 수 있습니다.
-
-| 확인 항목 | GitHub 웹페이지 확인 결과 |
-|---|---|
-| Repository 소유자 | `lsh97nd-code` |
-| Repository 이름 | `python-git-prompt-manager` |
-| 공개 여부 | Public Repository |
-| 기본 Branch | 1 Branch 확인 |
-| `images/` 폴더 | 표시됨 |
-| `.gitignore` | 표시됨 |
-| `README.md` | 표시됨 |
-| `hello.py` | 표시됨 |
-| `main.py` | 표시됨 |
-| README 렌더링 | Repository 첫 화면에서 문서 형태로 표시됨 |
-
-첨부한 GitHub 웹페이지 기준 최신 표시 Commit은 다음과 같습니다.
+GitHub 웹페이지 상단에서 다음 내용을 확인했습니다.
 
 ```text
-dffcfa9 feat: add prompt CRUD and view statistics
+Repository: lsh97nd-code/python-git-prompt-manager
+Branch: main
+README 최신 표시 Commit: 8fb6ee6 Update README.md
+GitHub 표시 줄 수: 8843 lines
 ```
 
-이 Commit은 Bonus 2의 프롬프트 수정·삭제·조회 통계 기능을 추가한 시점의 Commit이며, 현재 로컬 README는 그 이후 Chapter 25~30 문서 정리를 계속 진행하고 있습니다.
+또한 GitHub의 `README.md` 화면에는 Chapter 30의 Repository URL과 GitHub 비교 내용까지 실제로 반영되어 있었습니다.
 
-따라서 **GitHub 웹페이지의 README와 현재 로컬 README 내용이 아직 완전히 같지 않은 것은 정상**입니다.
-
-현재 작업 순서는 다음과 같습니다.
+따라서 이전 초안에 적었던 다음 설명은 더 이상 현재 상태와 맞지 않습니다.
 
 ```text
-GitHub에 마지막 기능 Commit까지 Push
-        ↓
-로컬 README Chapter 25~30 추가 정리
-        ↓
-현재는 아직 최종 문서 Commit 전
-        ↓
-Chapter 31까지 완료
-        ↓
-README 및 증빙 최종 Commit
-        ↓
-GitHub Push
-        ↓
-GitHub 웹페이지와 최종 README 다시 비교
+GitHub 최신 표시 Commit이 dffcfa9이다.
+GitHub README는 Chapter 25~30 로컬 수정 이전 상태이다.
+로컬 README가 GitHub보다 더 최신이다.
 ```
 
-즉 지금 GitHub 웹페이지는 **프로그램 기능 구현이 완료된 마지막 Push 상태**를 보여주고 있고, 로컬 README는 **최종 제출용 문서 정리를 더 진행한 최신 작업본**입니다.
+`dffcfa9 feat: add prompt CRUD and view statistics`는 Bonus 기능 구현 시점의 중요한 기능 Commit이지만, **현재 GitHub README 자체의 최신 표시 Commit은 `8fb6ee6 Update README.md`**입니다.
+
+즉 원인은 프로그램 오류가 아니라, Chapter 30을 처음 작성한 뒤 README가 GitHub에서 다시 갱신되었는데 문서 안의 “현재 상태” 설명이 그 이전 시점을 그대로 가리키고 있었기 때문입니다.
+
+이번 수정에서는 해당 설명을 최신 웹페이지 상태에 맞게 바로잡았습니다.
 
 ---
 
-### 30.3 GitHub Repository 생성 및 Remote 연결 확인
+### 30.3 GitHub Repository 생성 및 Remote 연결
 
 Repository는 GitHub CLI를 사용하여 생성했습니다.
 
@@ -8704,140 +8642,353 @@ git remote -v
 18-github-repository-and-remote.jpg
 ```
 
-이 화면에서 현재 로컬 Repository가 GitHub 원격 Repository `origin`과 연결된 것을 확인했습니다.
+이 화면에서 로컬 Repository가 GitHub 원격 Repository `origin`과 연결된 것을 확인했습니다.
 
 ---
 
 ### 30.4 GitHub 웹페이지 표시 확인
 
-GitHub 웹페이지에서도 Repository가 정상적으로 열리고 파일 및 README가 표시되는 것을 확인했습니다.
+GitHub 웹페이지에서도 Repository가 정상적으로 열리고 프로젝트 파일과 README가 표시되는 것을 확인했습니다.
 
-관련 증빙은 다음과 같습니다.
+관련 증빙:
 
 ```text
 23-github-repository-and-readme-overview.jpg
 24-github-readme-image-rendering.jpg
 ```
 
-`23-github-repository-and-readme-overview.jpg`에서는 Repository 이름, Public 상태, 프로젝트 파일, `images/` 폴더와 README 영역을 확인했습니다.
+확인한 내용은 다음과 같습니다.
 
-`24-github-readme-image-rendering.jpg`에서는 README의 Markdown Heading과 연결한 이미지가 GitHub 웹페이지에서 실제로 렌더링되는 것을 확인했습니다.
+```text
+✅ Repository 이름 확인
+✅ Public 상태 확인
+✅ images/ 폴더 확인
+✅ .gitignore 확인
+✅ README.md 확인
+✅ hello.py 확인
+✅ main.py 확인
+✅ README Markdown 표시 확인
+✅ README 이미지 경로 표시 확인
+```
 
-따라서 단순히 `git push` 명령이 성공한 것만 확인한 것이 아니라 **GitHub 웹페이지에서 실제 제출 결과가 보이는지까지 확인**했습니다.
+최신으로 첨부한 GitHub `README.md` 웹페이지에서도 README 내용이 Chapter 30까지 표시되는 것을 추가로 확인했습니다.
 
 ---
 
-### 30.5 현재 로컬과 GitHub의 차이
+### 30.5 현재 동기화 상태에서 주의할 점
 
-현재 시점에는 Chapter 25~30의 README 문서 정리가 마지막 Push 이후 추가로 진행되었습니다.
+첨부한 GitHub 웹페이지에는 `8fb6ee6 Update README.md` Commit이 표시되어 있습니다.
 
-따라서 현재 상태를 정확히 표현하면 다음과 같습니다.
+반면 현재 대화에서 수정 중인 Markdown 파일만으로는 **로컬 Git의 현재 `HEAD`가 `8fb6ee6`을 포함하고 있는지까지 확인할 수 없습니다.**
 
-| 구분 | 상태 |
-|---|---|
-| Python 필수 기능 | ✅ 완료 |
-| Bonus 2 기능 | ✅ 완료 |
-| 기능 코드 GitHub Push | ✅ 완료 |
-| GitHub Public Repository 확인 | ✅ 완료 |
-| GitHub에서 README 렌더링 확인 | ✅ 완료 |
-| Chapter 25~30 로컬 README 정리 | ✅ 현재 반영 |
-| Chapter 31 마무리 | ⏳ 다음 단계 |
-| 최종 README Commit·Push | ⏳ Chapter 31 완료 후 |
-| 최종 Git Graph 캡처 | ⏳ 마지막 Commit·Push 후 |
-| GitHub 최종 README 재확인 | ⏳ 마지막 Push 후 |
+따라서 마지막 Push 전에 다음 명령으로 로컬과 원격 상태를 반드시 다시 확인합니다.
 
-이 차이는 오류가 아니라 **최종 문서 작업을 아직 Commit하지 않았기 때문에 발생하는 정상적인 작업 중 상태**입니다.
+```bash
+git status
+git log --oneline --graph --all --decorate
+git fetch origin
+```
 
-지금 단계에서 README만 먼저 Push하면 Chapter 31과 최종 Git Graph를 추가한 뒤 다시 문서 Commit이 필요해집니다.
+만약 원격 `origin/main`에 로컬에 없는 `8fb6ee6` Commit이 있다면, 최종 Push 전에 원격 변경사항을 먼저 반영해야 합니다.
 
-따라서 Chapter 31까지 작성한 후 README와 최종 증빙을 묶어 Commit·Push하는 것이 더 효율적입니다.
+Chapter 31까지 수정한 뒤 최종 Commit을 만든 경우에는 다음 순서가 안전합니다.
+
+```text
+로컬 README 최종 수정
+    ↓
+git add .
+    ↓
+최종 문서 Commit
+    ↓
+git fetch origin
+    ↓
+로컬 main / origin/main 위치 확인
+    ↓
+필요한 경우 git pull --rebase origin main
+    ↓
+git push
+    ↓
+git status
+    ↓
+최종 Git Graph 캡처
+```
+
+즉 GitHub 웹페이지와 Markdown 내용 비교에서 확인된 가장 중요한 사항은 **문서 내용뿐 아니라 로컬 Git과 원격 Git의 Commit 위치도 마지막에 다시 맞춰야 한다는 점**입니다.
 
 ---
 
 ### 30.6 Chapter 30 최종 확인 결과
 
-현재 GitHub Repository 주소는 다음과 같이 확정할 수 있습니다.
+현재 Repository 주소는 다음과 같이 확정되었습니다.
 
 ```text
 https://github.com/lsh97nd-code/python-git-prompt-manager
 ```
 
-확인 결과:
+현재 확인 결과:
 
 ```text
 ✅ Repository 경로 확인
 ✅ Public Repository 확인
 ✅ 프로젝트 파일 표시 확인
 ✅ README.md 표시 확인
-✅ README Markdown 렌더링 확인
-✅ 이미지 경로 렌더링 확인
+✅ Chapter 30까지 GitHub README 반영 확인
+✅ GitHub README 최신 표시 Commit 8fb6ee6 확인
 ✅ Repository URL 확정
+⏳ Chapter 31 최종 작성
+⏳ 마지막 Commit·Push 후 Git Graph 최종 증빙
 ```
 
-따라서 Chapter 29에서 `⏳`로 남겨두었던 **GitHub URL 최종 기재 항목은 이제 `✅ 완료`로 변경**할 수 있습니다.
+Chapter 29에서 GitHub URL 항목은 `✅ 완료`로 유지할 수 있습니다.
 
-남은 최종 작업은 Chapter 31 작성 후 README를 Commit·Push하고, 최신 Git Graph와 GitHub 웹페이지를 마지막으로 재확인하는 것입니다.
+남은 작업은 Chapter 31 마무리와 최종 Git 동기화·증빙입니다.
 
 ---
 
 ## 31. 마무리
 
-이번 과제를 통해 Python의 변수, List, Dictionary, 조건문, 반복문, 함수 등을 단순히 문법으로 학습하는 데 그치지 않고 실제 프롬프트 관리 프로그램의 기능과 연결하여 활용했습니다.
+이번 과제를 통해 Python의 List, Dictionary, 조건문, 반복문, 함수, 문자열 처리 등을 단순 문법 예제에만 사용하지 않고 실제 프롬프트 관리 프로그램의 기능과 연결했습니다.
 
-또한 Git을 사용해 기능별 변경사항을 Commit하고, 별도의 Branch에서 기능을 개발한 뒤 main에 병합하면서 버전 관리의 기본 흐름을 경험했습니다.
+또한 Git을 사용하여 기능별 변경 이력을 남기고, `feature/prompt-list` Branch에서 목록 기능을 개발한 뒤 `main`에 Merge했으며, GitHub 원격 Repository와 Push·Pull·Clone 흐름까지 실제로 확인했습니다.
 
-가장 어려웠던 부분:
+### 31.1 가장 많은 확인이 필요했던 부분
 
-【직접 입력】
+이번 과제에서 가장 많은 확인이 필요했던 부분은 **프로그램 기능 구현 자체뿐 아니라 Git 상태, 증빙 화면, README 내용이 실제 수행 상태와 계속 일치하도록 관리하는 과정**이었습니다.
 
-해결 과정:
+실제 수행 중 다음과 같은 문제가 있었습니다.
 
-【직접 입력】
+```text
+Git Repository가 아닌 위치에서 명령 실행
+→ fatal: not a git repository
 
-이번 과제를 통해 가장 크게 배운 점:
+git add . 실행
+→ Windows의 desktop.ini가 Commit 대상에 포함
 
-【직접 입력】
+gh 명령 실행
+→ GitHub CLI가 설치되어 있지 않아 명령 인식 실패
 
-앞으로 개선하고 싶은 부분:
+기능 구현 후 증빙 생성
+→ 새 이미지가 다시 Untracked file로 발생
 
-【직접 입력】
+Terminal 작업 계속 진행
+→ 이전 출력이 화면 위로 밀려나거나 Session 종료 시 다시 보기 어려움
 
-힌트: 마지막 부분은 AI가 경험을 만들어내면 안 됩니다. 실제 과제를 수행하면서 어려웠던 점과 배운 점을 사용자님이 알려주시면, 그 내용을 자연스러운 보고서 문장으로 제가 다듬겠습니다.
+README를 단계별로 계속 수정
+→ 이전 초안·예정 문구·실제 완료 상태가 서로 어긋날 가능성 발생
 
-이 README를 만들 때 지킬 핵심 원칙
+GitHub README 갱신
+→ 문서 안에 적어 둔 '현재 GitHub 상태' 설명이 이전 시점을 가리키게 됨
+```
 
-이번 과제에서는 README를 무조건 길게 만드는 것이 목표가 아닙니다. 과제 원문이 README 자체에 필수로 요구하는 것은 프로그램 이름·간단한 설명·실행 방법·기능 목록·등록된 카테고리 설명입니다. 여기에 사용자님의 목표에 맞게 Python/Git을 모르는 사람도 이해할 최소한의 개념 설명, 선택 이유, 입력 검증, 한계, Git 작업과 증빙 해설을 추가하는 것입니다.
+특히 마지막 항목은 최신 GitHub 웹페이지와 로컬 Markdown을 비교하면서 다시 확인했습니다.
 
-그래서 최종 형태는 “간결한 구성 + 충분한 설명”으로 하되, 화면만 던져놓지 않고 각 그림 바로 아래에 무엇을 했는지와 무엇을 증명하는지를 설명하겠습니다. 또한 필수 기능과 Bonus는 명확히 분리하고, 좋은 추가 기능이라도 필수 요구사항과 충돌하면 넣지 않겠습니다.
+GitHub의 최신 `README.md` 화면에는 `8fb6ee6 Update README.md`가 표시되어 있었기 때문에, Chapter 30에 남아 있던 `dffcfa9`를 “현재 GitHub 최신 Commit”처럼 설명한 문장을 수정했습니다.
 
-특히 지금 단계에서 사용자님이 직접 결정해야 하는 것은 ① 프로젝트/프로그램 이름, ② 이전 미션에서 가져올 실제 기본 프롬프트 3개 이상, ③ Bonus 1·2 구현 여부, ④ 실제 개발 중 발생한 문제와 해결 경험, ⑤ 최종 GitHub URL 정도입니다. 나머지는 실제 개발하면서 제가 이 틀에 맞춰 상당 부분 채워드릴 수 있습니다.
+---
 
-vs code에서 폴더를 만드려고 하는데 이름은 어떻게 할까?
+### 31.2 해결 과정
 
-추천은 python-git-prompt-manager 입니다.
+문제가 발생했을 때는 가능한 한 다음 순서로 처리했습니다.
 
-이유는 폴더 이름만 봐도 Python + Git 과제 + 프롬프트 관리 프로그램이라는 목적이 바로 드러나고, GitHub 저장소 이름으로 그대로 써도 자연스럽기 때문입니다.
+```text
+문제 화면 확인
+    ↓
+현재 위치·Branch·Git 상태 확인
+    ↓
+코드 문제 / Git 문제 / 도구 설치 문제 구분
+    ↓
+필요한 부분만 수정
+    ↓
+같은 기능 또는 명령 다시 실행
+    ↓
+정상 결과 재확인
+    ↓
+다음 작업 전에 증빙 캡처
+    ↓
+README 내용도 실제 결과에 맞게 갱신
+```
 
-다른 후보도 괜찮습니다.
+대표적인 해결 사례는 다음과 같습니다.
 
-python-git-prompt-manager ← 가장 추천
+| 문제 | 해결 |
+|---|---|
+| `not a git repository` | 올바른 프로젝트 폴더로 이동하고 `git init` 여부 확인 |
+| `desktop.ini` 포함 | `.gitignore`에 제외 규칙 추가 후 `git status` 재확인 |
+| `gh` 명령 인식 실패 | GitHub CLI 설치 후 새 Terminal에서 버전·로그인 상태 재확인 |
+| Branch 기능 개발 | `feature/prompt-list`에서 구현·Commit 후 `main` Checkout·Merge |
+| 잘못된 사용자 입력 | 공통 입력 검증과 번호 재입력 흐름 구현 |
+| 삭제 실수 방지 | `y/n` 확인 후 실제 삭제 |
+| Code Review 지적 | 실제 오류인지 검토 후 필요한 수정만 반영 |
+| Terminal 기록 소실 위험 | 중요한 결과 직후 바로 캡처하고 의미 있는 파일명으로 저장 |
+| README 예정 문구 잔존 | 기능 테스트가 끝날 때마다 실제 완료 결과로 교체 |
+| GitHub/README 상태 설명 노후화 | 최신 GitHub 웹페이지와 다시 비교하여 현재 상태로 수정 |
 
-prompt-manager-python-git
+Claude Code Review도 사용했지만 모든 제안을 그대로 적용하지 않았습니다.
 
-python-git-first-project
+실제 오류, 과제 요구사항, 코드 복잡도를 비교하여 필요한 수정만 반영했고, 현재 단계에서 불필요하게 복잡해지는 제안은 보류했습니다.
 
-prompt-manager-cli
+---
 
-A1-1-python-git-prompt-manager
+### 31.3 이번 과제를 통해 확인한 점
 
-이번 과제 제출용이라면 저는 *\*\****\*\*python-git-prompt-manager\*\***\*\*로 만들겠습니다.
+이번 과제에서 확인한 핵심 내용은 다음과 같습니다.
 
-VS Code에서 새 폴더를 만들 때도 그대로:
+첫째, Python의 자료구조는 문법 자체보다 **어떤 데이터를 어떤 형태로 관리할 것인지**와 연결해서 사용해야 이해하기 쉽습니다.
 
-python-git-prompt-manager
+이번 프로그램에서는:
 
-로 입력하면 됩니다.
+```text
+List
+→ 여러 프롬프트를 순서대로 관리
 
-공백이나 한글은 가능하면 피하고, 소문자 + 하이픈(-) 방식으로 가는 게 가장 깔끔합니다.
+Dictionary
+→ 프롬프트 하나의 title / content / category / favorite / view_count 관리
+```
 
+구조로 사용했습니다.
+
+둘째, Git은 단순히 `commit` 명령을 입력하는 도구가 아니라 **현재 상태를 계속 확인하면서 변경 이력을 관리하는 과정**이라는 점을 실제 작업으로 확인했습니다.
+
+```text
+수정
+→ git status
+→ git add
+→ git commit
+→ git push
+→ git status 재확인
+```
+
+Branch 작업에서도:
+
+```text
+Branch 생성
+→ 기능 구현
+→ Branch Commit
+→ main Checkout
+→ Merge
+→ Git Log 확인
+```
+
+흐름을 실제로 수행했습니다.
+
+셋째, 프로그램이 정상 동작하는 것만큼 **입력 오류와 예외 상황을 어떻게 처리하는지**도 중요했습니다.
+
+빈 입력, 잘못된 메뉴 번호, 존재하지 않는 프롬프트 번호, 검색 결과 없음, 카테고리 결과 없음, 즐겨찾기 없음, 삭제 취소 등을 따로 확인했습니다.
+
+넷째, AI Code Review는 코드를 대신 결정하는 도구가 아니라 **추가 검토 도구로 사용하는 것이 적절**했습니다.
+
+```text
+AI 제안
+→ 실제 코드 확인
+→ 과제 요구사항과 비교
+→ 필요한 부분만 수정
+→ 다시 테스트
+```
+
+과정을 거쳐 사용했습니다.
+
+다섯째, 개발 과정의 기록도 중요했습니다.
+
+Terminal 화면은 계속 변하기 때문에 오류, Commit, Push, Merge, Pull, 기능 테스트처럼 중요한 결과가 나오면 바로 캡처해야 나중에 당시 상태를 정확하게 설명할 수 있었습니다.
+
+---
+
+### 31.4 현재 프로그램의 완성 범위
+
+현재 프로그램은 과제에서 요구한 핵심 기능을 모두 포함합니다.
+
+```text
+✅ 기본 프롬프트 4개
+✅ 프롬프트 추가
+✅ 프롬프트 목록
+✅ 카테고리별 조회
+✅ 제목·내용 검색
+✅ 상세 보기
+✅ 즐겨찾기 추가·해제
+✅ 즐겨찾기 목록
+✅ 입력 검증
+✅ 기능별 함수 분리
+✅ 별도 Branch 개발 및 Merge
+✅ Git 필수 명령 실습
+✅ 공개 Sample Repository Clone
+✅ GitHub Repository 연결
+✅ 의미 있는 Commit 10개 이상
+
+Bonus 2
+✅ 프롬프트 수정
+✅ 프롬프트 삭제
+✅ 상세 보기 조회수
+✅ 많이 본 프롬프트 Top 5
+```
+
+JSON 자동 저장 기능은 구현하지 않았습니다.
+
+이는 기능을 구현하지 못해서가 아니라, 이번 과제의 기본 동작인 **프로그램 종료 후 메모리 데이터 초기화**와 충돌하지 않도록 필수 기능을 우선한 선택입니다.
+
+---
+
+### 31.5 앞으로 확장할 수 있는 부분
+
+현재 과제 범위를 넘어 확장한다면 다음 순서가 적절합니다.
+
+```text
+1. 사용자가 명시적으로 선택하는 JSON 저장 / 불러오기
+2. 카테고리 이름 정규화 및 관리 기능
+3. 자동화된 단위 테스트
+4. 더 많은 검색 조건
+5. GUI 또는 Web UI
+6. 데이터가 많아질 경우 SQLite / Database 적용
+```
+
+특히 JSON 기능을 추가한다면 자동 저장 방식보다 다음처럼 명시적 메뉴를 두는 방식이 현재 프로그램 구조와 잘 맞습니다.
+
+```text
+저장 선택
+→ JSON 저장
+
+불러오기 선택
+→ JSON 불러오기
+```
+
+이렇게 하면 기본 메모리 동작과 파일 저장 기능을 구분할 수 있습니다.
+
+---
+
+### 31.6 최종 프로젝트 요약
+
+이번 프로젝트는 **Python 기초 문법을 이용한 프롬프트 관리 프로그램 구현**과 **Git/GitHub를 이용한 실제 버전 관리 흐름 실습**을 함께 수행한 과제입니다.
+
+프로그램 측면에서는 기본 데이터 관리부터 검색·즐겨찾기·입력 검증까지 필수 기능을 구현했고, Bonus로 수정·삭제·조회수·Top 5 기능까지 확장했습니다.
+
+Git 측면에서는 Repository 초기화, Staging, Commit, Push, Pull, Checkout, Clone, Merge를 실제 작업에 사용했으며, 프롬프트 목록 기능은 별도 Branch에서 개발한 뒤 `main`에 병합했습니다.
+
+또한 기능을 구현한 뒤 실행 화면만 남기는 것이 아니라 **결과 재확인 → 증빙 저장 → README 반영**까지 하나의 작업 흐름으로 관리했습니다.
+
+최종 제출 전에는 다음 순서만 남았습니다.
+
+```text
+Chapter 31 반영
+    ↓
+git status 확인
+    ↓
+최종 README 및 필요한 증빙 Commit
+    ↓
+원격 origin/main 상태 확인
+    ↓
+필요한 경우 원격 변경사항 반영
+    ↓
+git push
+    ↓
+git status로 Working Tree Clean 확인
+    ↓
+git log --oneline --graph --all --decorate
+    ↓
+최종 Git Graph 캡처
+    ↓
+GitHub README 최종 확인
+```
+
+이 과정을 완료하면 프로그램 코드, Git 변경 이력, 실행 증빙, README 문서가 같은 최종 상태로 맞춰집니다.
+
+---
 
