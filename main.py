@@ -247,6 +247,42 @@ def show_prompts_by_category():
         )
 
 
+def search_prompts():
+    """제목 또는 내용에 검색어가 포함된 프롬프트를 찾는다."""
+    print("\n=== 프롬프트 검색 ===")
+
+    keyword = get_non_empty_input("검색어: ")
+
+    if keyword is None:
+        print("\n프롬프트 검색을 취소합니다.")
+        return
+
+    normalized_keyword = keyword.casefold()
+
+    search_results = [
+        prompt
+        for prompt in prompts
+        if normalized_keyword in prompt["title"].casefold()
+        or normalized_keyword in prompt["content"].casefold()
+    ]
+
+    if not search_results:
+        print(f"\n'{keyword}'에 대한 검색 결과가 없습니다.")
+        return
+
+    print(f"\n=== '{keyword}' 검색 결과 ===")
+
+    for index, prompt in enumerate(search_results, start=1):
+        favorite_mark = "★" if prompt["favorite"] else "☆"
+
+        print(
+            f"{index}. "
+            f"{favorite_mark} "
+            f"{prompt['title']} "
+            f"[{prompt['category']}]"
+        )
+
+
 def main():
     """사용자가 종료를 선택할 때까지 메인 메뉴를 반복 실행한다."""
     while True:
@@ -268,7 +304,7 @@ def main():
             show_prompts_by_category()
 
         elif choice == "4":
-            print("[프롬프트 검색] 기능은 다음 단계에서 구현합니다.")
+            search_prompts()
 
         elif choice == "5":
             print("[프롬프트 상세 보기] 기능은 다음 단계에서 구현합니다.")
