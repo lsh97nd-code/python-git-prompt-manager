@@ -8309,7 +8309,7 @@ Chapter 29에서는 과제 요구사항을 현재 실제 수행 상태와 대조
 
 단순히 모든 항목을 `✅`로 표시하지 않고, **실제로 완료하고 README·코드·실행 화면으로 확인할 수 있는 항목은 `✅`, 최종 제출 직전에 한 번 더 만들어야 하는 증빙은 `⏳`**로 구분했습니다.
 
-현재 프로그램 기능 자체와 필수 Git 실습은 완료된 상태이며, 남은 작업은 최종 README 정리 후 생성할 **최신 Git Graph 증빙**과 Chapter 30의 **GitHub URL 최종 기재**입니다.
+현재 프로그램 기능 자체와 필수 Git 실습, GitHub URL 기재, Chapter 31 작성까지 완료된 상태입니다. 남은 작업은 **최종 Git 동기화·Push 후 최신 Git Graph 증빙과 GitHub README 최종 확인**입니다.
 
 ---
 
@@ -8344,7 +8344,7 @@ Chapter 29에서는 과제 요구사항을 현재 실제 수행 상태와 대조
 
 GitHub Repository 생성과 Remote 연결, Push 및 README 표시까지 실제로 확인했습니다.
 
-다만 최종 제출용 URL은 Chapter 30에서 한 번 더 확인한 뒤 기재하므로 이 항목만 현재 `⏳` 상태로 남깁니다.
+최종 제출용 Repository URL도 Chapter 30에서 확인하여 현재 `✅` 완료 상태입니다.
 
 ---
 
@@ -8735,13 +8735,13 @@ https://github.com/lsh97nd-code/python-git-prompt-manager
 ✅ Chapter 30까지 GitHub README 반영 확인
 ✅ GitHub README 최신 표시 Commit 8fb6ee6 확인
 ✅ Repository URL 확정
-⏳ Chapter 31 최종 작성
+✅ Chapter 31 작성 완료
 ⏳ 마지막 Commit·Push 후 Git Graph 최종 증빙
 ```
 
 Chapter 29에서 GitHub URL 항목은 `✅ 완료`로 유지할 수 있습니다.
 
-남은 작업은 Chapter 31 마무리와 최종 Git 동기화·증빙입니다.
+남은 작업은 최종 Git 동기화·Push와 최신 Git Graph 증빙, GitHub README 최종 확인입니다.
 
 ---
 
@@ -8967,7 +8967,7 @@ Git 측면에서는 Repository 초기화, Staging, Commit, Push, Pull, Checkout,
 최종 제출 전에는 다음 순서만 남았습니다.
 
 ```text
-Chapter 31 반영
+Chapter 31 작성 완료
     ↓
 git status 확인
     ↓
@@ -8991,4 +8991,3 @@ GitHub README 최종 확인
 이 과정을 완료하면 프로그램 코드, Git 변경 이력, 실행 증빙, README 문서가 같은 최종 상태로 맞춰집니다.
 
 ---
-
