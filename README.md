@@ -1983,938 +1983,6 @@ python .\main.py
 
 ---
 
-**## 13. 프롬프트 검색**
-
-사용자가 입력한 키워드가 제목 또는 내용에 포함되어 있는 프롬프트를 검색합니다. 검색 결과가 없으면 별도의 안내 메시지를 출력합니다. 이는 과제의 필수 검색 요구사항입니다.
-
-추가하기 좋은 검색 개선
-
-필수 요구사항을 변경하지 않는 범위에서 다음을 적용하는 것을 권장합니다.
-
-지원 기능
-
-제목 부분 일치
-
-내용 부분 일치
-
-영문 대소문자 무시
-
-예를 들어 lower()를 사용하면 Python, PYTHON, python을 같은 검색어처럼 처리할 수 있습니다.
-
-현재 검색의 한계
-
-오타 자동 수정, 띄어쓰기 자동 보정, 특수문자 정규화, 정규식 검색은 지원하지 않습니다.
-
-힌트: 구현한 기능뿐 아니라 무엇까지 되고 무엇은 안 되는지 설명하면 프로그램을 더 정확하게 이해할 수 있습니다.
-
-📷 증빙
-
-08-search-result.png
-
-【이미지 삽입】
-
-그림 8. 제목 및 내용 키워드 검색 테스트
-
-검색어 【실제 검색어】를 입력한 결과 제목 또는 내용에 해당 검색어가 포함된 프롬프트가 출력되는 것을 확인했습니다.
-
-**## 16. 함수 분리와 코드 구조**
-
-함수(Function)란 특정 작업을 수행하는 코드를 하나의 이름으로 묶은 것입니다.
-
-모든 코드를 한곳에 작성하지 않고 기능별로 함수를 나눕니다.
-
-예:
-
-show\_menu()        → 메뉴 출력
-
-add\_prompt()       → 프롬프트 추가
-
-show\_list()        → 전체 목록
-
-show\_by\_category() → 카테고리별 조회
-
-search\_prompt()    → 검색
-
-show\_detail()      → 상세 보기
-
-manage\_favorite()  → 즐겨찾기 추가/해제
-
-show\_favorites()   → 즐겨찾기 목록
-
-왜 함수를 나누었는가?
-
-각 코드의 역할을 쉽게 파악할 수 있고 문제가 발생했을 때 수정할 위치를 찾기 쉬우며, 같은 기능을 필요할 때 다시 사용할 수 있기 때문입니다.
-
-과제에서도 모든 코드를 한 함수에 몰아넣지 않고 기능별로 분리하도록 명시합니다.
-
-힌트: 최종 코드에서 실제 사용한 함수 이름으로 바꿉니다.
-
-**## 17. 조건문과 반복문**
-
-**### 조건문**
-
-if / elif / else는 사용자의 선택에 따라 서로 다른 기능을 실행하기 위해 사용합니다.
-
-예:
-
-1 입력 → 프롬프트 추가
-
-2 입력 → 프롬프트 목록
-
-3 입력 → 카테고리별 조회
-
-...
-
-0 입력 → 종료
-
-**### 반복문**
-
-while은 사용자가 종료를 선택할 때까지 메뉴를 계속 표시하기 위해 사용합니다.
-
-힌트: 코드를 줄마다 설명하기보다 “이 문법이 프로그램에서 무슨 일을 하는가?”를 설명하면 초보자가 이해하기 쉽습니다.
-
-**## 18. 프로그램 실행 중 데이터 유지와 종료 시 초기화 ★중요**
-
-프로그램 실행 중 새로 추가한 프롬프트와 즐겨찾기 상태는 유지됩니다.
-
-하지만 프로그램을 종료한 뒤 다시 실행하면 처음 준비된 기본 데이터 상태로 돌아갑니다.
-
-프로그램 시작
-
-   ↓
-
-기본 프롬프트 3개
-
-   ↓
-
-새 프롬프트 추가
-
-   ↓
-
-실행 중에는 유지
-
-   ↓
-
-프로그램 종료
-
-   ↓
-
-다시 실행
-
-   ↓
-
-기본 상태로 초기화
-
-이것은 오류가 아니라 필수 과제에서 요구한 정상 동작입니다. 최종 결과물 설명에도 실행 중에는 상태가 유지되고 종료 시 초기화된다고 명시되어 있습니다.
-
-힌트: 보너스 JSON을 구현하더라도 이 필수 동작을 무심코 바꾸지 않도록 주의합니다.
-
-**## 19. Git과 GitHub**
-
-**### Git을 사용하는 이유**
-
-Git은 코드의 변경 이력을 기록하여 언제 어떤 기능을 추가하거나 수정했는지 확인할 수 있게 해주는 도구입니다.
-
-이번 과제에서는 기능 하나를 완성할 때마다 의미 있는 Commit을 남깁니다.
-
-**### 주요 Git 명령어**
-
-명령어  초보자용 설명
-
-git init        현재 폴더를 Git으로 관리하기 시작
-
-git add 다음 Commit에 포함할 변경사항 선택
-
-git commit      현재 변경사항을 하나의 기록으로 저장
-
-git push        내 PC의 Git 기록을 GitHub로 전송
-
-git pull        GitHub의 최신 변경사항을 내 PC로 가져옴
-
-git checkout    작업할 Branch로 이동
-
-git clone       GitHub 저장소 전체를 내 PC로 복사
-
-git merge       다른 Branch에서 작업한 내용을 현재 Branch에 합침
-
-과제에서는 이 8개 명령을 각각 최소 1회 이상 사용해야 합니다.
-
-**## 20. Git 작업 과정**
-
-GitHub Repository 생성
-
-        ↓
-
-로컬 프로젝트 폴더 생성
-
-        ↓
-
-git init
-
-        ↓
-
-.gitignore / README.md 생성
-
-        ↓
-
-git add
-
-        ↓
-
-git commit
-
-        ↓
-
-원격 Repository 연결
-
-        ↓
-
-git push
-
-        ↓
-
-기능별 개발 + Commit
-
-        ↓
-
-feature/prompt-list 생성
-
-        ↓
-
-목록 기능 개발 + Commit
-
-        ↓
-
-checkout main
-
-        ↓
-
-merge feature/prompt-list
-
-        ↓
-
-push
-
-힌트: 실제 수행한 순서와 명령을 최종적으로 맞춰 수정합니다.
-
-**## 21. 의미 있는 Commit 기록**
-
-과제에서는 최소 10개 이상의 의미 있는 기능 단위 Commit을 요구합니다.
-
-권장 예시는 다음과 같습니다.
-
-chore: initialize Python project
-
-feat: add default prompt data
-
-feat: add main menu
-
-feat: add prompt creation
-
-feat: add prompt list
-
-feat: add category filter
-
-feat: add prompt search
-
-feat: add prompt detail view
-
-feat: add favorite toggle
-
-feat: add favorite list
-
-fix: validate empty prompt input
-
-docs: add README usage guide
-
-힌트: 실제로 그 작업을 한 시점에 Commit해야 합니다. 나중에 개수만 맞추기 위한 빈 Commit은 사용하지 않습니다.
-
-📷 증빙
-
-04-git-log-graph.png
-
-【이미지 삽입】
-
-그림 4. Git Commit 및 Branch 병합 기록
-
-Git Graph를 통해 10개 이상의 기능 단위 Commit과 feature/prompt-list Branch의 개발·병합 기록을 확인할 수 있습니다.
-
-이 화면에서 확인할 내용
-
-① 의미 있는 Commit 10개 이상
-
-② feature/prompt-list 작업 기록
-
-③ main으로 Merge된 기록
-
-④ Commit 메시지만 보고 변경 내용을 파악할 수 있는지
-
-## 22. 공개 샘플 Repository Clone 및 `git pull` 실습
-
-과제에서는 자신의 GitHub Repository가 아니라 다른 사람이 공개한 Sample Repository를 하나 선택하여 `git clone`으로 내려받고, 해당 Repository의 파일 구조와 Git Commit 기록을 확인하도록 요구합니다.
-
-이번 과제에서는 GitHub의 공개 Sample Repository인 다음 Repository를 사용했습니다.
-
-```text
-octocat/Hello-World
-```
-
-자신이 만든 `python-git-prompt-manager` Repository를 다시 Clone한 것이 아니라, GitHub에 공개되어 있는 별도의 Sample Repository를 사용했습니다.
-
----
-
-### 22.1 Clone이란?
-
-Git에서 **Clone(클론)**은 GitHub와 같은 원격 저장소에 있는 Repository를 내 컴퓨터로 복제하여 로컬 Repository를 만드는 작업입니다.
-
-일반적인 파일 다운로드와 달리 `git clone`은 다음 정보를 함께 가져옵니다.
-
-- 프로젝트 파일
-- Commit 기록
-- Branch 정보
-- 원격 Repository 연결 정보
-
-쉽게 표현하면 다음과 같습니다.
-
-```text
-GitHub의 공개 Repository
-        ↓
-git clone
-        ↓
-파일 + Commit 기록 + Branch 정보
-        ↓
-내 컴퓨터의 로컬 Repository
-```
-
-따라서 Clone이 완료된 뒤에는 별도의 Git 초기화 없이 바로 `git log`, `git branch`, `git remote -v` 같은 Git 명령어를 사용할 수 있습니다.
-
----
-
-### 22.2 공개 Sample Repository Clone
-
-현재 과제 Repository 안에 또 다른 Git Repository를 넣지 않기 위해 한 단계 위 작업 폴더인 `C:\Python-Workspace`에서 Clone을 수행했습니다.
-
-```powershell
-cd C:\Python-Workspace
-git clone https://github.com/octocat/Hello-World.git
-cd .\Hello-World
-```
-
-실행 결과 다음과 같이 정상적으로 Clone되었습니다.
-
-```text
-Cloning into 'Hello-World'...
-Receiving objects: 100% (13/13), done.
-```
-
----
-
-### 22.3 원격 Repository 확인
-
-Clone한 Repository가 실제로 `octocat/Hello-World`에서 내려받은 것인지 확인하기 위해 다음 명령어를 실행했습니다.
-
-```bash
-git remote -v
-```
-
-실행 결과:
-
-```text
-origin  https://github.com/octocat/Hello-World.git (fetch)
-origin  https://github.com/octocat/Hello-World.git (push)
-```
-
-이를 통해 자신의 Repository가 아니라 공개 Sample Repository가 연결되어 있음을 확인했습니다.
-
----
-
-### 22.4 Clone한 파일 구조 확인
-
-Clone한 Repository의 실제 파일을 확인하기 위해 다음 명령어를 실행했습니다.
-
-```powershell
-dir
-```
-
-실행 결과 `Hello-World` 폴더 안에 `README` 파일이 존재하는 것을 확인했습니다.
-
----
-
-### 22.5 Git Commit과 Branch 기록 확인
-
-Clone한 Repository에는 파일뿐 아니라 기존 Git Commit 기록도 함께 포함됩니다.
-
-이를 확인하기 위해 다음 명령어를 실행했습니다.
-
-```bash
-git log --oneline --graph --all --decorate -10
-```
-
-각 부분의 의미는 다음과 같습니다.
-
-| 명령 및 옵션 | 의미 |
-|---|---|
-| `git log` | Commit 기록을 확인 |
-| `--oneline` | Commit 하나를 한 줄로 간단히 표시 |
-| `--graph` | Branch와 Commit 관계를 선 그래프로 표시 |
-| `--all` | 현재 Branch뿐 아니라 다른 Branch 기록도 함께 표시 |
-| `--decorate` | Commit 옆에 Branch와 원격 Branch 이름을 표시 |
-| `-10` | 최근 Commit을 최대 10개까지만 표시 |
-
-쉽게 풀면 다음과 같습니다.
-
-> **이 Repository의 최근 Commit을 최대 10개까지, Branch 이름과 관계를 포함하여 간단한 그래프 형태로 보여준다.**
-
-실제 화면에서는 다음과 같은 정보를 확인했습니다.
-
-```text
-HEAD -> master
-origin/master
-origin/HEAD
-origin/octocat-patch-1
-origin/test
-```
-
-`HEAD -> master`는 현재 로컬 Repository에서 보고 있는 Branch가 `master`라는 의미입니다.
-
-현재 과제 Repository에서는 기본 Branch로 `main`을 사용하지만 Repository마다 기본 Branch 이름은 다를 수 있으므로, Sample Repository에서 `master`가 표시되는 것은 정상입니다.
-
----
-
-### 22.6 공개 Sample Repository Clone 실습 증빙
-
-![공개 Sample Repository Clone, Remote, 파일 구조 및 Git Log 확인](images/47-public-sample-repository-clone-files-and-git-log.jpg)
-
-**그림 49. 공개 Sample Repository Clone 후 Remote·파일 구조·Git Log 확인**
-
-위 화면에서 다음 과정을 한 번에 확인할 수 있습니다.
-
-- `git clone https://github.com/octocat/Hello-World.git` 실행
-- `Cloning into 'Hello-World'...` 정상 출력
-- `git remote -v`를 통한 원격 Repository 주소 확인
-- `dir`을 통한 Clone된 파일 구조 확인
-- `git log --oneline --graph --all --decorate -10`을 통한 Commit 및 Branch 기록 확인
-
-이를 통해 `git clone`은 단순히 파일만 다운로드하는 것이 아니라 **파일, Commit 이력, Branch 정보, 원격 Repository 연결 정보까지 함께 가져오는 명령어**라는 점을 실제로 확인했습니다.
-
----
-
-### 22.7 일반 다운로드와 Clone의 차이
-
-| 구분 | 일반 파일 다운로드 | `git clone` |
-|---|---|---|
-| 프로젝트 파일 | 가져옴 | 가져옴 |
-| Commit 기록 | 보통 가져오지 않음 | 함께 가져옴 |
-| Branch 정보 | 없음 | 함께 가져옴 |
-| 원격 Repository 연결 | 없음 | 자동 설정 |
-| `git log` 사용 | 불가능할 수 있음 | 바로 사용 가능 |
-| 이후 Git 작업 | 별도 설정 필요 | 바로 가능 |
-
-따라서 Git 프로젝트의 변경 이력을 확인하거나 다른 컴퓨터에서 개발을 이어갈 때는 일반 다운로드보다 `git clone`이 적합합니다.
-
----
-
-### 22.8 `git pull`이란?
-
-공개 Sample Repository 확인을 마친 뒤 다시 현재 과제 Repository로 돌아와 `git pull`도 실제로 사용했습니다.
-
-```powershell
-cd C:\Python-Workspace\python-git-prompt-manager
-git status
-git pull
-git status
-```
-
-`git pull`은 GitHub와 같은 원격 Repository의 최신 Commit을 확인하고, 필요한 변경사항이 있으면 현재 로컬 Branch로 가져와 반영하는 명령어입니다.
-
-쉽게 표현하면 다음과 같습니다.
-
-```text
-GitHub의 origin/main
-        ↓
-git pull
-        ↓
-원격의 최신 Commit 확인
-        ↓
-필요한 변경사항을 로컬 main에 반영
-```
-
-`git push`와 방향을 비교하면 다음과 같습니다.
-
-| 명령어 | 방향 | 역할 |
-|---|---|---|
-| `git push` | 로컬 → GitHub | 로컬에서 만든 Commit을 원격 Repository에 전송 |
-| `git pull` | GitHub → 로컬 | 원격 Repository의 최신 Commit을 로컬로 가져옴 |
-
----
-
-### 22.9 실제 `git pull` 실행 결과
-
-`git pull`을 실행한 결과 다음 메시지가 표시되었습니다.
-
-```text
-Already up to date.
-```
-
-이 메시지는 오류가 아니라, 현재 GitHub의 `origin/main`에 로컬 Repository가 아직 가지고 있지 않은 새로운 Commit이 없다는 의미입니다.
-
-즉 원격 Repository에서 새로 가져올 변경사항이 없었기 때문에 추가 Merge 없이 정상적으로 종료되었습니다.
-
-한편 `git status`에는 다음과 같이 로컬에서 아직 Commit하지 않은 변경사항이 표시되었습니다.
-
-```text
-modified: README.md
-
-Untracked files:
-    images/47-public-sample-repository-clone-files-and-git-log.jpg
-```
-
-이 상태 역시 오류가 아닙니다.
-
-- `README.md`는 기존에 Git이 관리하던 파일을 수정했기 때문에 `modified`로 표시되었습니다.
-- 47번 이미지는 새로 생성되었지만 아직 Git에 등록하지 않았기 때문에 `Untracked files`로 표시되었습니다.
-
-즉 다음 두 문장은 서로 다른 의미를 가집니다.
-
-```text
-Your branch is up to date with 'origin/main'.
-```
-
-→ 로컬 `main`과 원격 `origin/main`이 같은 Commit을 기준으로 하고 있음
-
-```text
-modified: README.md
-Untracked files: ...
-```
-
-→ 로컬 작업 폴더에는 아직 Commit하지 않은 변경사항이 있음
-
-따라서 원격 Branch와 Commit 기준으로 동기화되어 있어도, 현재 수정 중인 파일이 있으면 `working tree clean` 상태가 아닐 수 있습니다.
-
----
-
-### 22.10 `git pull` 실행 및 로컬 변경사항 확인 증빙
-
-![git pull 실행 및 로컬 변경사항 확인](images/48-git-pull-already-up-to-date-and-local-changes.jpg)
-
-**그림 50. `git pull`의 `Already up to date.` 결과와 로컬 미Commit 변경사항 확인**
-
-위 화면에서는 다음 내용을 함께 확인할 수 있습니다.
-
-- 공개 Sample Repository 작업 후 현재 과제 Repository로 복귀
-- 현재 Branch가 `main`임을 확인
-- 로컬 `main`과 `origin/main`이 같은 Commit 상태임을 확인
-- `README.md`가 수정된 상태임을 확인
-- 47번 증빙 이미지가 `Untracked files`로 표시된 상태 확인
-- `git pull` 실행
-- `Already up to date.` 결과 확인
-- `git pull` 후에도 로컬의 미Commit 변경사항은 그대로 유지되는 것을 확인
-
-이 화면은 `git pull`이 성공했다고 해서 로컬에서 작성 중인 파일까지 자동으로 Commit되거나 사라지는 것은 아니라는 점도 보여줍니다.
-
-따라서 이번 실습을 통해 **원격 Commit 동기화 상태와 로컬 작업 파일 상태는 서로 구분해서 확인해야 한다**는 점을 실제 작업으로 확인했습니다.
-
----
-
-### 22.11 Chapter 22 실습 결과 정리
-
-| 확인 항목 | 결과 |
-|---|---|
-| 자신의 Repository가 아닌 공개 Repository 사용 | ✅ |
-| `git clone` 실제 실행 | ✅ |
-| 원격 Repository 주소 확인 | ✅ |
-| Clone된 파일 구조 확인 | ✅ |
-| Commit 기록 확인 | ✅ |
-| Branch 정보 확인 | ✅ |
-| `git log --oneline --graph --all --decorate -10` 사용 | ✅ |
-| 현재 과제 Repository로 복귀 | ✅ |
-| `git pull` 실제 실행 | ✅ |
-| `Already up to date.` 결과 확인 | ✅ |
-| 로컬 변경사항과 원격 동기화 상태의 차이 확인 | ✅ |
-
-이번 Chapter에서는 공개 Repository를 직접 Clone하고 파일·Commit·Branch 정보를 확인한 뒤, 현재 과제 Repository에서 `git pull`까지 실제로 사용했습니다.
-
-이를 통해 다음 전체 흐름을 확인했습니다.
-
-```text
-공개 Sample Repository 선택
-        ↓
-git clone
-        ↓
-Remote·파일 구조·Git Log 확인
-        ↓
-현재 과제 Repository로 복귀
-        ↓
-git status
-        ↓
-git pull
-        ↓
-Already up to date.
-        ↓
-git status
-        ↓
-원격 Commit 동기화 상태와 로컬 미Commit 변경사항 확인
-```
-
----
-
-## 23. .gitignore
-
-.gitignore는 GitHub에 올릴 필요가 없는 임시파일이나 개발환경 파일을 Git 추적 대상에서 제외하기 위한 파일입니다.
-
-예:
-
-*\*\****\*\*\_\_pycache\_\_\*\***\*\*/
-
-\*.pyc
-
-.venv/
-
-.vscode/
-
-.DS\_Store
-
-Thumbs.db
-
-힌트: Windows에서 확장자가 숨겨져 gitignore.txt가 되지 않도록 실제 파일명이 정확히 .gitignore인지 확인합니다.
-
-과제에서도 .gitignore 생성이 필수입니다.
-
-**## 24. 보너스 기능 — 선택**
-
-과제 원문에는 두 종류의 보너스가 있습니다.
-
-**### Bonus 1 — 저장 및 내보내기**
-
-JSON 파일 저장
-
-JSON 파일 불러오기
-
-전체 프롬프트를 카테고리별 Markdown 파일로 내보내기
-
-**### Bonus 2 — CRUD 및 사용 기록**
-
-프롬프트 수정
-
-프롬프트 삭제
-
-상세 보기 시 조회수 증가
-
-조회수 기준 Top 목록
-
-우리 과제에서 권장하는 추가 사항
-
-Top 목록은 전체를 무한히 출력하기보다 조회수 상위 최대 5개로 제한하는 방식을 고려합니다.
-
-top\_prompts = sorted\_prompts[:5]
-
-**### CRUD란?**
-
-Create → 프롬프트 추가
-
-Read   → 목록 / 검색 / 상세 보기
-
-Update → 프롬프트 수정
-
-Delete → 프롬프트 삭제
-
-힌트: Bonus를 실제 구현한 경우에만 README에 “구현 완료”라고 작성합니다.
-
-**### ⚠️ JSON 구현 시 중요한 주의사항**
-
-필수 과제는 실행 중 추가 데이터가 유지되지만 종료하면 초기화되어야 합니다.
-
-따라서 JSON Bonus를 넣더라도 프로그램이 시작하자마자 자동으로 JSON을 불러와 필수 동작을 영구 저장 방식으로 바꾸는 설계는 피하겠습니다.
-
-안전한 방법은 JSON 저장, JSON 불러오기를 사용자가 명시적으로 선택하는 별도 Bonus 기능으로 만드는 것입니다.
-
-**## 25. 추가 입력 검증 및 실수 방지**
-
-필수 요구사항을 방해하지 않는 범위에서 다음 처리를 적용하는 것을 권장합니다.
-
-빈 제목 → 다시 입력
-
-빈 내용 → 다시 입력
-
-직접 입력 카테고리가 빈 값 → 다시 입력
-
-잘못된 메뉴 번호 → 다시 입력
-
-존재하지 않는 프롬프트 번호 → 안내 후 다시 메뉴
-
-검색 결과 없음 → 안내
-
-카테고리 결과 없음 → 안내
-
-프롬프트 없음 → 안내
-
-힌트: “오류가 발생하지 않았다”보다 어떤 사용자의 실수를 예상하고 어떻게 막았는지 설명합니다.
-
-**## 26. 테스트 결과 및 증빙**
-
-최종 증빙은 기능을 실행했다는 화면이 아니라 기능이 실제로 정상 동작했다는 결과까지 보여주는 것을 원칙으로 합니다.
-
-예:
-
-프롬프트 추가
-
-입력
-
- ↓
-
-"추가되었습니다"
-
- ↓
-
-목록 다시 확인
-
- ↓
-
-3개 → 4개
-
- ↓
-
-정상 동작 확인
-
-이 방식으로 검색, 즐겨찾기, 카테고리 조회 등도 기능 수행 → 결과 검증까지 보여줍니다.
-
-과제는 개발환경, 프로그램 실행 결과, Git graph 스크린샷을 제출하도록 요구합니다.
-
-**## 27. 문제 해결 및 시행착오**
-
-문제 1. 【실제 발생한 문제】
-
-문제
-
-【무슨 일이 발생했는지】
-
-원인
-
-【왜 발생했는지】
-
-해결
-
-【어떤 명령이나 코드를 수정했는지】
-
-결과
-
-【수정 후 무엇이 정상 동작했는지】
-
-배운 점
-
-【이 문제를 통해 새롭게 알게 된 내용】
-
-힌트: 일부러 문제를 만들 필요는 없습니다. 실제 개발 중 발생한 오류만 기록합니다. 이혜경·강하연 제출물에서 좋았던 문제 → 원인 → 해결 → 결과 → 다음 작업 방식으로 작성합니다.
-
-**## 28. 현재 프로그램의 장점과 한계**
-
-**### 장점**
-
-외부 라이브러리 없이 Python 기본 문법으로 구현
-
-기능별 함수 분리
-
-빈 입력과 잘못된 번호에 대한 입력 검증
-
-제목·내용 키워드 검색
-
-영문 대소문자를 무시하는 검색
-
-실행 중 추가 데이터와 즐겨찾기 상태 유지
-
-Git을 이용한 기능별 변경 이력 관리
-
-**### 한계**
-
-프로그램 종료 시 추가 데이터가 초기화됨
-
-→ 필수 과제의 의도된 동작이므로 오류가 아님
-
-기본 검색에서는 오타 자동 수정 미지원
-
-띄어쓰기 자동 보정 미지원
-
-특수문자 정규화 미지원
-
-정규식 검색 미지원
-
-대규모 데이터 관리에는 적합하지 않음
-
-힌트: “부족해서 못 했다”는 식보다 현재 구현 범위와 향후 발전 가능성을 정확하게 구분합니다.
-
-**## 29. 과제 요구사항 최종 점검표**
-
-이 표는 최종 제출 직전에 실제 결과를 보고 체크합니다.
-
-요구사항        완료    증빙
-
-Python 3.10 이상        ☐       그림 1
-
-Python Extension        ☐       그림 1
-
-Korean Language Pack(선택)      ☐       그림 1
-
-print("Hello") 실행     ☐       그림 1 또는 별도
-
-Git 버전 확인   ☐       그림 1
-
-Git 사용자 이름/이메일 설정     ☐       그림 1
-
-기본 Branch main        ☐       그림 1
-
-VS Code-GitHub 연동     ☐       【증빙】
-
-GitHub Repository 생성  ☐       그림 2
-
-git init        ☐       Git 기록
-
-git add ☐       Git 기록
-
-git commit      ☐       Git 기록
-
-git push        ☐       Git 기록
-
-git pull        ☐       Git 기록
-
-git checkout    ☐       그림 3
-
-git clone       ☐       그림 11
-
-git merge       ☐       그림 3
-
-.gitignore      ☐       Repository
-
-README.md       ☐       Repository
-
-공개 샘플 Repository clone      ☐       그림 11
-
-기본 프롬프트 3개 이상  ☐       그림 5
-
-List + Dictionary       ☐       코드
-
-제목·내용·카테고리·즐겨찾기     ☐       코드
-
-빈 입력 재요청  ☐       실행 결과
-
-직접 카테고리 입력      ☐       실행 결과
-
-추가 시 favorite=False  ☐       코드
-
-실행 중 추가 데이터 유지        ☐       실행 결과
-
-종료 시 초기화  ☐       실행 결과
-
-목록 기능 별도 Branch 개발      ☐       그림 3·4
-
-목록 번호 표시  ☐       그림 5
-
-제목·카테고리·⭐ 표시    ☐       그림 5
-
-빈 목록 안내    ☐       테스트
-
-카테고리별 조회 ☐       그림 7
-
-카테고리 결과 없음 안내 ☐       테스트
-
-제목/내용 검색  ☐       그림 8
-
-검색 결과 없음 안내     ☐       테스트
-
-상세 보기       ☐       그림 9
-
-잘못된 상세 번호 안내   ☐       테스트
-
-즐겨찾기 추가/해제      ☐       그림 10
-
-즐겨찾기 목록   ☐       그림 10
-
-잘못된 메뉴 번호 처리   ☐       테스트
-
-기능 수행 후 메뉴 복귀  ☐       실행 결과
-
-종료 기능       ☐       실행 결과
-
-기능별 함수 분리        ☐       코드
-
-외부 Library 없이 필수기능 구현 ☐       코드
-
-의미 있는 Commit 10개 이상      ☐       그림 4
-
-git log --oneline --graph       ☐       그림 4
-
-GitHub URL 제출 ☐       아래 URL
-
-이 표가 중요한 이유는 과제 원문에서 요구사항이 프로그램 기능뿐 아니라 개발환경·Git 명령·Branch·제출 증빙까지 여러 페이지에 흩어져 있기 때문입니다. 특히 “모든 요구사항을 만족해야 한다”는 전제가 명시되어 있습니다.
-
-**## 30. GitHub Repository**
-
-**### GitHub URL**
-
-【과제 수행 후 실제 URL 입력】
-
-힌트: 최종 제출 전에 Repository가 정상적으로 열리는지 직접 확인하고 URL을 넣습니다.
-
-**## 31. 마무리**
-
-이번 과제를 통해 Python의 변수, List, Dictionary, 조건문, 반복문, 함수 등을 단순히 문법으로 학습하는 데 그치지 않고 실제 프롬프트 관리 프로그램의 기능과 연결하여 활용했습니다.
-
-또한 Git을 사용해 기능별 변경사항을 Commit하고, 별도의 Branch에서 기능을 개발한 뒤 main에 병합하면서 버전 관리의 기본 흐름을 경험했습니다.
-
-가장 어려웠던 부분:
-
-【직접 입력】
-
-해결 과정:
-
-【직접 입력】
-
-이번 과제를 통해 가장 크게 배운 점:
-
-【직접 입력】
-
-앞으로 개선하고 싶은 부분:
-
-【직접 입력】
-
-힌트: 마지막 부분은 AI가 경험을 만들어내면 안 됩니다. 실제 과제를 수행하면서 어려웠던 점과 배운 점을 사용자님이 알려주시면, 그 내용을 자연스러운 보고서 문장으로 제가 다듬겠습니다.
-
-이 README를 만들 때 지킬 핵심 원칙
-
-이번 과제에서는 README를 무조건 길게 만드는 것이 목표가 아닙니다. 과제 원문이 README 자체에 필수로 요구하는 것은 프로그램 이름·간단한 설명·실행 방법·기능 목록·등록된 카테고리 설명입니다. 여기에 사용자님의 목표에 맞게 Python/Git을 모르는 사람도 이해할 최소한의 개념 설명, 선택 이유, 입력 검증, 한계, Git 작업과 증빙 해설을 추가하는 것입니다.
-
-그래서 최종 형태는 “간결한 구성 + 충분한 설명”으로 하되, 화면만 던져놓지 않고 각 그림 바로 아래에 무엇을 했는지와 무엇을 증명하는지를 설명하겠습니다. 또한 필수 기능과 Bonus는 명확히 분리하고, 좋은 추가 기능이라도 필수 요구사항과 충돌하면 넣지 않겠습니다.
-
-특히 지금 단계에서 사용자님이 직접 결정해야 하는 것은 ① 프로젝트/프로그램 이름, ② 이전 미션에서 가져올 실제 기본 프롬프트 3개 이상, ③ Bonus 1·2 구현 여부, ④ 실제 개발 중 발생한 문제와 해결 경험, ⑤ 최종 GitHub URL 정도입니다. 나머지는 실제 개발하면서 제가 이 틀에 맞춰 상당 부분 채워드릴 수 있습니다.
-
-vs code에서 폴더를 만드려고 하는데 이름은 어떻게 할까?
-
-추천은 python-git-prompt-manager 입니다.
-
-이유는 폴더 이름만 봐도 Python + Git 과제 + 프롬프트 관리 프로그램이라는 목적이 바로 드러나고, GitHub 저장소 이름으로 그대로 써도 자연스럽기 때문입니다.
-
-다른 후보도 괜찮습니다.
-
-python-git-prompt-manager ← 가장 추천
-
-prompt-manager-python-git
-
-python-git-first-project
-
-prompt-manager-cli
-
-A1-1-python-git-prompt-manager
-
-이번 과제 제출용이라면 저는 *\*\****\*\*python-git-prompt-manager\*\***\*\*로 만들겠습니다.
-
-VS Code에서 새 폴더를 만들 때도 그대로:
-
-python-git-prompt-manager
-
-로 입력하면 됩니다.
-
-공백이나 한글은 가능하면 피하고, 소문자 + 하이픈(-) 방식으로 가는 게 가장 깔끔합니다.
-
-
 ## 13. 프롬프트 검색
 
 등록된 프롬프트가 많아지면 전체 목록을 직접 확인하는 것보다 필요한 단어를 이용하여 원하는 프롬프트를 찾는 기능이 필요합니다.
@@ -3309,7 +2377,7 @@ python .\main.py
 
 ---
 
-**\*\*## 14. 프롬프트 상세 보기\*\***
+## 14. 프롬프트 상세 보기
 
 프롬프트 목록에서 번호를 선택하여 해당 프롬프트의 전체 정보를 확인할 수 있도록 상세 보기 기능을 구현했습니다.
 
@@ -3327,7 +2395,7 @@ python .\main.py
 
 **\*\*---\*\***
 
-**\*\*### 14.1 프롬프트 목록 재사용\*\***
+### 14.1 프롬프트 목록 재사용\*\***
 
 상세 보기 기능에서는 사용자가 어떤 번호를 선택해야 하는지 먼저 확인할 수 있도록 기존의 \\\`show_prompt_list()\\\` 함수를 재사용했습니다.
 
@@ -3355,7 +2423,7 @@ show_prompt_list()
 
 **\*\*---\*\***
 
-**\*\*### 14.2 프롬프트 번호 입력\*\***
+### 14.2 프롬프트 번호 입력\*\***
 
 목록을 확인한 뒤 상세 정보를 보고 싶은 프롬프트 번호를 입력하도록 구현했습니다.
 
@@ -3411,7 +2479,7 @@ prompts[1]
 
 **\*\*---\*\***
 
-**\*\*### 14.3 잘못된 번호 처리\*\***
+### 14.3 잘못된 번호 처리\*\***
 
 사용자가 존재하지 않는 번호를 입력하거나 숫자가 아닌 값을 입력할 수 있습니다.
 
@@ -3438,7 +2506,7 @@ print("잘못된 프롬프트 번호입니다. 다시 입력해주세요.")
 
 **\*\*---\*\***
 
-**\*\*### 14.4 상세 정보 출력\*\***
+### 14.4 상세 정보 출력\*\***
 
 유효한 프롬프트 번호를 입력하면 해당 프롬프트의 다음 정보를 출력합니다.
 
@@ -3480,7 +2548,7 @@ print(prompt["content"])
 
 **\*\*---\*\***
 
-**\*\*### 14.5 빈 목록 처리\*\***
+### 14.5 빈 목록 처리\*\***
 
 등록된 프롬프트가 하나도 없는 경우에는 번호를 입력받을 필요가 없습니다.
 
@@ -3500,7 +2568,7 @@ if not prompts:
 
 **\*\*---\*\***
 
-**\*\*### 14.6 입력 중단 처리\*\***
+### 14.6 입력 중단 처리\*\***
 
 번호 입력 도중 사용자가 \\\`Ctrl+C\\\` 또는 EOF 입력을 사용하는 경우에도 Python 오류 메시지가 그대로 출력되지 않도록 처리했습니다.
 
@@ -3518,7 +2586,7 @@ except (EOFError, KeyboardInterrupt):
 
 **\*\*---\*\***
 
-**\*\*### 14.7 메인 메뉴 연결\*\***
+### 14.7 메인 메뉴 연결\*\***
 
 메인 메뉴에서 \\\`5\\\`번을 선택하면 상세 보기 기능이 실행되도록 연결했습니다.
 
@@ -3535,7 +2603,7 @@ elif choice == "5":
 
 **\*\*---\*\***
 
-**\*\*### 14.8 실제 실행 테스트\*\***
+### 14.8 실제 실행 테스트\*\***
 
 구현한 프롬프트 상세 보기 기능을 다음 명령어로 실행하여 테스트했습니다.
 
@@ -3643,7 +2711,7 @@ python .\main.py
 
 **\*\*---\*\***
 
-**\*\*### 14.9 구현 결과 정리\*\***
+### 14.9 구현 결과 정리\*\***
 
 이번 프롬프트 상세 보기 기능에서는 다음 항목을 실제 실행으로 확인했습니다.
 
@@ -6532,3 +5600,1251 @@ git log --oneline --graph --all --decorate
 따라서 현재 Chapter 21은 **실제 생성한 Commit을 기준으로 작성했으며, 최종 Git Log 증빙만 모든 작업 완료 후 추가하는 구조**로 정리했습니다.
 
 ---
+
+
+## 22. 공개 샘플 Repository Clone 및 `git pull` 실습
+
+과제에서는 자신의 GitHub Repository가 아니라 다른 사람이 공개한 Sample Repository를 하나 선택하여 `git clone`으로 내려받고, 해당 Repository의 파일 구조와 Git Commit 기록을 확인하도록 요구합니다.
+
+이번 과제에서는 GitHub의 공개 Sample Repository인 다음 Repository를 사용했습니다.
+
+```text
+octocat/Hello-World
+```
+
+자신이 만든 `python-git-prompt-manager` Repository를 다시 Clone한 것이 아니라, GitHub에 공개되어 있는 별도의 Sample Repository를 사용했습니다.
+
+---
+
+### 22.1 Clone이란?
+
+Git에서 **Clone(클론)**은 GitHub와 같은 원격 저장소에 있는 Repository를 내 컴퓨터로 복제하여 로컬 Repository를 만드는 작업입니다.
+
+일반적인 파일 다운로드와 달리 `git clone`은 다음 정보를 함께 가져옵니다.
+
+- 프로젝트 파일
+- Commit 기록
+- Branch 정보
+- 원격 Repository 연결 정보
+
+쉽게 표현하면 다음과 같습니다.
+
+```text
+GitHub의 공개 Repository
+        ↓
+git clone
+        ↓
+파일 + Commit 기록 + Branch 정보
+        ↓
+내 컴퓨터의 로컬 Repository
+```
+
+따라서 Clone이 완료된 뒤에는 별도의 Git 초기화 없이 바로 `git log`, `git branch`, `git remote -v` 같은 Git 명령어를 사용할 수 있습니다.
+
+---
+
+### 22.2 공개 Sample Repository Clone
+
+현재 과제 Repository 안에 또 다른 Git Repository를 넣지 않기 위해 한 단계 위 작업 폴더인 `C:\Python-Workspace`에서 Clone을 수행했습니다.
+
+```powershell
+cd C:\Python-Workspace
+git clone https://github.com/octocat/Hello-World.git
+cd .\Hello-World
+```
+
+실행 결과 다음과 같이 정상적으로 Clone되었습니다.
+
+```text
+Cloning into 'Hello-World'...
+Receiving objects: 100% (13/13), done.
+```
+
+---
+
+### 22.3 원격 Repository 확인
+
+Clone한 Repository가 실제로 `octocat/Hello-World`에서 내려받은 것인지 확인하기 위해 다음 명령어를 실행했습니다.
+
+```bash
+git remote -v
+```
+
+실행 결과:
+
+```text
+origin  https://github.com/octocat/Hello-World.git (fetch)
+origin  https://github.com/octocat/Hello-World.git (push)
+```
+
+이를 통해 자신의 Repository가 아니라 공개 Sample Repository가 연결되어 있음을 확인했습니다.
+
+---
+
+### 22.4 Clone한 파일 구조 확인
+
+Clone한 Repository의 실제 파일을 확인하기 위해 다음 명령어를 실행했습니다.
+
+```powershell
+dir
+```
+
+실행 결과 `Hello-World` 폴더 안에 `README` 파일이 존재하는 것을 확인했습니다.
+
+---
+
+### 22.5 Git Commit과 Branch 기록 확인
+
+Clone한 Repository에는 파일뿐 아니라 기존 Git Commit 기록도 함께 포함됩니다.
+
+이를 확인하기 위해 다음 명령어를 실행했습니다.
+
+```bash
+git log --oneline --graph --all --decorate -10
+```
+
+각 부분의 의미는 다음과 같습니다.
+
+| 명령 및 옵션 | 의미 |
+|---|---|
+| `git log` | Commit 기록을 확인 |
+| `--oneline` | Commit 하나를 한 줄로 간단히 표시 |
+| `--graph` | Branch와 Commit 관계를 선 그래프로 표시 |
+| `--all` | 현재 Branch뿐 아니라 다른 Branch 기록도 함께 표시 |
+| `--decorate` | Commit 옆에 Branch와 원격 Branch 이름을 표시 |
+| `-10` | 최근 Commit을 최대 10개까지만 표시 |
+
+쉽게 풀면 다음과 같습니다.
+
+> **이 Repository의 최근 Commit을 최대 10개까지, Branch 이름과 관계를 포함하여 간단한 그래프 형태로 보여준다.**
+
+실제 화면에서는 다음과 같은 정보를 확인했습니다.
+
+```text
+HEAD -> master
+origin/master
+origin/HEAD
+origin/octocat-patch-1
+origin/test
+```
+
+`HEAD -> master`는 현재 로컬 Repository에서 보고 있는 Branch가 `master`라는 의미입니다.
+
+현재 과제 Repository에서는 기본 Branch로 `main`을 사용하지만 Repository마다 기본 Branch 이름은 다를 수 있으므로, Sample Repository에서 `master`가 표시되는 것은 정상입니다.
+
+---
+
+### 22.6 공개 Sample Repository Clone 실습 증빙
+
+![공개 Sample Repository Clone, Remote, 파일 구조 및 Git Log 확인](images/47-public-sample-repository-clone-files-and-git-log.jpg)
+
+**그림 49. 공개 Sample Repository Clone 후 Remote·파일 구조·Git Log 확인**
+
+위 화면에서 다음 과정을 한 번에 확인할 수 있습니다.
+
+- `git clone https://github.com/octocat/Hello-World.git` 실행
+- `Cloning into 'Hello-World'...` 정상 출력
+- `git remote -v`를 통한 원격 Repository 주소 확인
+- `dir`을 통한 Clone된 파일 구조 확인
+- `git log --oneline --graph --all --decorate -10`을 통한 Commit 및 Branch 기록 확인
+
+이를 통해 `git clone`은 단순히 파일만 다운로드하는 것이 아니라 **파일, Commit 이력, Branch 정보, 원격 Repository 연결 정보까지 함께 가져오는 명령어**라는 점을 실제로 확인했습니다.
+
+---
+
+### 22.7 일반 다운로드와 Clone의 차이
+
+| 구분 | 일반 파일 다운로드 | `git clone` |
+|---|---|---|
+| 프로젝트 파일 | 가져옴 | 가져옴 |
+| Commit 기록 | 보통 가져오지 않음 | 함께 가져옴 |
+| Branch 정보 | 없음 | 함께 가져옴 |
+| 원격 Repository 연결 | 없음 | 자동 설정 |
+| `git log` 사용 | 불가능할 수 있음 | 바로 사용 가능 |
+| 이후 Git 작업 | 별도 설정 필요 | 바로 가능 |
+
+따라서 Git 프로젝트의 변경 이력을 확인하거나 다른 컴퓨터에서 개발을 이어갈 때는 일반 다운로드보다 `git clone`이 적합합니다.
+
+---
+
+### 22.8 `git pull`이란?
+
+공개 Sample Repository 확인을 마친 뒤 다시 현재 과제 Repository로 돌아와 `git pull`도 실제로 사용했습니다.
+
+```powershell
+cd C:\Python-Workspace\python-git-prompt-manager
+git status
+git pull
+git status
+```
+
+`git pull`은 GitHub와 같은 원격 Repository의 최신 Commit을 확인하고, 필요한 변경사항이 있으면 현재 로컬 Branch로 가져와 반영하는 명령어입니다.
+
+쉽게 표현하면 다음과 같습니다.
+
+```text
+GitHub의 origin/main
+        ↓
+git pull
+        ↓
+원격의 최신 Commit 확인
+        ↓
+필요한 변경사항을 로컬 main에 반영
+```
+
+`git push`와 방향을 비교하면 다음과 같습니다.
+
+| 명령어 | 방향 | 역할 |
+|---|---|---|
+| `git push` | 로컬 → GitHub | 로컬에서 만든 Commit을 원격 Repository에 전송 |
+| `git pull` | GitHub → 로컬 | 원격 Repository의 최신 Commit을 로컬로 가져옴 |
+
+---
+
+### 22.9 실제 `git pull` 실행 결과
+
+`git pull`을 실행한 결과 다음 메시지가 표시되었습니다.
+
+```text
+Already up to date.
+```
+
+이 메시지는 오류가 아니라, 현재 GitHub의 `origin/main`에 로컬 Repository가 아직 가지고 있지 않은 새로운 Commit이 없다는 의미입니다.
+
+즉 원격 Repository에서 새로 가져올 변경사항이 없었기 때문에 추가 Merge 없이 정상적으로 종료되었습니다.
+
+한편 `git status`에는 다음과 같이 로컬에서 아직 Commit하지 않은 변경사항이 표시되었습니다.
+
+```text
+modified: README.md
+
+Untracked files:
+    images/47-public-sample-repository-clone-files-and-git-log.jpg
+```
+
+이 상태 역시 오류가 아닙니다.
+
+- `README.md`는 기존에 Git이 관리하던 파일을 수정했기 때문에 `modified`로 표시되었습니다.
+- 47번 이미지는 새로 생성되었지만 아직 Git에 등록하지 않았기 때문에 `Untracked files`로 표시되었습니다.
+
+즉 다음 두 문장은 서로 다른 의미를 가집니다.
+
+```text
+Your branch is up to date with 'origin/main'.
+```
+
+→ 로컬 `main`과 원격 `origin/main`이 같은 Commit을 기준으로 하고 있음
+
+```text
+modified: README.md
+Untracked files: ...
+```
+
+→ 로컬 작업 폴더에는 아직 Commit하지 않은 변경사항이 있음
+
+따라서 원격 Branch와 Commit 기준으로 동기화되어 있어도, 현재 수정 중인 파일이 있으면 `working tree clean` 상태가 아닐 수 있습니다.
+
+---
+
+### 22.10 `git pull` 실행 및 로컬 변경사항 확인 증빙
+
+![git pull 실행 및 로컬 변경사항 확인](images/48-git-pull-already-up-to-date-and-local-changes.jpg)
+
+**그림 50. `git pull`의 `Already up to date.` 결과와 로컬 미Commit 변경사항 확인**
+
+위 화면에서는 다음 내용을 함께 확인할 수 있습니다.
+
+- 공개 Sample Repository 작업 후 현재 과제 Repository로 복귀
+- 현재 Branch가 `main`임을 확인
+- 로컬 `main`과 `origin/main`이 같은 Commit 상태임을 확인
+- `README.md`가 수정된 상태임을 확인
+- 47번 증빙 이미지가 `Untracked files`로 표시된 상태 확인
+- `git pull` 실행
+- `Already up to date.` 결과 확인
+- `git pull` 후에도 로컬의 미Commit 변경사항은 그대로 유지되는 것을 확인
+
+이 화면은 `git pull`이 성공했다고 해서 로컬에서 작성 중인 파일까지 자동으로 Commit되거나 사라지는 것은 아니라는 점도 보여줍니다.
+
+따라서 이번 실습을 통해 **원격 Commit 동기화 상태와 로컬 작업 파일 상태는 서로 구분해서 확인해야 한다**는 점을 실제 작업으로 확인했습니다.
+
+---
+
+### 22.11 Chapter 22 실습 결과 정리
+
+| 확인 항목 | 결과 |
+|---|---|
+| 자신의 Repository가 아닌 공개 Repository 사용 | ✅ |
+| `git clone` 실제 실행 | ✅ |
+| 원격 Repository 주소 확인 | ✅ |
+| Clone된 파일 구조 확인 | ✅ |
+| Commit 기록 확인 | ✅ |
+| Branch 정보 확인 | ✅ |
+| `git log --oneline --graph --all --decorate -10` 사용 | ✅ |
+| 현재 과제 Repository로 복귀 | ✅ |
+| `git pull` 실제 실행 | ✅ |
+| `Already up to date.` 결과 확인 | ✅ |
+| 로컬 변경사항과 원격 동기화 상태의 차이 확인 | ✅ |
+
+이번 Chapter에서는 공개 Repository를 직접 Clone하고 파일·Commit·Branch 정보를 확인한 뒤, 현재 과제 Repository에서 `git pull`까지 실제로 사용했습니다.
+
+이를 통해 다음 전체 흐름을 확인했습니다.
+
+```text
+공개 Sample Repository 선택
+        ↓
+git clone
+        ↓
+Remote·파일 구조·Git Log 확인
+        ↓
+현재 과제 Repository로 복귀
+        ↓
+git status
+        ↓
+git pull
+        ↓
+Already up to date.
+        ↓
+git status
+        ↓
+원격 Commit 동기화 상태와 로컬 미Commit 변경사항 확인
+```
+
+---
+
+## 23. `.gitignore`
+
+`.gitignore`는 Git으로 관리할 필요가 없는 파일이나 폴더를 추적 대상에서 제외하기 위한 설정 파일입니다.
+
+이번 프로젝트에서는 Python 실행 과정이나 Windows, VS Code가 자동으로 생성할 수 있는 불필요한 파일이 GitHub Repository에 포함되지 않도록 `.gitignore`를 작성했습니다.
+
+현재 프로젝트에서 사용한 주요 설정은 다음과 같습니다.
+
+```gitignore
+__pycache__/
+*.pyc
+.venv/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+```
+
+---
+
+### 23.1 `.gitignore`가 필요한 이유
+
+프로그램을 개발하다 보면 직접 작성하지 않았지만 운영체제나 개발 도구가 자동으로 만드는 파일이 생길 수 있습니다.
+
+예를 들어 다음과 같은 파일은 실제 Python 프로그램 기능과 직접적인 관계가 없습니다.
+
+- `desktop.ini` — Windows가 폴더 설정 정보를 저장하기 위해 생성
+- `Thumbs.db` — Windows가 이미지 미리보기 정보를 저장하기 위해 생성
+- `__pycache__/` — Python이 실행 과정에서 생성할 수 있는 캐시 폴더
+- `*.pyc` — Python이 생성할 수 있는 바이트코드 파일
+- `.venv/` — Python 가상환경 폴더
+- `.vscode/` — VS Code의 개인별 작업 환경 설정이 저장될 수 있는 폴더
+- `.DS_Store` — macOS에서 생성될 수 있는 폴더 설정 파일
+
+이러한 파일까지 Git에 계속 기록하면 실제 코드 변경사항과 관계없는 파일이 Commit에 포함될 수 있습니다.
+
+따라서 이번 프로젝트에서는 `.gitignore`를 사용하여 **과제 수행과 프로그램 실행에 필요한 파일만 Git으로 관리**하도록 구성했습니다.
+
+---
+
+### 23.2 실제로 발견한 `desktop.ini`
+
+프로젝트 초기 파일을 Staging Area에 등록하기 위해 다음 명령어를 실행했습니다.
+
+```bash
+git add .
+git status
+```
+
+처음 확인했을 때 Windows가 자동으로 생성한 다음 파일도 Commit 대상에 포함되어 있었습니다.
+
+```text
+images/desktop.ini
+```
+
+`desktop.ini`는 프롬프트 관리 프로그램을 실행하는 데 필요한 파일이 아니므로 `.gitignore`에 다음 항목을 추가했습니다.
+
+```gitignore
+desktop.ini
+```
+
+이후 다시 `git status`를 실행하여 `desktop.ini`가 Git의 Commit 대상에서 제외되었는지 확인했습니다.
+
+이 과정은 README의 앞부분인 `3.3 Git 추적 대상 등록 및 .gitignore 확인`에서도 실제 화면과 함께 기록했습니다.
+
+---
+
+### 23.3 `.gitignore`는 파일을 삭제하는 기능이 아님
+
+`.gitignore`를 처음 접하면 해당 파일을 컴퓨터에서 삭제하는 기능으로 오해할 수 있습니다.
+
+하지만 `.gitignore`의 역할은 파일을 삭제하는 것이 아닙니다.
+
+```text
+실제 컴퓨터의 파일
+        ↓
+그대로 존재할 수 있음
+
+.gitignore
+        ↓
+Git의 추적 및 Commit 대상에서 제외
+```
+
+예를 들어 `images/desktop.ini`가 실제 폴더 안에 존재하더라도 `git status`에 표시되지 않는다면 `.gitignore`가 정상적으로 적용된 것입니다.
+
+즉 이번 프로젝트에서는 불필요한 시스템 파일을 컴퓨터에서 강제로 삭제하기보다, Git 변경 이력에는 포함하지 않는 방식으로 관리했습니다.
+
+---
+
+### 23.4 실제 적용 과정
+
+이번 프로젝트에서는 다음 순서로 `.gitignore`를 실제 적용했습니다.
+
+```text
+프로젝트 파일 작성
+        ↓
+git add .
+        ↓
+git status
+        ↓
+불필요한 desktop.ini 발견
+        ↓
+.gitignore에 desktop.ini 추가
+        ↓
+다시 git status
+        ↓
+desktop.ini가 Git 대상에서 제외된 것을 확인
+```
+
+단순히 `.gitignore` 파일을 작성하는 것에서 끝내지 않고, 실제 `git status` 결과가 어떻게 달라지는지 확인했습니다.
+
+---
+
+### 23.5 `.gitignore` 적용 증빙
+
+앞의 Chapter 3.3에서 다음 증빙 화면을 통해 `.gitignore` 적용 과정을 확인했습니다.
+
+- `05-git-add-status.png`  
+  → `git add .` 후 `desktop.ini`까지 Git 대상에 포함된 상태 확인
+- `06-gitignore-desktop-ini.jpg`  
+  → `.gitignore`에 `desktop.ini` 제외 규칙 추가
+- `07-gitignore-verification.jpg`  
+  → 다시 `git status`를 실행하여 `desktop.ini`가 제외된 상태 확인
+
+같은 내용을 Chapter 23에서 다시 캡처하지 않은 이유는 이미 앞부분에서 **문제 발견 → 설정 수정 → 결과 검증** 과정까지 실제 증빙을 확보했기 때문입니다.
+
+따라서 Chapter 23에서는 기존 증빙을 바탕으로 `.gitignore`의 목적과 실제 적용 원리를 정리했습니다.
+
+---
+
+### 23.6 구현 결과 정리
+
+| 확인 항목 | 결과 |
+|---|---|
+| 실제 `.gitignore` 파일 사용 | ✅ |
+| Python 캐시 파일 제외 | ✅ |
+| 가상환경 폴더 제외 | ✅ |
+| VS Code 개인 설정 제외 | ✅ |
+| Windows 시스템 파일 제외 | ✅ |
+| `desktop.ini` 실제 제외 확인 | ✅ |
+| `git status`를 통한 적용 결과 검증 | ✅ |
+
+이번 실습을 통해 `.gitignore`는 단순히 과제 제출용으로 만드는 파일이 아니라, **실제 프로젝트에서 불필요한 파일이 Git 변경 이력에 섞이지 않도록 관리하는 설정 파일**이라는 점을 확인했습니다.
+
+---
+
+## 24. 보너스 기능 — 선택 구현 및 실제 테스트 완료
+
+이번 과제의 보너스 기능을 모두 무조건 구현하기보다, 현재 제작한 `나만의 프롬프트 관리 프로그램`의 목적과 자연스럽게 연결되는 기능만 선별하여 구현했습니다.
+
+현재 프로그램은 필수 기능으로 프롬프트 추가, 목록, 카테고리별 조회, 검색, 상세 보기, 즐겨찾기 관리 기능을 제공합니다.
+
+이 구조와 직접 연결되는 보너스 기능으로 **Bonus 2 — CRUD 및 사용 기록**을 선택했습니다.
+
+이번 프로젝트에서 실제로 구현하고 테스트한 보너스 기능은 다음과 같습니다.
+
+1. 프롬프트 수정
+2. 프롬프트 삭제
+3. 상세 보기 횟수 기록
+4. 조회수 기준 Top 5
+
+JSON 자동 저장·자동 불러오기는 이번 프로젝트에서는 구현하지 않았습니다. 필수 기능에서 확인한 **프로그램 실행 중에는 변경사항이 유지되지만 프로그램을 종료하고 다시 실행하면 기본 데이터로 시작하는 동작**을 그대로 유지하기 위해서입니다.
+
+---
+
+### 24.1 보너스 메뉴 확장
+
+필수 메뉴 1~7은 그대로 유지하고, 보너스 기능을 8~10번 메뉴로 추가했습니다.
+
+```text
+8. 프롬프트 수정 [Bonus]
+9. 프롬프트 삭제 [Bonus]
+10. 많이 본 프롬프트 Top 5 [Bonus]
+```
+
+필수 기능의 번호와 동작을 바꾸지 않고 뒤에 보너스 메뉴만 추가했기 때문에 기존 기능과 충돌하지 않도록 구성했습니다.
+
+프로그램 실행 후 보너스 메뉴가 실제로 표시되고, 각 메뉴를 선택했을 때 해당 기능으로 이동하는 것을 확인했습니다.
+
+---
+
+### 24.2 프롬프트 수정 — Update
+
+이미 등록된 프롬프트의 제목, 내용, 카테고리를 수정할 수 있도록 `edit_prompt()` 함수를 추가했습니다.
+
+수정 흐름은 다음과 같습니다.
+
+```text
+프롬프트 목록 표시
+        ↓
+수정할 번호 선택
+        ↓
+번호 유효성 검사
+        ↓
+현재 정보 확인
+        ↓
+새 제목·내용·카테고리 입력
+        ↓
+기존 Dictionary 값 변경
+        ↓
+수정 결과 출력
+        ↓
+상세 보기에서 실제 변경 결과 재확인
+```
+
+제목과 내용은 기존 `get_non_empty_input()`을 재사용하여 빈 값을 허용하지 않습니다.
+
+카테고리 역시 기존 `select_category()`를 재사용하므로 미리 정의된 카테고리를 선택하거나 직접 입력할 수 있습니다.
+
+선택한 프롬프트 번호는 `selected_number`에 따로 저장하여 이후 수정 결과를 출력할 때도 어떤 항목을 수정했는지 명확하게 확인할 수 있도록 했습니다.
+
+실제 테스트에서는 먼저 존재하지 않는 번호 `9`를 입력했습니다.
+
+```text
+수정할 프롬프트 번호: 9
+잘못된 프롬프트 번호입니다. 다시 입력해주세요.
+```
+
+프로그램이 종료되거나 오류가 발생하지 않고 다시 번호를 입력할 수 있었습니다.
+
+그 다음 정상 번호 `2`를 선택하여 기존 정보를 확인했습니다.
+
+```text
+제목: 주식투자 위험 영상 이미지 수정
+카테고리: 이미지 생성
+```
+
+이후 다음 값으로 수정했습니다.
+
+```text
+새 제목:
+주식투자 위험 영상 이미지 수정 - 보너스 테스트
+
+새 내용:
+주식투자 위험성 안내 영상 이미지 수정 테스트
+
+카테고리:
+이미지 생성
+```
+
+수정 후 다음과 같이 정상적으로 결과가 출력되었습니다.
+
+```text
+프롬프트가 수정되었습니다.
+번호: 2
+제목: 주식투자 위험 영상 이미지 수정 - 보너스 테스트
+카테고리: 이미지 생성
+즐겨찾기: ☆
+조회수: 0
+```
+
+이번 수정 테스트는 새로운 프로그램 실행 세션에서 진행했기 때문에 조회수가 `0`부터 시작하는 것이 정상입니다.
+
+#### 📷 잘못된 번호 입력 후 정상 프롬프트 선택
+
+![프롬프트 수정 잘못된 번호 처리 및 정상 번호 선택](images/57-prompt-edit-invalid-number-and-selection.jpg)
+
+**그림 57. 프롬프트 수정 기능에서 잘못된 번호 처리 후 정상 번호 선택**
+
+위 화면에서 `9`를 입력했을 때 오류 안내가 표시되고, 프로그램이 종료되지 않은 채 다시 `2`번을 선택할 수 있음을 확인했습니다.
+
+#### 📷 기존 정보 확인 및 새 값 입력
+
+![프롬프트 수정 기존 정보 확인 및 새 값 입력](images/58-prompt-edit-current-info-and-new-input.jpg)
+
+**그림 58. 기존 프롬프트 정보 확인 후 새 제목·내용·카테고리 입력**
+
+수정 전에 기존 제목·카테고리·내용이 표시되고, 그 아래에서 새 제목과 내용을 입력한 뒤 카테고리를 다시 선택하는 과정을 확인했습니다.
+
+#### 📷 수정 성공 및 결과 확인
+
+![프롬프트 수정 성공 및 결과 확인](images/59-prompt-edit-success-and-detail-verification.jpg)
+
+**그림 59. 프롬프트 수정 성공 결과와 상세 보기 재검증 시작**
+
+수정된 제목이 실제 목록에 반영되었고, 상세 보기 기능을 사용하여 변경된 데이터를 다시 확인했습니다.
+
+#### 📷 상세 보기에서 수정 결과 최종 확인
+
+![프롬프트 수정 후 상세 보기 결과](images/60-prompt-edit-detail-result-and-delete-start.jpg)
+
+**그림 60. 수정된 제목·내용이 상세 보기에 실제 반영된 결과**
+
+상세 보기 결과 다음 내용이 표시되었습니다.
+
+```text
+제목: 주식투자 위험 영상 이미지 수정 - 보너스 테스트
+조회수: 1
+내용:
+주식투자 위험성 안내 영상 이미지 수정 테스트
+```
+
+이를 통해 단순히 `프롬프트가 수정되었습니다.`라는 메시지만 출력된 것이 아니라, **실제 List 안의 Dictionary 값이 변경되어 이후 상세 보기에서도 수정된 데이터가 사용되는 것**을 확인했습니다.
+
+이 기능은 CRUD 가운데 **Update(수정)**에 해당합니다.
+
+---
+
+### 24.3 프롬프트 삭제 — Delete
+
+등록된 프롬프트를 삭제할 수 있도록 `delete_prompt()` 함수를 추가했습니다.
+
+삭제할 번호를 선택한 뒤 바로 삭제하지 않고 다음 확인 절차를 거칩니다.
+
+```text
+삭제할 번호 선택
+        ↓
+삭제 대상 제목·카테고리 확인
+        ↓
+정말 삭제할지 y/n 확인
+        ↓
+n → 삭제 취소
+y → 실제 삭제
+        ↓
+프롬프트 목록에서 삭제 결과 확인
+```
+
+선택한 프롬프트 번호는 `selected_number`에 저장하고, 실제 삭제에는 다음 방식을 사용합니다.
+
+```python
+deleted_prompt = prompts.pop(selected_number - 1)
+```
+
+`pop()`은 선택한 위치의 Dictionary를 List에서 제거합니다.
+
+삭제 확인 단계에서 `n`을 입력하면 데이터를 삭제하지 않고 메인 메뉴로 돌아오며, `y`를 입력해야 실제 삭제가 수행됩니다.
+
+실제 테스트에서는 수정한 2번 프롬프트를 삭제 대상으로 선택한 뒤 먼저 `n`을 입력했습니다.
+
+```text
+정말 삭제하시겠습니까? (y/n): n
+프롬프트 삭제를 취소했습니다.
+```
+
+이후 다시 삭제 메뉴에 들어가 같은 2번 프롬프트를 선택한 뒤 `y`를 입력했습니다.
+
+```text
+정말 삭제하시겠습니까? (y/n): y
+
+'주식투자 위험 영상 이미지 수정 - 보너스 테스트' 프롬프트가 삭제되었습니다.
+```
+
+#### 📷 삭제 취소 후 재시도
+
+![프롬프트 삭제 취소 및 재시도](images/61-prompt-delete-cancel-and-retry.jpg)
+
+**그림 61. 삭제 대상 확인 후 `n`을 입력하여 삭제 취소**
+
+삭제 전 제목과 카테고리를 다시 확인하고 `n`을 입력했을 때 실제 데이터가 삭제되지 않고 `프롬프트 삭제를 취소했습니다.`라는 안내가 표시되는 것을 확인했습니다.
+
+#### 📷 실제 삭제 성공
+
+![프롬프트 삭제 확인 및 성공](images/62-prompt-delete-confirmed-success.jpg)
+
+**그림 62. 삭제 확인에서 `y`를 입력하여 실제 프롬프트 삭제**
+
+같은 프롬프트를 다시 선택하고 `y`를 입력하여 실제 삭제가 수행되는 것을 확인했습니다.
+
+#### 📷 삭제 후 목록 반영 및 정상 종료
+
+![프롬프트 삭제 후 목록 반영 및 프로그램 종료](images/63-prompt-list-after-delete-and-program-exit.jpg)
+
+**그림 63. 삭제 후 프롬프트 목록이 4개에서 3개로 감소하고 프로그램이 정상 종료된 결과**
+
+삭제 후 목록은 다음과 같이 변경되었습니다.
+
+```text
+1. ☆ 몸 이상 신호 기반 컬러푸드 서비스 기획 [텍스트 생성]
+2. ☆ 결과 캐싱 개념 설명 [텍스트 생성]
+3. ☆ 복수 여행지 증빙 확인 [기타]
+```
+
+삭제 대상이었던 `주식투자 위험 영상 이미지 수정 - 보너스 테스트`가 목록에서 사라졌고, 뒤에 있던 프롬프트 번호도 자동으로 다시 정렬되었습니다.
+
+마지막으로 `0. 종료`를 선택하여 프로그램이 정상적으로 종료되는 것도 확인했습니다.
+
+이 기능은 CRUD 가운데 **Delete(삭제)**에 해당합니다.
+
+---
+
+### 24.4 상세 보기 횟수 기록
+
+각 프롬프트 Dictionary에 다음 값을 추가했습니다.
+
+```python
+"view_count": 0
+```
+
+프로그램을 처음 실행하면 모든 기본 프롬프트의 조회수는 `0`입니다.
+
+상세 보기에서 정상적인 프롬프트 번호를 선택하면 다음 코드가 실행됩니다.
+
+```python
+prompt["view_count"] += 1
+```
+
+따라서 단순히 목록이나 검색 결과를 확인한 것은 조회수로 계산하지 않고, `5. 프롬프트 상세 보기`에서 실제 전체 내용을 연 경우에만 조회수가 1씩 증가합니다.
+
+첫 번째 조회수 테스트에서는 다음 순서로 확인했습니다.
+
+```text
+Top 5 최초 실행
+        ↓
+조회 기록 없음 확인
+        ↓
+상세 보기에서 잘못된 번호 9 입력
+        ↓
+2번 프롬프트 정상 선택
+        ↓
+조회수 1
+        ↓
+2번 프롬프트 다시 상세 보기
+        ↓
+조회수 2
+        ↓
+1번 프롬프트 상세 보기
+        ↓
+조회수 1
+```
+
+#### 📷 조회 전 Top 5 초기 상태
+
+![조회 전 Top 5 초기 상태](images/49-top5-empty-state-before-detail-views.jpg)
+
+**그림 49. 상세 보기 전 Top 5에 조회 기록이 없는 초기 상태**
+
+프로그램을 실행한 뒤 `10. 많이 본 프롬프트 Top 5`를 먼저 선택했을 때 다음 메시지가 표시되었습니다.
+
+```text
+아직 상세 보기 기록이 없습니다.
+```
+
+이를 통해 조회 기록이 없는 상태도 별도로 처리하고 있음을 확인했습니다.
+
+#### 📷 잘못된 상세 보기 번호와 첫 조회수 증가
+
+![상세 보기 잘못된 번호 처리 및 첫 조회수](images/50-detail-view-invalid-number-and-first-view-count.jpg)
+
+**그림 50. 잘못된 상세 보기 번호 `9` 처리 후 2번 프롬프트 조회수 1 확인**
+
+존재하지 않는 번호를 입력해도 프로그램이 종료되지 않고 다시 입력할 수 있었고, 정상 번호 `2`를 선택한 뒤 조회수가 `1`로 증가했습니다.
+
+#### 📷 첫 상세 조회 전체 내용 및 메뉴 복귀
+
+![첫 상세 조회 전체 내용 및 메뉴 복귀](images/51-detail-view-first-count-full-content-and-menu-return.jpg)
+
+**그림 51. 첫 상세 조회에서 전체 내용 출력 및 메인 메뉴 복귀**
+
+상세 보기에서 제목·카테고리·즐겨찾기·조회수·전체 내용이 출력되고, 기능 수행 후 다시 메인 메뉴로 돌아오는 것을 확인했습니다.
+
+#### 📷 같은 프롬프트 조회수 2로 증가
+
+![상세 보기 조회수 2 증가](images/52-detail-view-count-increases-to-two.jpg)
+
+**그림 52. 같은 2번 프롬프트를 다시 상세 조회하여 조회수 2 확인**
+
+동일한 프롬프트를 다시 상세 보기하면 기존 조회수에 1이 추가되어 `2`가 되는 것을 확인했습니다.
+
+#### 📷 다른 프롬프트 조회수 1 기록
+
+![다른 프롬프트 상세 보기 조회수 1](images/53-second-prompt-detail-view-count-one.jpg)
+
+**그림 53. 1번 프롬프트 상세 보기 후 조회수 1 기록**
+
+2번 프롬프트와 별도로 1번 프롬프트도 상세 보기하여 각 프롬프트별로 조회수가 독립적으로 관리되는 것을 확인했습니다.
+
+#### 📷 다른 프롬프트 전체 내용 및 메뉴 복귀
+
+![다른 프롬프트 전체 내용 및 메뉴 복귀](images/54-second-prompt-full-content-and-menu-return.jpg)
+
+**그림 54. 1번 프롬프트 전체 내용 출력 및 메인 메뉴 복귀**
+
+두 번째 프롬프트의 상세 정보와 전체 내용이 정상적으로 표시되고 기능 수행 후 메인 메뉴로 복귀하는 것을 확인했습니다.
+
+---
+
+### 24.5 조회수 기준 Top 5
+
+상세 보기 횟수를 이용하여 자주 확인한 프롬프트를 조회수 높은 순서로 확인할 수 있도록 `show_top_prompts()` 함수를 추가했습니다.
+
+조회수가 한 번 이상 발생한 프롬프트만 Top 5 후보로 사용합니다.
+
+```python
+viewed_prompts = [
+    (index, prompt)
+    for index, prompt in enumerate(prompts, start=1)
+    if prompt["view_count"] > 0
+]
+```
+
+이후 `sorted()`와 `reverse=True`를 사용하여 조회수가 높은 순서로 정렬합니다.
+
+```python
+sorted_prompts = sorted(
+    viewed_prompts,
+    key=lambda item: item[1]["view_count"],
+    reverse=True,
+)
+```
+
+최종 출력은 최대 5개까지만 제한합니다.
+
+```python
+top_prompts = sorted_prompts[:5]
+```
+
+실제 테스트에서는 2번 프롬프트를 2회, 1번 프롬프트를 1회 상세 조회한 뒤 Top 5를 실행했습니다.
+
+결과는 다음과 같았습니다.
+
+```text
+1위. ☆ 주식투자 위험 영상 이미지 수정 [이미지 생성] - 원본 번호: 2, 조회수: 2
+2위. ☆ 몸 이상 신호 기반 컬러푸드 서비스 기획 [텍스트 생성] - 원본 번호: 1, 조회수: 1
+```
+
+따라서 조회수 `2 → 1` 순서로 정상 정렬되는 것을 확인했습니다.
+
+#### 📷 조회수와 Top 5 순위 연결 확인
+
+![조회수와 Top 5 순위 연결](images/55-view-counts-and-top5-ranking-result.jpg)
+
+**그림 55. 각 프롬프트의 조회수와 Top 5 순위 결과 연결 확인**
+
+앞에서 확인한 조회수 값이 Top 5 결과의 정렬 기준으로 실제 사용되는 것을 확인했습니다.
+
+#### 📷 Top 5 최종 순위 결과
+
+![Top 5 최종 순위 결과](images/56-top5-final-ranked-result.jpg)
+
+**그림 56. 조회수 기준 Top 5 최종 정렬 결과**
+
+조회수가 높은 2번 프롬프트가 1위, 조회수가 낮은 1번 프롬프트가 2위로 표시되어 조회수 내림차순 정렬이 정상적으로 동작하는 것을 확인했습니다.
+
+---
+
+### 24.6 프로그램 재실행 시 조회수 초기화 확인
+
+Top 5 테스트를 종료한 뒤 프로그램을 다시 실행하여 수정·삭제 기능을 테스트했습니다.
+
+새 실행 세션에서 수정된 프롬프트의 조회수 출력은 다음과 같았습니다.
+
+```text
+조회수: 0
+```
+
+이는 앞선 실행에서 생성된 조회수 `2`가 파일에 자동 저장되지 않았고, 프로그램을 새로 실행하면서 기본 데이터의 `view_count: 0`부터 다시 시작했다는 의미입니다.
+
+따라서 다음 두 동작을 모두 확인했습니다.
+
+```text
+같은 실행 중
+→ 상세 보기 횟수가 계속 누적됨
+
+프로그램 종료 후 다시 실행
+→ 기본 조회수 0으로 초기화됨
+```
+
+이는 이번 프로그램이 JSON 자동 저장을 사용하지 않고 **메모리에서만 실행 중 데이터를 유지하는 구조**라는 점과도 일치합니다.
+
+---
+
+### 24.7 CRUD와 현재 프로그램의 연결
+
+CRUD는 데이터를 관리할 때 자주 사용하는 네 가지 기본 작업입니다.
+
+| CRUD | 의미 | 이번 프로그램 | 실제 구현 여부 |
+|---|---|---|---|
+| Create | 생성 | 프롬프트 추가 | ✅ |
+| Read | 조회 | 목록, 카테고리별 조회, 검색, 상세 보기 | ✅ |
+| Update | 수정 | 프롬프트 수정 | ✅ |
+| Delete | 삭제 | 프롬프트 삭제 | ✅ |
+
+필수 기능에서 Create와 Read를 구현했고, 이번 Bonus 2에서 Update와 Delete를 추가하여 하나의 프롬프트를 생성·조회·수정·삭제할 수 있는 구조로 확장했습니다.
+
+---
+
+### 24.8 JSON 저장·불러오기를 구현하지 않은 이유
+
+과제에는 JSON 저장·불러오기와 카테고리별 Markdown 내보내기도 보너스 기능으로 제시되어 있습니다.
+
+하지만 이번 프로젝트에서는 보너스 기능을 모두 억지로 구현하기보다 현재 프롬프트 관리 프로그램과 직접 연결되는 기능을 완성도 있게 구현하는 것을 우선했습니다.
+
+이번 프로그램의 기본 동작은 다음과 같습니다.
+
+```text
+프로그램 시작
+    ↓
+기본 프롬프트 생성
+    ↓
+실행 중 추가·수정·삭제·즐겨찾기·조회수 변경
+    ↓
+메모리에서만 유지
+    ↓
+프로그램 종료
+    ↓
+다시 실행하면 기본 상태
+```
+
+자동 JSON 저장과 자동 불러오기를 추가하면 프로그램을 다시 실행했을 때 이전 상태가 남게 되어 지금까지 확인한 필수 동작과 혼동될 수 있습니다.
+
+실제 테스트에서도 첫 번째 실행에서 발생한 조회수가 두 번째 실행에서는 `0`으로 초기화되는 것을 확인했습니다.
+
+따라서 이번에는 JSON 자동 저장·불러오기를 넣지 않고 메모리 기반 구조를 그대로 유지했습니다.
+
+---
+
+### 24.9 실제 보너스 테스트 결과 정리
+
+| 테스트 항목 | 실제 결과 |
+|---|---|
+| 보너스 메뉴 8~10 표시 | ✅ 정상 |
+| 수정에서 존재하지 않는 번호 `9` 입력 | ✅ 오류 안내 후 재입력 |
+| 2번 프롬프트 제목 수정 | ✅ 정상 |
+| 2번 프롬프트 내용 수정 | ✅ 정상 |
+| 카테고리 재선택 | ✅ 정상 |
+| 수정 결과 상세 보기 재확인 | ✅ 정상 |
+| 상세 보기 첫 조회 | ✅ 조회수 1 |
+| 같은 프롬프트 재조회 | ✅ 조회수 2 |
+| 다른 프롬프트 조회 | ✅ 별도 조회수 1 |
+| 조회 기록 없을 때 Top 5 | ✅ 안내 메시지 |
+| Top 5 조회수 내림차순 정렬 | ✅ `2회 → 1회` |
+| 삭제 전 `n` 입력 | ✅ 삭제 취소 |
+| 삭제 전 `y` 입력 | ✅ 실제 삭제 |
+| 삭제 후 목록 확인 | ✅ 4개 → 3개 |
+| 삭제 후 번호 재정렬 | ✅ 정상 |
+| 프로그램 종료 후 재실행 | ✅ 조회수 기본값 0 |
+| 프로그램 정상 종료 | ✅ 정상 |
+
+---
+
+### 24.10 최종 구현 범위
+
+| 보너스 기능 | 최종 상태 |
+|---|---|
+| 프롬프트 수정 | ✅ 구현 및 실제 테스트 완료 |
+| 프롬프트 삭제 | ✅ 구현 및 실제 테스트 완료 |
+| 상세 보기 횟수 기록 | ✅ 구현 및 실제 테스트 완료 |
+| 조회수 기준 Top 5 | ✅ 구현 및 실제 테스트 완료 |
+| JSON 저장 | 이번에는 구현하지 않음 |
+| JSON 불러오기 | 이번에는 구현하지 않음 |
+| 카테고리별 Markdown 내보내기 | 이번에는 구현하지 않음 |
+
+이번 Bonus 2 구현을 통해 기존 필수 기능을 유지하면서 프롬프트 관리 기능을 **Create → Read → Update → Delete**까지 확장했고, 추가로 상세 보기 횟수와 Top 5 기능을 통해 간단한 사용 기록도 확인할 수 있도록 했습니다.
+
+또한 단순히 기능 코드를 작성하는 데서 끝내지 않고 **잘못된 번호 입력 → 정상 수정 → 상세 보기 재검증 → 삭제 취소 → 실제 삭제 → 목록 반영 → 재실행 초기화**까지 실제 실행 결과를 단계별로 확인했습니다.
+
+이를 통해 현재 프로그램과 직접 연결되는 보너스 기능만 선별하여 구현하면서도, 각 기능이 실제로 정상 동작하는지 증빙 자료와 함께 검증했습니다.
+
+---
+
+## 25. 추가 입력 검증 및 실수 방지
+
+필수 요구사항을 방해하지 않는 범위에서 다음 처리를 적용하는 것을 권장합니다.
+
+빈 제목 → 다시 입력
+
+빈 내용 → 다시 입력
+
+직접 입력 카테고리가 빈 값 → 다시 입력
+
+잘못된 메뉴 번호 → 다시 입력
+
+존재하지 않는 프롬프트 번호 → 안내 후 다시 메뉴
+
+검색 결과 없음 → 안내
+
+카테고리 결과 없음 → 안내
+
+프롬프트 없음 → 안내
+
+힌트: “오류가 발생하지 않았다”보다 어떤 사용자의 실수를 예상하고 어떻게 막았는지 설명합니다.
+
+**## 26. 테스트 결과 및 증빙**
+
+최종 증빙은 기능을 실행했다는 화면이 아니라 기능이 실제로 정상 동작했다는 결과까지 보여주는 것을 원칙으로 합니다.
+
+예:
+
+프롬프트 추가
+
+입력
+
+ ↓
+
+"추가되었습니다"
+
+ ↓
+
+목록 다시 확인
+
+ ↓
+
+3개 → 4개
+
+ ↓
+
+정상 동작 확인
+
+이 방식으로 검색, 즐겨찾기, 카테고리 조회 등도 기능 수행 → 결과 검증까지 보여줍니다.
+
+과제는 개발환경, 프로그램 실행 결과, Git graph 스크린샷을 제출하도록 요구합니다.
+
+**## 27. 문제 해결 및 시행착오**
+
+문제 1. 【실제 발생한 문제】
+
+문제
+
+【무슨 일이 발생했는지】
+
+원인
+
+【왜 발생했는지】
+
+해결
+
+【어떤 명령이나 코드를 수정했는지】
+
+결과
+
+【수정 후 무엇이 정상 동작했는지】
+
+배운 점
+
+【이 문제를 통해 새롭게 알게 된 내용】
+
+힌트: 일부러 문제를 만들 필요는 없습니다. 실제 개발 중 발생한 오류만 기록합니다. 이혜경·강하연 제출물에서 좋았던 문제 → 원인 → 해결 → 결과 → 다음 작업 방식으로 작성합니다.
+
+**## 28. 현재 프로그램의 장점과 한계**
+
+**### 장점**
+
+외부 라이브러리 없이 Python 기본 문법으로 구현
+
+기능별 함수 분리
+
+빈 입력과 잘못된 번호에 대한 입력 검증
+
+제목·내용 키워드 검색
+
+영문 대소문자를 무시하는 검색
+
+실행 중 추가 데이터와 즐겨찾기 상태 유지
+
+Git을 이용한 기능별 변경 이력 관리
+
+**### 한계**
+
+프로그램 종료 시 추가 데이터가 초기화됨
+
+→ 필수 과제의 의도된 동작이므로 오류가 아님
+
+기본 검색에서는 오타 자동 수정 미지원
+
+띄어쓰기 자동 보정 미지원
+
+특수문자 정규화 미지원
+
+정규식 검색 미지원
+
+대규모 데이터 관리에는 적합하지 않음
+
+힌트: “부족해서 못 했다”는 식보다 현재 구현 범위와 향후 발전 가능성을 정확하게 구분합니다.
+
+**## 29. 과제 요구사항 최종 점검표**
+
+이 표는 최종 제출 직전에 실제 결과를 보고 체크합니다.
+
+요구사항        완료    증빙
+
+Python 3.10 이상        ☐       그림 1
+
+Python Extension        ☐       그림 1
+
+Korean Language Pack(선택)      ☐       그림 1
+
+print("Hello") 실행     ☐       그림 1 또는 별도
+
+Git 버전 확인   ☐       그림 1
+
+Git 사용자 이름/이메일 설정     ☐       그림 1
+
+기본 Branch main        ☐       그림 1
+
+VS Code-GitHub 연동     ☐       【증빙】
+
+GitHub Repository 생성  ☐       그림 2
+
+git init        ☐       Git 기록
+
+git add ☐       Git 기록
+
+git commit      ☐       Git 기록
+
+git push        ☐       Git 기록
+
+git pull        ☐       Git 기록
+
+git checkout    ☐       그림 3
+
+git clone       ☐       그림 11
+
+git merge       ☐       그림 3
+
+.gitignore      ☐       Repository
+
+README.md       ☐       Repository
+
+공개 샘플 Repository clone      ☐       그림 11
+
+기본 프롬프트 3개 이상  ☐       그림 5
+
+List + Dictionary       ☐       코드
+
+제목·내용·카테고리·즐겨찾기     ☐       코드
+
+빈 입력 재요청  ☐       실행 결과
+
+직접 카테고리 입력      ☐       실행 결과
+
+추가 시 favorite=False  ☐       코드
+
+실행 중 추가 데이터 유지        ☐       실행 결과
+
+종료 시 초기화  ☐       실행 결과
+
+목록 기능 별도 Branch 개발      ☐       그림 3·4
+
+목록 번호 표시  ☐       그림 5
+
+제목·카테고리·⭐ 표시    ☐       그림 5
+
+빈 목록 안내    ☐       테스트
+
+카테고리별 조회 ☐       그림 7
+
+카테고리 결과 없음 안내 ☐       테스트
+
+제목/내용 검색  ☐       그림 8
+
+검색 결과 없음 안내     ☐       테스트
+
+상세 보기       ☐       그림 9
+
+잘못된 상세 번호 안내   ☐       테스트
+
+즐겨찾기 추가/해제      ☐       그림 10
+
+즐겨찾기 목록   ☐       그림 10
+
+잘못된 메뉴 번호 처리   ☐       테스트
+
+기능 수행 후 메뉴 복귀  ☐       실행 결과
+
+종료 기능       ☐       실행 결과
+
+기능별 함수 분리        ☐       코드
+
+외부 Library 없이 필수기능 구현 ☐       코드
+
+의미 있는 Commit 10개 이상      ☐       그림 4
+
+git log --oneline --graph       ☐       그림 4
+
+GitHub URL 제출 ☐       아래 URL
+
+이 표가 중요한 이유는 과제 원문에서 요구사항이 프로그램 기능뿐 아니라 개발환경·Git 명령·Branch·제출 증빙까지 여러 페이지에 흩어져 있기 때문입니다. 특히 “모든 요구사항을 만족해야 한다”는 전제가 명시되어 있습니다.
+
+**## 30. GitHub Repository**
+
+**### GitHub URL**
+
+【과제 수행 후 실제 URL 입력】
+
+힌트: 최종 제출 전에 Repository가 정상적으로 열리는지 직접 확인하고 URL을 넣습니다.
+
+**## 31. 마무리**
+
+이번 과제를 통해 Python의 변수, List, Dictionary, 조건문, 반복문, 함수 등을 단순히 문법으로 학습하는 데 그치지 않고 실제 프롬프트 관리 프로그램의 기능과 연결하여 활용했습니다.
+
+또한 Git을 사용해 기능별 변경사항을 Commit하고, 별도의 Branch에서 기능을 개발한 뒤 main에 병합하면서 버전 관리의 기본 흐름을 경험했습니다.
+
+가장 어려웠던 부분:
+
+【직접 입력】
+
+해결 과정:
+
+【직접 입력】
+
+이번 과제를 통해 가장 크게 배운 점:
+
+【직접 입력】
+
+앞으로 개선하고 싶은 부분:
+
+【직접 입력】
+
+힌트: 마지막 부분은 AI가 경험을 만들어내면 안 됩니다. 실제 과제를 수행하면서 어려웠던 점과 배운 점을 사용자님이 알려주시면, 그 내용을 자연스러운 보고서 문장으로 제가 다듬겠습니다.
+
+이 README를 만들 때 지킬 핵심 원칙
+
+이번 과제에서는 README를 무조건 길게 만드는 것이 목표가 아닙니다. 과제 원문이 README 자체에 필수로 요구하는 것은 프로그램 이름·간단한 설명·실행 방법·기능 목록·등록된 카테고리 설명입니다. 여기에 사용자님의 목표에 맞게 Python/Git을 모르는 사람도 이해할 최소한의 개념 설명, 선택 이유, 입력 검증, 한계, Git 작업과 증빙 해설을 추가하는 것입니다.
+
+그래서 최종 형태는 “간결한 구성 + 충분한 설명”으로 하되, 화면만 던져놓지 않고 각 그림 바로 아래에 무엇을 했는지와 무엇을 증명하는지를 설명하겠습니다. 또한 필수 기능과 Bonus는 명확히 분리하고, 좋은 추가 기능이라도 필수 요구사항과 충돌하면 넣지 않겠습니다.
+
+특히 지금 단계에서 사용자님이 직접 결정해야 하는 것은 ① 프로젝트/프로그램 이름, ② 이전 미션에서 가져올 실제 기본 프롬프트 3개 이상, ③ Bonus 1·2 구현 여부, ④ 실제 개발 중 발생한 문제와 해결 경험, ⑤ 최종 GitHub URL 정도입니다. 나머지는 실제 개발하면서 제가 이 틀에 맞춰 상당 부분 채워드릴 수 있습니다.
+
+vs code에서 폴더를 만드려고 하는데 이름은 어떻게 할까?
+
+추천은 python-git-prompt-manager 입니다.
+
+이유는 폴더 이름만 봐도 Python + Git 과제 + 프롬프트 관리 프로그램이라는 목적이 바로 드러나고, GitHub 저장소 이름으로 그대로 써도 자연스럽기 때문입니다.
+
+다른 후보도 괜찮습니다.
+
+python-git-prompt-manager ← 가장 추천
+
+prompt-manager-python-git
+
+python-git-first-project
+
+prompt-manager-cli
+
+A1-1-python-git-prompt-manager
+
+이번 과제 제출용이라면 저는 *\*\****\*\*python-git-prompt-manager\*\***\*\*로 만들겠습니다.
+
+VS Code에서 새 폴더를 만들 때도 그대로:
+
+python-git-prompt-manager
+
+로 입력하면 됩니다.
+
+공백이나 한글은 가능하면 피하고, 소문자 + 하이픈(-) 방식으로 가는 게 가장 깔끔합니다.
+
+

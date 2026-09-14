@@ -27,6 +27,7 @@ prompts = [
         ),
         "category": "텍스트 생성",
         "favorite": False,
+        "view_count": 0,
     },
     {
         "title": "주식투자 위험 영상 이미지 수정",
@@ -42,6 +43,7 @@ prompts = [
         ),
         "category": "이미지 생성",
         "favorite": False,
+        "view_count": 0,
     },
     {
         "title": "결과 캐싱 개념 설명",
@@ -55,6 +57,7 @@ prompts = [
         ),
         "category": "텍스트 생성",
         "favorite": False,
+        "view_count": 0,
     },
     {
         "title": "복수 여행지 증빙 확인",
@@ -64,6 +67,7 @@ prompts = [
         ),
         "category": "기타",
         "favorite": False,
+        "view_count": 0,
     },
 ]
 
@@ -78,6 +82,9 @@ def show_menu():
     print("5. 프롬프트 상세 보기")
     print("6. 즐겨찾기 관리")
     print("7. 즐겨찾기 목록")
+    print("8. 프롬프트 수정 [Bonus]")
+    print("9. 프롬프트 삭제 [Bonus]")
+    print("10. 많이 본 프롬프트 Top 5 [Bonus]")
     print("0. 종료")
 
 
@@ -96,7 +103,7 @@ def get_non_empty_input(message):
 
 
 def select_category():
-    """프롬프트 추가 시 카테고리를 선택하거나 직접 입력한다."""
+    """프롬프트 추가 또는 수정 시 카테고리를 선택하거나 직접 입력한다."""
     print("\n카테고리를 선택하세요.")
 
     for index, category in enumerate(CATEGORIES, start=1):
@@ -151,6 +158,7 @@ def add_prompt():
         "content": content,
         "category": category,
         "favorite": False,
+        "view_count": 0,
     }
 
     prompts.append(new_prompt)
@@ -159,6 +167,7 @@ def add_prompt():
     print(f"제목: {title}")
     print(f"카테고리: {category}")
     print("즐겨찾기: ☆")
+    print("조회수: 0")
 
 
 def show_prompt_list():
@@ -231,11 +240,11 @@ def show_prompts_by_category():
         if prompt["category"] == category
     ]
 
-    print(f"\n=== {category} 카테고리 ===")
-
     if not filtered_prompts:
-        print("해당 카테고리에 등록된 프롬프트가 없습니다.")
+        print(f"\n'{category}' 카테고리에 등록된 프롬프트가 없습니다.")
         return
+
+    print(f"\n=== {category} 카테고리 ===")
 
     for index, prompt in enumerate(filtered_prompts, start=1):
         favorite_mark = "★" if prompt["favorite"] else "☆"
@@ -284,7 +293,7 @@ def search_prompts():
 
 
 def show_prompt_detail():
-    """선택한 프롬프트의 상세 정보를 출력한다."""
+    """선택한 프롬프트의 상세 정보를 출력하고 조회수를 1 증가시킨다."""
     if not prompts:
         print("\n등록된 프롬프트가 없습니다.")
         return
@@ -303,6 +312,7 @@ def show_prompt_detail():
 
             if 1 <= number <= len(prompts):
                 prompt = prompts[number - 1]
+                prompt["view_count"] += 1
                 favorite_mark = "★" if prompt["favorite"] else "☆"
 
                 print("\n=== 프롬프트 상세 정보 ===")
@@ -310,6 +320,7 @@ def show_prompt_detail():
                 print(f"제목: {prompt['title']}")
                 print(f"카테고리: {prompt['category']}")
                 print(f"즐겨찾기: {favorite_mark}")
+                print(f"조회수: {prompt['view_count']}")
                 print("내용:")
                 print(prompt["content"])
                 return
@@ -318,7 +329,7 @@ def show_prompt_detail():
 
 
 def toggle_favorite():
-    """선택한 프롬프트의 즐겨찾기 상태를 반대로 변경한다."""
+    """선택한 프롬프트의 즐겨찾기 상태를 변경한다."""
     print("\n=== 즐겨찾기 관리 ===")
 
     if not prompts:
@@ -339,7 +350,6 @@ def toggle_favorite():
 
             if 1 <= number <= len(prompts):
                 prompt = prompts[number - 1]
-
                 prompt["favorite"] = not prompt["favorite"]
 
                 favorite_mark = "★" if prompt["favorite"] else "☆"
@@ -358,7 +368,7 @@ def toggle_favorite():
 
 
 def show_favorites():
-    """즐겨찾기로 등록된 프롬프트만 출력한다."""
+    """즐겨찾기된 프롬프트만 전체 목록의 원래 번호와 함께 출력한다."""
     print("\n=== 즐겨찾기 목록 ===")
 
     favorite_prompts = [
@@ -377,6 +387,158 @@ def show_favorites():
             f"★ "
             f"{prompt['title']} "
             f"[{prompt['category']}]"
+        )
+
+
+def edit_prompt():
+    """선택한 프롬프트의 제목, 내용, 카테고리를 수정한다."""
+    print("\n=== 프롬프트 수정 [Bonus] ===")
+
+    if not prompts:
+        print("등록된 프롬프트가 없습니다.")
+        return
+
+    show_prompt_list()
+
+    while True:
+        try:
+            choice = input("\n수정할 프롬프트 번호: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print("\n프롬프트 수정을 취소합니다.")
+            return
+
+        if choice.isdigit():
+            number = int(choice)
+
+            if 1 <= number <= len(prompts):
+                selected_number = number
+                prompt = prompts[selected_number - 1]
+                break
+
+        print("잘못된 프롬프트 번호입니다. 다시 입력해주세요.")
+
+    print("\n현재 정보")
+    print(f"제목: {prompt['title']}")
+    print(f"카테고리: {prompt['category']}")
+    print("내용:")
+    print(prompt["content"])
+
+    print("\n새로운 정보를 입력하세요.")
+
+    title = get_non_empty_input("새 제목: ")
+    if title is None:
+        print("\n프롬프트 수정을 취소합니다.")
+        return
+
+    content = get_non_empty_input("새 내용: ")
+    if content is None:
+        print("\n프롬프트 수정을 취소합니다.")
+        return
+
+    category = select_category()
+    if category is None:
+        print("\n프롬프트 수정을 취소합니다.")
+        return
+
+    prompt["title"] = title
+    prompt["content"] = content
+    prompt["category"] = category
+
+    print("\n프롬프트가 수정되었습니다.")
+    print(f"번호: {selected_number}")
+    print(f"제목: {prompt['title']}")
+    print(f"카테고리: {prompt['category']}")
+    print(f"즐겨찾기: {'★' if prompt['favorite'] else '☆'}")
+    print(f"조회수: {prompt['view_count']}")
+
+
+def delete_prompt():
+    """선택한 프롬프트를 확인 후 삭제한다."""
+    print("\n=== 프롬프트 삭제 [Bonus] ===")
+
+    if not prompts:
+        print("등록된 프롬프트가 없습니다.")
+        return
+
+    show_prompt_list()
+
+    while True:
+        try:
+            choice = input("\n삭제할 프롬프트 번호: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print("\n프롬프트 삭제를 취소합니다.")
+            return
+
+        if choice.isdigit():
+            number = int(choice)
+
+            if 1 <= number <= len(prompts):
+                selected_number = number
+                prompt = prompts[selected_number - 1]
+                break
+
+        print("잘못된 프롬프트 번호입니다. 다시 입력해주세요.")
+
+    print("\n삭제 대상")
+    print(f"번호: {selected_number}")
+    print(f"제목: {prompt['title']}")
+    print(f"카테고리: {prompt['category']}")
+
+    while True:
+        try:
+            confirm = input("정말 삭제하시겠습니까? (y/n): ").strip().casefold()
+        except (EOFError, KeyboardInterrupt):
+            print("\n프롬프트 삭제를 취소합니다.")
+            return
+
+        if confirm == "y":
+            deleted_prompt = prompts.pop(selected_number - 1)
+            print(f"\n'{deleted_prompt['title']}' 프롬프트가 삭제되었습니다.")
+            return
+
+        if confirm == "n":
+            print("\n프롬프트 삭제를 취소했습니다.")
+            return
+
+        print("y 또는 n을 입력해주세요.")
+
+
+def show_top_prompts():
+    """상세 보기 조회수가 높은 프롬프트를 최대 5개까지 출력한다."""
+    print("\n=== 많이 본 프롬프트 Top 5 [Bonus] ===")
+
+    if not prompts:
+        print("등록된 프롬프트가 없습니다.")
+        return
+
+    viewed_prompts = [
+        (index, prompt)
+        for index, prompt in enumerate(prompts, start=1)
+        if prompt["view_count"] > 0
+    ]
+
+    if not viewed_prompts:
+        print("아직 상세 보기 기록이 없습니다.")
+        return
+
+    sorted_prompts = sorted(
+        viewed_prompts,
+        key=lambda item: item[1]["view_count"],
+        reverse=True,
+    )
+
+    top_prompts = sorted_prompts[:5]
+
+    for rank, (original_number, prompt) in enumerate(top_prompts, start=1):
+        favorite_mark = "★" if prompt["favorite"] else "☆"
+
+        print(
+            f"{rank}위. "
+            f"{favorite_mark} "
+            f"{prompt['title']} "
+            f"[{prompt['category']}] "
+            f"- 원본 번호: {original_number}, "
+            f"조회수: {prompt['view_count']}"
         )
 
 
@@ -411,6 +573,15 @@ def main():
 
         elif choice == "7":
             show_favorites()
+
+        elif choice == "8":
+            edit_prompt()
+
+        elif choice == "9":
+            delete_prompt()
+
+        elif choice == "10":
+            show_top_prompts()
 
         elif choice == "0":
             print("프로그램을 종료합니다.")
