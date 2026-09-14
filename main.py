@@ -317,6 +317,69 @@ def show_prompt_detail():
         print("잘못된 프롬프트 번호입니다. 다시 입력해주세요.")
 
 
+def toggle_favorite():
+    """선택한 프롬프트의 즐겨찾기 상태를 반대로 변경한다."""
+    print("\n=== 즐겨찾기 관리 ===")
+
+    if not prompts:
+        print("등록된 프롬프트가 없습니다.")
+        return
+
+    show_prompt_list()
+
+    while True:
+        try:
+            choice = input("\n즐겨찾기를 변경할 프롬프트 번호: ").strip()
+        except (EOFError, KeyboardInterrupt):
+            print("\n즐겨찾기 관리를 취소합니다.")
+            return
+
+        if choice.isdigit():
+            number = int(choice)
+
+            if 1 <= number <= len(prompts):
+                prompt = prompts[number - 1]
+
+                prompt["favorite"] = not prompt["favorite"]
+
+                favorite_mark = "★" if prompt["favorite"] else "☆"
+                favorite_state = (
+                    "즐겨찾기에 추가되었습니다."
+                    if prompt["favorite"]
+                    else "즐겨찾기에서 해제되었습니다."
+                )
+
+                print(f"\n제목: {prompt['title']}")
+                print(f"즐겨찾기: {favorite_mark}")
+                print(favorite_state)
+                return
+
+        print("잘못된 프롬프트 번호입니다. 다시 입력해주세요.")
+
+
+def show_favorites():
+    """즐겨찾기로 등록된 프롬프트만 출력한다."""
+    print("\n=== 즐겨찾기 목록 ===")
+
+    favorite_prompts = [
+        (index, prompt)
+        for index, prompt in enumerate(prompts, start=1)
+        if prompt["favorite"]
+    ]
+
+    if not favorite_prompts:
+        print("즐겨찾기한 프롬프트가 없습니다.")
+        return
+
+    for original_number, prompt in favorite_prompts:
+        print(
+            f"{original_number}. "
+            f"★ "
+            f"{prompt['title']} "
+            f"[{prompt['category']}]"
+        )
+
+
 def main():
     """사용자가 종료를 선택할 때까지 메인 메뉴를 반복 실행한다."""
     while True:
@@ -344,10 +407,10 @@ def main():
             show_prompt_detail()
 
         elif choice == "6":
-            print("[즐겨찾기 관리] 기능은 다음 단계에서 구현합니다.")
+            toggle_favorite()
 
         elif choice == "7":
-            print("[즐겨찾기 목록] 기능은 다음 단계에서 구현합니다.")
+            show_favorites()
 
         elif choice == "0":
             print("프로그램을 종료합니다.")
